@@ -1,0 +1,10 @@
+# Obsidian configuration (personal to each user)
+.obsidian/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*~
