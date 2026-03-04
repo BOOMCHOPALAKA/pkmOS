@@ -13,13 +13,13 @@ I'm not a developer. There's no code involved here. Everything is plain text fil
 
 Here's the thing most people don't realize. You might already use ChatGPT or Claude. You might even use projects or custom instructions or memory features. That's great, and honestly it puts you ahead of most people. But there's a ceiling to what a chat window can do. You're still copying and pasting things in. You're still the one remembering what context to give it. You're still managing the conversation. It's like having a really smart coworker who you have to brief from scratch every time you need something, even if you've briefed them before. The memory features help, but they're shallow. A few saved facts. Not a living, structured knowledge base that grows every day.
 
-Now, tools like Claude Code, Claude Co-work, and others have started changing this. They let AI work directly inside a folder on your computer. Read files, create notes, edit things, trace connections. That's a huge leap, and honestly just having AI in a folder is already powerful. You can point it at your documents and start getting useful answers immediately.
+Now, tools like Claude Code, Claude Cowork, and others have started changing this. They let AI work directly inside a folder on your computer. Read files, create notes, edit things, trace connections. That's a huge leap, and honestly just having AI in a folder is already powerful. You can point it at your documents and start getting useful answers immediately.
 
 But what I've found is that having a framework underneath it makes the whole thing dramatically better. Linking conventions that let AI trace connections between notes. Templates that teach AI how to build things the way you want them. An instruction file that captures how you work, how you communicate, what to include and what to leave out. A structure that compounds over time so every new piece of information makes everything else more findable. AI in a folder is the superpower. This project is the framework that makes that superpower compound.
 
 And the wildest part is you don't need to be technical to get there. My wife doesn't think of herself as an AI power user. But if she started using this system, she'd naturally become one, because the system does the heavy lifting. You talk to it, it organizes everything, and suddenly you have a knowledge base that makes every future conversation smarter. You didn't build a productivity system. You just kept talking to AI, and the system built itself around you.
 
-The key ingredient is an AI that can see and work within your file system. Not a chat window where you paste things in. An actual tool that lives in your vault, reads your files, creates new ones, edits existing ones, and follows the links between them. Right now that's tools like Claude Code, Claude Co-work, or similar tools from other providers. The specific tool doesn't matter. What matters is it can read and write to a folder on your computer. That's the unlock.
+The key ingredient is an AI that can see and work within your file system. Not a chat window where you paste things in. An actual tool that lives in your vault, reads your files, creates new ones, edits existing ones, and follows the links between them. Right now that's tools like Claude Code, Claude Cowork, or similar tools from other providers. The specific tool doesn't matter. What matters is it can read and write to a folder on your computer. That's the unlock.
 
 And yes, it also means you never re-explain yourself. Most people use AI like a search engine with personality. Every conversation starts from zero. This system doesn't. But that's just the entry point. The real value is having a knowledge partner that compounds over time.
 
@@ -164,21 +164,21 @@ Over time, you add more. You notice AI formatted something in a way you don't li
 
 This is the part that surprised me most about my own system.
 
-Your primary interaction with this whole thing is talking to the AI. Not clicking around in Obsidian. Not manually organizing files. Talking.
+Your primary interaction with this whole thing is talking to the AI. Not writing notes in Obsidian. Not manually organizing files. Talking. You can absolutely write notes manually if you want to. That's the beauty of this system. It's hybrid. But here's what actually happened after two months of using it: I thought I'd be writing a lot more by hand. I expected to spend time in Obsidian crafting notes, organizing things, building out the structure myself. Instead, I just talk to Claude. I tell it what happened in a meeting, what I'm working on, what I need to remember. It generates the notes, files them in the right place, links them to everything else. And then Obsidian becomes this beautiful visual layer where I can open a Basecamp, click through to the notes connected to it, follow links between topics, and just browse what's been built. Or I skip Obsidian entirely and ask Claude a question right in the chat. "What did we decide about the pricing portal?" And it searches the vault and gives me the answer. Both paths work. That's the freedom of it.
 
-And "talking" goes both directions:
+And "talking" goes in a few directions:
 
-**You give it information.** Drop in a meeting transcript. Share a document you just received. Explain a decision you made and why. Log a workout. Paste in the details from a real estate offer. Vent about a problem you're stuck on. The AI takes whatever you give it, structures it into notes, files it in your vault, links it to the relevant topics, and adds a Compass so it's findable later. You dumped raw information. It came back organized.
+**You think out loud.** This is the one that surprised me. You're not just feeding it data and asking it questions. You're having actual conversations. You're brainstorming a business idea, riffing on a problem, thinking through a decision. And what starts as a casual chat naturally turns into something structured. You're talking through an idea for a new product line and somewhere in the conversation it suggests, "This is getting substantial. Want me to create a Basecamp for this?" So now that idea has a home. A few days later you're thinking about it again, and another note gets created. Then you have a meeting where someone mentions something related, and when AI processes that transcript it goes, "Hey, this connects to the product line idea from last week. Let me link it." You didn't plan any of that. You were just talking. The vault grew around the conversation.
 
-**You ask it questions.** "What did we decide about the pricing portal last month?" "What were the terms on that house offer?" "How have my workouts been trending?" "What's the status of Project X?" AI searches through your notes, traces the links, and gives you a confident answer with context. You didn't dig through files. You didn't open Obsidian and search. You asked, and the system already had it.
+**You give it raw information and it comes back organized.** Drop in a meeting transcript. Share a document you just received. Paste in the details from a real estate offer. Log a workout. The AI takes whatever you give it, structures it into notes, files it in your vault, links it to the relevant topics, and adds a Compass so it's findable later. A 45-minute meeting becomes a linked, searchable summary in a few minutes. A messy contract becomes a clean note with the key terms pulled out.
 
-**The creation IS the curation.** You're not maintaining a knowledge base separately from doing your work. The knowledge base builds itself as a natural byproduct of using AI to process meetings, draft documents, write project notes, and organize information. And then that same knowledge base becomes the thing AI searches when you ask questions.
+**You ask it questions and get real answers.** "What did we decide about the pricing portal last month?" "What were the terms on that house offer?" "How have my workouts been trending?" "What's the status of Project X?" AI searches through your notes, traces the links, and gives you a confident answer with context. You didn't dig through files. You didn't open Obsidian and search. You asked, and the system already had it.
 
-The more you put in, the more useful it gets. Not because the AI improved. Because *your* knowledge base got richer.
+**The creation IS the curation.** You're not maintaining a knowledge base separately from doing your work. The knowledge base builds itself as a natural byproduct of brainstorming, processing meetings, drafting documents, and thinking out loud. And then that same knowledge base becomes the thing AI searches when you ask questions. The more you put in, the more useful it gets. Not because the AI improved. Because *your* knowledge base got richer.
 
-**Choose your own adventure.** There are two ways to use this system and both are valid. You can talk to the AI for everything: give it information, ask it questions, have it build and retrieve. The AI is your interface. Or you can open Obsidian and browse your vault directly. Click through Basecamps, follow links, read notes. The vault is your interface. Most people do both depending on the moment. Quick question? Ask the AI. Want the full picture on a project? Open the Basecamp and explore. The point is the system works either way because everything the AI builds is real, readable, browsable files sitting in your vault.
+**Everything AI builds is real.** This is worth emphasizing. The notes AI creates aren't hidden in some database or locked in a chat history. They're actual files sitting in your vault. You can open them in Obsidian, read them, edit them, browse between them. The AI builds the knowledge base, and Obsidian gives you a visual way to explore it. You always have both paths.
 
-**What "talking to AI" actually means here.** This isn't copy-pasting text into a chat window. You're using an AI tool that lives inside your vault. Tools like Claude Code or Claude Co-work run directly on your file system. You talk, and the AI reads your files, creates new notes, edits existing ones, follows links, and searches across everything you've built. It's not a separate app you switch to. It's working inside your system. Other AI providers are building similar tools. The important thing is the AI can see your files and work within them, not just receive text you paste in.
+**What "talking to AI" actually means here.** This isn't copy-pasting text into a chat window. You're using an AI tool that lives inside your vault. Tools like Claude Code or Claude Cowork run directly on your file system. You talk, and the AI reads your files, creates new notes, edits existing ones, follows links, and searches across everything you've built. It's not a separate app you switch to. It's working inside your system. Other AI providers are building similar tools. The important thing is the AI can see your files and work within them, not just receive text you paste in.
 
 ---
 
@@ -330,7 +330,14 @@ Tell AI: "Create a daily note for today. Here's what I worked on..." and give it
 
 This is the part that makes it all work. You need an AI tool that can read and write files on your computer. Not a chat window. An AI that lives inside your vault.
 
-Right now the best options are **Claude Code** and **Claude Co-work** (both from Anthropic). Open one of them and point it at your vault folder. It reads your instruction file automatically, sees all your notes, and can create and edit files directly. Other AI providers are building similar file-system tools. The specific tool will evolve. What matters is the AI can see your files and operate within them.
+If your experience with AI so far has been chat windows, whether that's ChatGPT or Claude in a browser, on your phone, or even the desktop apps, this is the part that's different. All of those are conversations that happen separately from your files. These tools are different. They run on your computer and work directly inside your folders. You talk to them the same way, but instead of a chat window, they're operating inside your vault. They can read your notes, create new ones, edit existing ones, and search across everything.
+
+Right now the best options are **Claude Cowork** and **Claude Code** (both from Anthropic):
+
+- **Claude Cowork** is the easiest starting point. It's built into the Claude desktop app. You point it at your vault folder and start talking. Great for anyone who wants the conversational experience without any terminal or command line setup. If you're new to this, start here. [Getting started with Cowork](https://support.claude.com/en/articles/13345190-get-started-with-cowork)
+- **Claude Code** is a command-line tool that runs in your terminal. More powerful, more flexible, usage-based pricing. This is what I use daily. If you're comfortable with a terminal or want to grow into it, this is the path. [Getting started with Claude Code](https://code.claude.com/docs/en/overview)
+
+Other AI providers are building similar file-system tools. The specific tool will evolve. What matters is the AI can see your files and operate within them.
 
 Once it's connected, try it. "Here's a meeting I had today. Summarize it and add it to my daily note." Or ask it something. "What did I write down yesterday?" It reads your instruction file, knows your conventions, and starts working within your system from the first conversation.
 
@@ -338,7 +345,7 @@ Once it's connected, try it. "Here's a meeting I had today. Summarize it and add
 
 | Tool | Instruction file it reads |
 |---|---|
-| Claude Code / Claude Co-work | `CLAUDE.md` (auto-discovered) |
+| Claude Code / Claude Cowork | `CLAUDE.md` (auto-discovered) |
 | GitHub Copilot | `.github/copilot-instructions.md` |
 | Cursor | `.cursor/rules/*.mdc` or `AGENTS.md` |
 | OpenAI Codex CLI | `AGENTS.md` |
@@ -391,13 +398,13 @@ Own the playbook. Rent the tech.
 No. If you can have a conversation, you can do this. Most of the system builds itself through talking to AI. You tell it what happened, it creates the notes. You ask a question, it finds the answer. The files underneath are plain text, and the structure is just folders and naming conventions. You can open Obsidian and browse everything directly whenever you want, but you never have to. There's no code involved unless you want there to be.
 
 **What does this cost?**
-Obsidian is free. The AI tool is where pricing comes in. Claude Code is usage-based (you pay for what you use). Claude Pro ($20/month) gives you access to Claude Co-work. Other providers have their own pricing for file-system AI tools. The landscape is evolving fast, so check current pricing when you're ready to start.
+Obsidian is free. The AI tool is where pricing comes in. Claude Code is usage-based (you pay for what you use). Claude Pro ($20/month) gives you access to Claude Cowork. Other providers have their own pricing for file-system AI tools. The landscape is evolving fast, so check current pricing when you're ready to start.
 
 **How is this different from other PKM tools like Notion or Roam?**
 Most PKM tools are about organizing notes. This system is about AI working inside your notes. You're not just storing knowledge and manually linking things. AI reads your instruction file, processes raw inputs into structured notes, builds the links, and then searches across all of it when you ask questions. The vault is the knowledge base. AI is the engine that builds it and retrieves from it. Traditional PKM tools give you a place to put things. This gives you a partner that does the putting and the finding.
 
 **How is this different from just using ChatGPT/Claude normally?**
-Two big differences. First, normal AI use is stateless. Every conversation starts fresh. This system gives AI persistent context through files it reads at the start of every session. Second, the AI isn't in a chat window. It's running inside your file system using tools like Claude Code or Claude Co-work. It can read your notes, create new ones, edit existing ones, and trace links between them. That's fundamentally different from pasting text into a chat box and getting a response back.
+Two big differences. First, normal AI use is stateless. Every conversation starts fresh. This system gives AI persistent context through files it reads at the start of every session. Second, the AI isn't in a chat window. It's running inside your file system using tools like Claude Code or Claude Cowork. It can read your notes, create new ones, edit existing ones, and trace links between them. That's fundamentally different from pasting text into a chat box and getting a response back.
 
 **What if I don't want to share personal data with AI?**
 You control exactly what goes in. The system works fine with just work notes. You never have to share anything you're not comfortable with. Start with what feels safe and expand if and when you want to.
