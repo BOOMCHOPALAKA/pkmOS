@@ -1,16 +1,15 @@
 # pkmOS — Your Instruction File
 
-This file is read by AI at the start of every conversation. It's your briefing document. Everything here teaches AI how you work, what you care about, and how you want things done.
+> **This is a working system you can use out of the box.** Every convention below was developed through months of real daily use. The system conventions, meeting processing rules, TODO filtering, daily note structure, and linking patterns all work as-is. Just fill in the personal sections (About Me, Active Projects, People) and start using it. Or just start talking to AI and have it fill them in for you based on your conversations. Customize everything over time as you develop your own preferences.
 
 **Why is this called CLAUDE.md?** Claude Code auto-discovers this filename. If you're using a different AI tool, rename or copy this file to match what your tool expects (e.g., `AGENTS.md` for Codex/Cursor, `GEMINI.md` for Gemini CLI, `.github/copilot-instructions.md` for GitHub Copilot). The instructions inside work the same regardless of the filename.
-
-Start with the basics. Five lines is enough. This file grows over time based on real experience, not upfront planning. Every time AI does something you don't like, add a line. Every time it gets something right, leave it alone.
 
 ---
 
 ## About Me
 
-<!-- Who are you? What do you do? A sentence or two is fine. -->
+<!-- Fill this in. Who are you? What do you do? A sentence or two is fine. -->
+<!-- Or just tell AI: "I'm a [your role] at [company]. Add that to my instruction file." -->
 <!-- Example: "I'm a contracts director at a nonprofit in Seattle." -->
 
 
@@ -19,12 +18,12 @@ Start with the basics. Five lines is enough. This file grows over time based on 
 <!-- What are you working on right now? What areas of your life are you tracking? -->
 <!-- These can be work projects, personal projects, or anything you want AI to know about. -->
 <!-- Example: -->
-<!-- - Work: Q2 product launch, vendor negotiations -->
-<!-- - Personal: house hunt in Gig Harbor, training for a backpacking trip -->
-<!-- - Side project: starting a small business -->
+<!-- - Work: Q2 product launch, vendor negotiations, team hiring -->
+<!-- - Personal: house hunt, marathon training, kitchen renovation -->
+<!-- - Side project: small business launch -->
 
 
-## People
+## People (Correct Spellings)
 
 <!-- Names that come up frequently. Include correct spellings and context so AI gets them right. -->
 <!-- Example: -->
@@ -32,32 +31,158 @@ Start with the basics. Five lines is enough. This file grows over time based on 
 <!-- - Marcus Williams — packaging vendor contact -->
 <!-- - Dr. Rivera — primary care physician -->
 
+<!-- Why this matters: transcription tools mangle names constantly. -->
+<!-- Having the correct spelling here means AI gets it right in every summary. -->
 
-## How I Like Things
 
-<!-- Preferences for formatting, tone, what to include or exclude. Add these as you discover them. -->
+## Spelling Corrections
+
+<!-- Add entries here as you notice transcription errors. -->
 <!-- Example: -->
-<!-- - Keep meeting summaries concise. Bullet points, not paragraphs. -->
-<!-- - When drafting emails, match my casual but professional tone. No corporate speak. -->
-<!-- - Don't include pleasantries in status updates. Get to the substance. -->
+<!-- - **Project Horizon** — transcripts often render as "project horizon" or "Project Horizons." Always capitalize, always singular. -->
+<!-- - **McKinsey** — not "McKinzy" or "McKenzie" -->
 
+---
 
-## Vault Conventions
+## Vault Structure
 
-<!-- Rules for how notes should be created and organized in this vault. -->
-<!-- The defaults below come from the pkmOS framework. Modify or add to them as your system evolves. -->
+This is a flat, link-first Obsidian vault. Organization comes from links and naming conventions, not deep folder hierarchies.
 
-- All notes live in the vault root unless they're a Basecamp (goes in Map/) or a template (goes in Templates/).
-- Basecamps are hub notes that link to everything about a topic. They live in the Map/ folder.
-- Every note should have a **Compass** section at the top: a few sentences about what the note is and links to related notes.
-- Daily notes go in Calendar/, organized by month and week (e.g., Calendar/March/Week 1/2026-03-03.md).
-- Raw inputs (transcripts, PDFs, documents to process) go in Downloads/. AI processes them into structured notes.
-- Link aggressively. Every note should connect to related notes, Basecamps, and daily notes. No orphan notes.
-- Use consistent naming conventions so notes are findable by both you and AI.
+- **Map/** — Basecamps (hub notes) only. Topic indexes and navigation hubs.
+- **Calendar/** — Daily notes, organized by month and week. Named `YYYY-MM-DD.md`.
+- **Downloads/** — Raw inputs. Meeting transcripts, PDFs, documents to process. AI processes these into structured notes.
+- **Attachments/** — Images, exports, diagrams. Non-markdown files.
+- **Templates/** — Reusable templates for daily notes, Basecamps, etc.
+- **Root (everything else)** — Knowledge notes, project docs, personal notes. If it's your thinking, it lives in root.
 
+All content is Markdown (.md). Notes and Basecamps use `## Compass` as the orientation section at the top.
+
+## When Helping With This Vault
+
+- Read the relevant Basecamp in Map/ first to understand a topic before diving into individual notes.
+- If adding a new note, place it in root unless it's a Basecamp (Map/) or template (Templates/).
+- Preserve existing link structures. Obsidian relies on `[[wiki links]]`.
+- **Always link aggressively when creating or updating notes.** Link to every relevant existing note and Basecamp on first mention. Add "Related" or "See also" sections at the bottom. Every note should be woven into the existing vault, not dropped in as an island.
+- **Use internal anchor links within long notes.** Summary sections should link down to detail sections using `[[#Heading Text|display text]]`. Detail sections should link back up. **Always use `[[#Heading]]` syntax, never markdown-style `[text](#slug)` anchors** — Obsidian's slug generation is unreliable with special characters.
+
+### Linking Principles
+
+**Links are the backbone of this vault.** There are no deep folder hierarchies. Links do the organizing. Every link makes the vault more navigable, makes backlinks more useful, and strengthens the knowledge graph. A note with no links is an orphan that may never be found again.
+
+When creating or updating any note, always look for opportunities to connect it to what already exists. Check the vault for related notes and Basecamps before writing.
+
+**When to link:**
+1. **Cross-vault connections** — Link to Basecamps, related notes, and source documents
+2. **Internal navigation** — Link between summary and detail sections using `[[#Heading Text|display text]]`
+3. **Bidirectional** — If section A references section B, link both ways
+4. **Related discussions** — Cross-link sections covering the same topic from different angles
+
+**How to link smartly:**
+- Use descriptive link text: `[[Project X Basecamp|Project X]]` not bare `[[Project X Basecamp]]`
+- Add "Related" or "See also" sections to group links without interrupting flow
+- Don't over-link: first mention gets a link. Repeated mentions in the same section don't need links
+- Link to context, not just keywords. Link when it adds understanding, not just because words match
+
+**Hashtag usage:**
+- Use hashtags for filtering and discovery: `#work #meetings #decisions`
+- Keep tags consistent across related notes
+- Don't hashtag everything. Use them where they help organize or surface content
+
+### Meeting Summary Conventions
+
+- Before writing, check the vault for existing notes related to the meeting topics. Link to them.
+- Add a `Related:` line at the top when relevant Basecamps or notes exist for that meeting's topics.
+- Tag individual sections when the tag helps with discovery (e.g., `#budgetreview` on a section discussing budget).
+- If a meeting discusses something that has a corresponding knowledge note, link to it. If the meeting adds meaningful new information, update that note too. But don't update notes with trivial status-only mentions.
+
+**Extract TODOs into the daily note's TODO section.** But be selective. Not every action item mentioned in a meeting belongs on your list. Only extract items that pass at least one of these filters:
+1. **You own the action.** You need to send, write, decide, or do something.
+2. **You're the bottleneck.** Someone is waiting on you before they can move forward.
+3. **You need to follow up with someone you manage or coordinate with.**
+4. **You're accountable if it drops.** If it falls through, you're the one explaining why.
+
+Items that do NOT pass these filters: other teams' internal work, things other people are investigating on their own, operational tasks that belong to someone else. You get visibility in the meeting. That's enough. Don't create TODOs for things you have no reason to follow up on.
+
+Write TODOs as short checkbox items with anchor links back to the meeting context:
+`- [ ] Follow up with Anton on the API fix — see [[#Dev Standup]]`
+
+### Daily Note Structure
+
+**TODO section:**
+- `**From today's meetings:**` — short checkbox items with `[[#Heading]]` links to meeting detail
+- `**Carried from [[YYYY-MM-DD]]:**` — open items brought forward from previous days
+- `Check:` prefix for items where you're following up on someone else's work
+- Completed carry-overs stay on the originating day; only open items move forward
+
+**Body section (## Work and ## Personal):**
+- Reverse chronological. Newest entries at the top of each section.
+- Each meeting, update, or work block gets its own `###` heading.
+
+**Recap section:**
+- **Do NOT write to the Recap automatically.** Only when explicitly asked.
+- When asked: TL;DR bullets, not narrative. Each bullet is one headline + one sentence of context.
+- Anchor links to detail: end bullets with `See [[#Heading]]` so the recap is scannable and full context is one click away.
+- Lead with what matters most, not chronological order.
+- Don't repeat TODO items. The recap captures what happened, not what's pending.
+
+### Activity & Fitness Log
+
+Log workouts and activities in the daily note Body under `## Personal`:
+```
+#### [Activity Name]
+[Load/gear] | [distance] | [time] | [elevation] | Avg HR [bpm]
+[Brief note on how it felt]
+```
+Example:
+```
+#### Morning Trail Run
+8.2 mi | 1:02:15 | 340 ft | Avg HR 148
+Felt strong through mile 6, legs got heavy on the last hill. Need to fuel better.
+```
+- The subjective feel line is the most valuable part. "Felt easy" vs "legs were heavy" tracks adaptation over time.
+- Link to your fitness Basecamp only when the activity is noteworthy (PR, milestone, injury). Don't link on routine entries.
+- Tag with `#fitness` for discovery.
+
+## Weekly Status Reports
+
+When a weekly update or status report is requested for any project:
+1. **COMPLETED** — Bold headers per item with dates. 1-2 sentences max.
+2. **IN PROGRESS** — Critical/blocking items first as their own sections. Group smaller items under "Other In Progress."
+3. **DECISIONS** — Bullet list. Include who made the call when relevant.
+4. **UPCOMING** — Bullet list with dates.
+5. **NOTES** — Only standout callouts: exceptional work, biggest risks, systemic issues.
+
+**Style:**
+- Informative and succinct. No filler.
+- Bold item headers, short descriptions.
+- Plain language. No corporate buzzwords ("synergy," "mission-critical," "leverage"). Just say what the problem is in normal words.
+- Don't sound alarmist unless the situation actually warrants it. State facts, note risks, move on.
+- Never reference vault-internal work (note creation, knowledge builds) in these reports. They're for people who don't have access to the vault.
+
+## Communication Style
+
+<!-- The rules below establish a baseline voice. Adjust them to match how YOU actually communicate. -->
+<!-- Over time, share writing samples (emails, messages) so AI learns your specific voice. -->
+
+**General voice:**
+- Conversational and direct. Plain language over jargon.
+- Short sentences mixed with longer ones for pacing. Fragments are fine.
+- Warm but not soft. Genuine without being performative.
+- Lead with what matters most, then offer flexibility or alternatives.
+- One idea per paragraph. Paragraph breaks for pacing.
+
+**Email drafting:**
+- Inviting asks, not directives. "Is this something you could help with?" not "Can you send me the files?"
+- Specific references. Name the actual meeting, the actual document, the actual date.
+- Light on technical prescriptions. Keep it conversational.
+- Skip pleasantries when substance is the point. Go straight to the update.
+
+**What NOT to do:**
+- No corporate buzzwords
+- No walls of text without structure
+- Don't agree just to be agreeable. Push back when something seems off.
+- Don't over-explain. If the point is made, move on.
 
 ## Memory
 
-<!-- Things AI should remember across conversations live in MEMORY.md, not here. -->
-<!-- This file is for instructions. MEMORY.md is for learned context. -->
-<!-- See MEMORY.md for details. -->
+Things AI learns across conversations live in MEMORY.md, not here. This file is for instructions. MEMORY.md is for learned context. See MEMORY.md for details.

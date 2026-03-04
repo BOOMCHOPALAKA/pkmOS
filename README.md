@@ -70,7 +70,9 @@ My Vault/
 ├── Downloads/        ← Raw inputs. Meeting transcripts, PDFs, docs,
 │                       anything you want AI to process.
 ├── Attachments/      ← Images, exports, diagrams. Non-markdown files.
-├── Templates/        ← Reusable templates for daily notes, Basecamps, etc.
+├── Templates/        ← Instructions for AI. How to build notes, not forms to fill in.
+├── repos/            ← Git repos that live inside your vault. AI sees them,
+│                       Obsidian ignores them. Clone your projects here.
 ├── CLAUDE.md         ← Your instruction file. AI reads this every session.
 ├── MEMORY.md         ← Things AI should remember across conversations.
 └── [everything else] ← Knowledge notes, project docs, tickets, personal
@@ -127,7 +129,11 @@ The more notes you add, the denser the web gets. The denser the web gets, the mo
 
 **Attachments** holds non-text files. Images, diagrams, data exports. Things you want to reference from notes but that aren't notes themselves.
 
-**Templates** save you from blank pages. A daily note template, a Basecamp template with the Compass already there, a meeting summary template. When you create a new note, you pick a template and start filling in. AI can use these too.
+**Templates** are instructions for AI, not forms for you to fill in. This is a subtle but important distinction. Every other knowledge system gives you a blank template and says "here, fill this in." That's homework. In this system, templates teach AI how to build things for you. The Basecamp template doesn't say "write your overview here." It tells AI what a Basecamp is, what sections to create, how to structure the Compass, and how to link it to existing notes. You never see the template. You say "create a Basecamp for my house renovation" and AI reads the template, reads your vault, and builds it. The template is the recipe. AI is the cook. You're the one who said "I'm hungry."
+
+The starter vault includes templates for daily notes, Basecamps, meeting summaries, and weekly status reports. Each one has visible structure (what the note looks like) plus hidden AI instructions (how to build it, what to check for, what conventions to follow). If you're writing notes yourself in Obsidian, you can use the templates directly. But the real power is letting AI use them on your behalf.
+
+**repos/** is for code repositories that live inside your vault. If you're a developer or work with code, clone your projects here. AI tools like Claude Code can see everything in your vault, which means they can reference your knowledge notes while working in your codebase, and vice versa. Your project documentation, meeting summaries, and technical notes all become context for code work. Obsidian is configured to ignore this folder so repo files don't clutter your vault search or graph view. The vault's git also ignores it since each repo has its own git history.
 
 ### 2. An instruction file that teaches AI how you work
 
@@ -186,14 +192,14 @@ You don't need all of these on day one. Start with links and Compass sections. T
 The basic system works with just notes and an instruction file. But you can make it dramatically more powerful by feeding it more of your existing data. How far you go is entirely up to you.
 
 **Start simple:**
-- Write notes after meetings, important conversations, or anything you want to remember
-- Keep a daily note. What you did, what's pending, any decisions made. Work and personal.
-- Jot down decisions and why they were made (this is gold when you need to reference them later)
+- After a meeting or important conversation, tell AI what happened. "Here's what we discussed in the vendor call today." It creates the note, links it to the right places, and adds a Compass. You can also write notes yourself in Obsidian if you prefer. Both work. The point is information gets into the system.
+- Keep a daily note. Tell AI what you worked on, what's pending, any decisions made. Or open the template and type it yourself. A few bullets is fine either way.
+- When you make a decision, capture the reasoning. "We went with Vendor B because of the lead time. Add this to the project notes." This is gold when you need to reference it later.
 
 **Go deeper when you're ready:**
-- Feed it documents from your life. Contracts, proposals, reports, financial records, recipes, research. Whatever you reference regularly. Now AI can answer questions about them without you digging through files.
+- Feed it documents from your life. Contracts, proposals, reports, financial records, recipes, research. Whatever you reference regularly. Drop them in Downloads and tell AI to process them. Now AI can answer questions about them without you digging through files.
 - Share your writing samples (emails, reports, messages) and let it learn your voice. Once it understands how you actually communicate, it can draft things that sound like you instead of sounding like a robot.
-- Import meeting transcripts and let AI process them into structured summaries. This is one of the biggest time savers. A 45-minute meeting becomes a linked, searchable summary in a few minutes.
+- Drop meeting transcripts into the vault and tell AI to process them. "Summarize this and add it to today's daily note." A 45-minute meeting becomes a linked, searchable summary in a few minutes. This is one of the biggest time savers.
 
 **For the ambitious:**
 - Build out full knowledge bases on specific subjects by adding notes over time. Individual notes are fine on their own, but when they start linking to each other, the system surfaces connections you wouldn't have made yourself. A note about your fitness routine links to your health research which links to the gear you bought.
@@ -287,12 +293,12 @@ git clone https://github.com/BOOMCHOPALAKA/pkmOS.git
 Or click the green **Code** button above and select **Download ZIP**. Unzip it and put it somewhere easy to find on your computer. Your Documents folder works great. Then open Obsidian and point it at that folder.
 
 The starter vault comes pre-built with the folder structure from this guide: Map, Calendar, Downloads, Attachments, and Templates. It also includes:
-- **An instruction file** (`CLAUDE.md`) with the structure ready for you to fill in. Your name, your projects, your people, your preferences. Blank sections with prompts so you know what goes where.
-- **A memory file** (`MEMORY.md`) for things AI should remember across conversations.
+- **An instruction file** (`CLAUDE.md`) pre-loaded with battle-tested conventions: meeting processing rules, TODO filtering, daily note structure, linking patterns, weekly report format, communication style defaults. All of it works out of the box. Just fill in the personal sections (About Me, Active Projects, People) and start using it.
+- **A memory file** (`MEMORY.md`) pre-loaded with system-level patterns that AI learns to follow: how to handle recaps, how to research your vault, how to process transcripts, how to hand off between sessions. AI will add to this over time as it learns your specific preferences.
 - **A daily note template** in Templates/ so every day starts with the same structure.
 - **A Basecamp template** in Templates/ with the Compass section already in place.
 
-You're not starting from scratch. You're filling in blanks. And nothing is permanent. The starter vault is a paint-by-numbers template. Use it as-is, or change anything that doesn't fit your life. Add folders, rename things, create new templates. It's your system.
+You're not starting from scratch. You're not even filling in blanks if you don't want to. The system works immediately. The conventions, the rules, the patterns are all live. The only things that need your input are the personal sections: who you are, what you're working on, and who comes up in your conversations. You can type those in yourself, or just start talking to AI and let it fill them in based on your conversations. Either way, you're up and running.
 
 **Step 3: Fill in your instruction file**
 
@@ -304,9 +310,11 @@ Open `CLAUDE.md` and fill in the basics. Five lines is enough to start:
 
 That's it for now. This file grows over time based on real experience, not upfront planning. Every time AI does something you don't like, you add a line. Every time it gets something right, you leave it alone.
 
-**Step 4: Write your first daily note**
+The good news: your `CLAUDE.md` already comes loaded with conventions that work. Meeting processing, TODO filtering, daily note structure, linking rules, weekly reports, communication style. It's all there. You're not building from zero. You're personalizing a system that's already running.
 
-Open the Calendar folder, find today's date (or create a note using the daily note template), and write down what happened today. What you worked on. What's pending. Any decisions made. Personal stuff if you want. A few bullets is fine. This is your first deposit into the system.
+**Step 4: Create your first daily note**
+
+Tell AI: "Create a daily note for today. Here's what I worked on..." and give it a few bullets about your day. It'll create the note in the right place with the right structure. Or if you prefer, open the Calendar folder, create a note using the daily note template, and type it yourself. Either way, a few bullets is fine. This is your first deposit into the system.
 
 **Step 5: Connect AI to your vault**
 
@@ -338,8 +346,8 @@ That's your setup. You have a vault, an instruction file, and a daily note. The 
 The setup takes 20 minutes. The value comes from using it consistently. Here's how it typically builds:
 
 **First two weeks:**
-- Keep doing daily notes. They don't need to be long. A few bullets is fine.
-- When something comes up that you'll want to reference later (a decision, a conversation, a piece of research), tell AI to make it a note. Or make it yourself. Either way, give it a clear name.
+- Keep doing daily notes. Tell AI what happened, or type them yourself. They don't need to be long. A few bullets is fine.
+- When something comes up that you'll want to reference later (a decision, a conversation, a piece of research), tell AI to make it a note. "Create a note about the vendor pricing decision we made today." Or write it yourself in Obsidian. Either way works. The point is it gets into the system.
 - When AI gets something wrong or formats something in a way you don't like, add a line to your instruction file. "Don't do X. Do Y instead." This is how the system learns your preferences.
 
 **After a few weeks:**
@@ -370,7 +378,7 @@ Own the playbook. Rent the tech.
 ## FAQ
 
 **Do I need to be technical to do this?**
-No. If you can write a document, you can do this. The files are plain text. The structure is just folders and naming conventions. There's no code involved unless you want there to be.
+No. If you can have a conversation, you can do this. Most of the system builds itself through talking to AI. You tell it what happened, it creates the notes. You ask a question, it finds the answer. The files underneath are plain text, and the structure is just folders and naming conventions. You can open Obsidian and browse everything directly whenever you want, but you never have to. There's no code involved unless you want there to be.
 
 **What does this cost?**
 Obsidian is free. The AI tool is where pricing comes in. Claude Code is usage-based (you pay for what you use). Claude Pro ($20/month) gives you access to Claude Co-work. Other providers have their own pricing for file-system AI tools. The landscape is evolving fast, so check current pricing when you're ready to start.

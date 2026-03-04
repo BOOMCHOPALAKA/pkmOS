@@ -19,7 +19,7 @@ Today's note. Part of [[Calendar]].
 ---
 
 # Recap
-<!-- Don't write here until end of day. This is your intentional summary of what happened. -->
+<!-- Don't write here until end of day. This is your intentional summary. -->
 <!-- TL;DR bullets. Lead with what matters most. Link to detail sections below. -->
 
 ## Work
@@ -40,3 +40,18 @@ Today's note. Part of [[Calendar]].
 ## Personal
 <!-- Workouts, health, family, personal projects, whatever matters today. -->
 
+
+<!--
+NOTES FOR AI (not for the user to fill in):
+
+Daily note conventions:
+- Never write to the Recap section automatically. Only when explicitly asked.
+- When told to add something, add it under Work or Personal in the Body section.
+- New entries go at the TOP of their section (reverse chronological).
+- TODO extraction from meetings: only items the user owns, is bottleneck for,
+  or needs to chase. Not every action item from a meeting belongs here.
+- "Check:" prefix is for following up on someone else's work. Don't overuse it.
+- Completed carry-overs stay on the originating day. Only open items move forward.
+- After significant work (processing transcripts, creating notes), proactively
+  offer to update the daily note. Don't move on silently.
+-->
