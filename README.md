@@ -21,9 +21,9 @@
 
 ### Glossary
 
-A few terms come up a lot in this guide. Here's what they mean in plain language. (Yes, we define what a folder is. If that offends you, you're probably fine skipping to [Getting Started](#getting-started). :) )
+A few terms come up a lot in this guide. Here's what they mean in plain language.
 
-Don't let the beginner definitions turn you away though. There's plenty here for technical folks too.
+*(Yes, we define what a folder is. If that offends you, you're probably fine skipping ahead to [Getting Started](#getting-started)). But please don't let the beginner definitions turn you away. There's plenty here for technical folks too. :)*
 
 **Folder / Directory / File system.** When you open Finder on a Mac or File Explorer on Windows and see Documents, Downloads, Desktop, and the folders inside them, that's your file system. Folders hold files. Folders inside folders give you organization. This whole system is built on that. If you can create a folder on your computer, you already have the technical skills you need.
 
