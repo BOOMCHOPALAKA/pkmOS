@@ -1,5 +1,5 @@
 # noteOS — A Personal "Operating System" That Runs on Simple Text Files, Supercharged by AI
-*A practical guidebook to building your own AI-powered knowledge system that connects everything you know, forgets nothing, and gets more helpful the more you use it.*
+*A starter vault of folders, text files, and AI instructions that connects everything you know, gets more helpful the more you use it, and anyone can set up.*
 
 ## Table of Contents
 - [What This Is](#what-this-is)
