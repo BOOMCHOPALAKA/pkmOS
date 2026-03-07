@@ -2,6 +2,7 @@
 *A starter vault of folders, text files, and AI instructions that connects everything you know, gets more helpful the more you use it, and anyone can set up.*
 
 ## Table of Contents
+- [Quick Glossary](#quick-glossary)
 - [What This Is](#what-this-is)
 - [The Core Idea](#the-core-idea)
 - [Who's This For](#whos-this-for)
@@ -13,6 +14,30 @@
 - [Building the Habit](#building-the-habit)
 - [Why Portability Matters](#why-portability-matters)
 - [FAQ](#faq)
+
+---
+
+## Quick Glossary
+
+Some terms come up a lot in this guide. Here's what they mean in plain language.
+
+**Folder / Directory / File system.** When you open Finder on a Mac or File Explorer on Windows and see Documents, Downloads, Desktop, and the folders inside them, that's your file system. Folders hold files. Folders inside folders give you organization. This whole system is built on that. If you can create a folder on your computer, you already have the technical skills you need.
+
+**Vault.** Just a folder on your computer that holds all your notes. Obsidian uses the word "vault" but there's nothing special about it. It's a regular folder with text files inside. You could open it in Finder or File Explorer and see everything right there.
+
+**Obsidian.** A free app that makes your vault look good and easy to navigate. It adds clickable links between notes, instant search, a visual graph of how everything connects, and themes to make it yours. Under the hood, it's just reading and writing plain text files. You could delete Obsidian tomorrow and every file would still be there, readable in any text editor.
+
+**Note.** A single text file. That's it. A meeting summary is a note. A project overview is a note. A recipe is a note. Every piece of knowledge in the system is a note.
+
+**Basecamp.** A hub note for a topic. It doesn't contain everything about that topic. It links to everything about that topic. Your "Work Project" Basecamp links to related meeting summaries, decisions, tickets, and people. Think of it as a table of contents for an area of your life.
+
+**Markdown.** A simple way to format text files using characters like `#` for headers and `**` for bold. You don't need to learn it. AI writes it automatically, and Obsidian renders it so it looks clean. The reason it matters: markdown is plain text, so your notes work in hundreds of apps, not just one.
+
+**Instruction file.** A text file (`CLAUDE.md`) that teaches AI how you work. Your preferences, your projects, your people, your formatting rules. AI reads it at the start of every conversation so it already knows your situation. You build it over time as you notice things you want AI to do differently.
+
+**AI chat apps** (ChatGPT, Claude in the browser, Gemini). Conversations that happen in a window, separate from your files. They can remember some things, but they can't read or write files on your computer. This is how most people use AI today.
+
+**AI file-system tools** (Claude Code, Claude Cowork, Cursor, GitHub Copilot). AI that runs on your computer and works directly inside your folders. It can read your notes, create new ones, edit existing ones, and search across everything. This is what makes the whole system work. Same conversational experience, but now AI lives inside your knowledge base instead of outside it.
 
 ---
 
@@ -70,7 +95,7 @@ The common thread: if you've ever thought "I know I wrote this down somewhere" o
 
 The whole system is built on two things: a folder of text files on your computer, and an AI tool that can read and write to that folder. That's it. Everything else is just structure that makes it compound over time.
 
-**A quick note on Obsidian.** You'll see Obsidian mentioned throughout this guide. Obsidian is a free app that gives you a visual interface for a folder of text files. It's not a platform or a service. There's no account to create, no cloud to sync to. You point it at a folder on your computer, and it lets you browse, edit, and link your files in a nice visual way. Think of it as a really good file viewer with superpowers like linking and search. Under the hood, everything is still just a folder with `.md` text files inside.
+**A quick note on Obsidian.** You'll see Obsidian mentioned throughout this guide. Obsidian is a free app that gives you a visual interface for a folder of text files. It's not a platform or a service. There's no account to create, no cloud to sync to. You point it at a folder on your computer, and it lets you browse, edit, and link your files in a nice visual way. Think of it as a really good file viewer with superpowers like linking and search. Under the hood, everything is still just a folder with `.md` text files inside. Obsidian calls this folder a "vault," but it's just a regular folder. Nothing locked, nothing proprietary.
 
 You could create a folder on your Desktop right now called "MyBrain" and that would technically be your vault. That's how simple the foundation is.
 
