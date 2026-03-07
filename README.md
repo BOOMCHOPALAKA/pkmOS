@@ -3,7 +3,7 @@
 
 ## Table of Contents
 - [Before We Get Started](#before-we-get-started)
-- [What This Is](#what-this-is)
+- [Imagine a World...](#imagine-a-world)
 - [The Core Idea](#the-core-idea)
 - [Who's This For](#whos-this-for)
 - [Getting Started](#getting-started)
@@ -27,9 +27,9 @@ A few terms come up a lot in this guide. Here's what they mean in plain language
 
 **Folder / Directory / File system.** When you open Finder on a Mac or File Explorer on Windows and see Documents, Downloads, Desktop, and the folders inside them, that's your file system. Folders hold files. Folders inside folders give you organization. This whole system is built on that. If you can create a folder on your computer, you already have the technical skills you need.
 
-**Vault.** Just a folder on your computer that holds all your notes. Obsidian uses the word "vault" but there's nothing special about it. It's a regular folder with text files inside. You could open it in Finder or File Explorer and see everything right there.
+**Vault.** Yet another name for a folder, like we just defined above. This one's specific to Obsidian, the app we use to browse, view, read, and edit all the notes, subfolders, and contents inside it. But there's nothing special about it. It's a regular folder with text files inside. You could open it in Finder or File Explorer and see everything right there.
 
-**Obsidian.** A free app that makes your vault look good and easy to navigate. It adds clickable links between notes, instant search, a visual graph of how everything connects, and themes to make it yours. Under the hood, it's just reading and writing plain text files. You could delete Obsidian tomorrow and every file would still be there, readable in any text editor.
+**Obsidian.** Speaking of which - Obsidian is the free app we use and recommend for this system. It makes your vault look good and easy to navigate. It adds clickable links between notes, instant search, a visual graph of how everything connects, and themes to make it yours. Under the hood, it's just reading and writing plain text files. You could delete Obsidian tomorrow and every file would still be there, readable in any text editor.
 
 **Note.** A single text file. That's it. A meeting summary is a note. A project overview is a note. A recipe is a note. Every piece of knowledge in the system is a note.
 
@@ -47,9 +47,9 @@ A few terms come up a lot in this guide. Here's what they mean in plain language
 
 ---
 
-## What This Is
+## Imagine a World...
 
-Imagine a personal Wikipedia for your entire life. Work, side projects, health, finances, real estate, recipes, everything. All of it connected, searchable, and growing every day. Now imagine that Wikipedia is fully interactive and conversational. You can talk to it, ask it questions, and it talks back with the full weight of everything you've ever put into it.
+...where you had a personal Wikipedia for your life. Work, side projects, health, finances, travel, adventures, recipes. Anything and everything related to your life. Your life is an endless, messy, beautiful web of subjects and connections and throughlines that link them all together. All of it connected, searchable, and growing every day. Now imagine it's fully interactive and conversational. You can talk to it, ask it questions, and it talks back with the full weight of everything you've ever put into it.
 
 That's noteOS. Here's what it looks like in practice:
 
