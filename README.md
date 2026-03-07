@@ -2,7 +2,7 @@
 *A starter vault of folders, text files, and AI instructions that connects everything you know, gets more helpful the more you use it, and anyone can set up.*
 
 ## Table of Contents
-- [Quick Glossary](#quick-glossary)
+- [Before We Get Started](#before-we-get-started)
 - [What This Is](#what-this-is)
 - [The Core Idea](#the-core-idea)
 - [Who's This For](#whos-this-for)
@@ -17,9 +17,11 @@
 
 ---
 
-## Quick Glossary
+## Before We Get Started
 
-Some terms come up a lot in this guide. Here's what they mean in plain language.
+### Glossary
+
+A few terms come up a lot in this guide. Here's what they mean in plain language. (Yes, we define what a folder is. If that offends you, you're probably fine skipping to [Getting Started](#getting-started). :) But don't let the beginner definitions turn you away. There's plenty here for technical folks too.)
 
 **Folder / Directory / File system.** When you open Finder on a Mac or File Explorer on Windows and see Documents, Downloads, Desktop, and the folders inside them, that's your file system. Folders hold files. Folders inside folders give you organization. This whole system is built on that. If you can create a folder on your computer, you already have the technical skills you need.
 
