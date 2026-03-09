@@ -3,14 +3,14 @@
 
 ## Table of Contents
 - [Imagine a World...](#imagine-a-world)
-- [The Core Idea](#the-core-idea)
+- [What This Actually Is](#what-this-actually-is)
+- [Your Knowledge, Your Files](#your-knowledge-your-files)
 - [Who's This For](#whos-this-for)
 - [Before We Get Started](#before-we-get-started)
 - [Getting Started](#getting-started)
 - [How It Actually Works](#how-it-actually-works)
 - [Making It More Powerful](#making-it-more-powerful-go-as-deep-as-you-want)
 - [Building the Habit](#building-the-habit)
-- [Why Portability Matters](#why-portability-matters)
 - [FAQ](#faq)
 
 ---
@@ -31,7 +31,7 @@ The whole thing runs on plain text files and a free app. No code. No databases. 
 
 ---
 
-## The Core Idea
+## What This Actually Is
 
 You're probably already using AI. ChatGPT, Claude, Gemini, whatever. Maybe you've had it help draft an email, summarize a meeting transcript, explain something complicated, or brainstorm an idea. Maybe you've even set up projects or custom instructions, and the memory features mean it remembers some things between conversations.
 
@@ -40,6 +40,20 @@ But there's a ceiling. The memory is shallow. A few saved facts, some conversati
 This system removes that ceiling. Instead of AI that remembers fragments, you get AI that searches through a structured knowledge base of everything you've built. Your projects, your people, your decisions, your preferences. All of it lives in files you control on your computer. Plain text. Nothing proprietary. The AI reads those files, works inside them, and gets more helpful the more you add.
 
 Think of it this way. If you had the world's best personal assistant, their value wouldn't just be their skills. It would be the six months they spent learning how you work, what you care about, and what's going on in your life. If they quit, all of that walks out the door. This system is like writing all of that down so the next assistant, or AI, can pick it up on day one. The intelligence is in the structure, not the tool. Own the playbook, rent the tech.
+
+---
+
+## Your Knowledge, Your Files
+
+Your dentist doesn't own your x-rays. Your bank doesn't own your transaction history. But the AI that knows your job, your goals, your writing style? That company owns all of it. The moment you want to try something better, you start from zero.
+
+This system changes the equation. Everything is plain text files. Markdown. The most universal, future-proof format there is. If Obsidian disappears, the files still work. If Claude disappears, the files still work. If something better drops next week, you take your files and plug them into the new thing. Full context, day one.
+
+**This matters more than you think right now.** Companies are making AI decisions constantly. Your workplace might standardize on ChatGPT this quarter and switch to Claude next quarter. You might use one tool for personal stuff and be required to use another at work. A new tool might launch next month that's better than everything. The AI landscape is moving fast, and locking your knowledge into any single provider means rebuilding every time something changes.
+
+With this system, you don't rebuild. You rename one file and keep going. Your vault is the constant. The AI tool is just what you plug into it today. If your company switches from ChatGPT to Claude, you rename `AGENTS.md` to `CLAUDE.md` and your new tool already knows your projects, your people, your preferences, and your entire knowledge base. If you decide to try Gemini next weekend, same thing. Five seconds and you're up and running with full context.
+
+That's the real point of building on plain text. It's not a philosophical stance about open formats. It's practical. Your knowledge should travel with you no matter what tool you're using, what your company decides, or what comes out next. The system comes with you. Always.
 
 ---
 
@@ -55,7 +69,7 @@ This was built for normal people with busy lives who want AI to actually be usef
 
 **You're a knowledge worker drowning in information.** Product managers, project managers, consultants, directors, lawyers, anyone whose job is meetings, decisions, documents, and keeping track of what happened and why. You have more information flowing through your week than you can retain. If you've heard the term "personal knowledge management" (PKM), this is that. But instead of you doing the organizing, AI does it. This system catches information, structures it, links it, and gives it back to you when you need it.
 
-**You already use AI and want the next level.** You're past the basics. You've hit the ceiling described in [The Core Idea](#the-core-idea). You know there's more here but the chat window isn't it. This system is what's on the other side. The difference between using AI in a chat window and using AI inside your knowledge base is the difference between asking a stranger for directions and asking someone who's walked the trail a hundred times.
+**You already use AI and want the next level.** You're past the basics. You've hit the ceiling described in [What This Actually Is](#what-this-actually-is). You know there's more here but the chat window isn't it. This system is what's on the other side. The difference between using AI in a chat window and using AI inside your knowledge base is the difference between asking a stranger for directions and asking someone who's walked the trail a hundred times.
 
 **You're technical and want to build on this.** Developers, engineers, technical leads. You can customize the instruction file for code review workflows, architecture decision records, sprint planning, codebase analysis. The whole thing is just text files. Fork it, modify it, make it yours.
 
@@ -335,14 +349,6 @@ The setup takes 20 minutes. The value comes from using it consistently. Here's h
 
 **After a month:**
 - Your instruction file has real depth, your daily notes form a searchable journal, and notes are linking to each other in ways that surface connections you wouldn't have made on your own. The system grows because you're using it, not because you're maintaining it.
-
----
-
-## Why Portability Matters
-
-Your dentist doesn't own your x-rays. Your bank doesn't own your transaction history. But the AI that knows your job, your goals, your writing style? That company owns all of it. The moment you want to try something better, you start from zero.
-
-This system changes the equation. Everything is plain text files. Markdown. The most universal, future-proof format there is. If Obsidian disappears, the files still work. If Claude disappears, the files still work. If something better drops next week, you take your files and plug them into the new thing. Full context, day one.
 
 ---
 
