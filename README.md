@@ -45,9 +45,9 @@ Think of it this way. If you had the world's best personal assistant, their valu
 
 ## Your Knowledge, Your Files
 
-Your dentist doesn't own your x-rays. Your bank doesn't own your transaction history. But the AI that knows your job, your goals, your writing style? That company owns all of it. The moment you want to try something better, you start from zero.
+Right now, everything you've built inside an AI tool stays inside that AI tool. Your conversations, your preferences, the context it's learned about you and your work. Switch from ChatGPT to Claude and you're re-explaining everything from zero. Use both at the same time and neither one knows what you told the other. Want to try something new that launches next month? Start over again.
 
-This system changes the equation. Everything is plain text files. Markdown. The most universal, future-proof format there is. If Obsidian disappears, the files still work. If Claude disappears, the files still work. If something better drops next week, you take your files and plug them into the new thing. Full context, day one.
+This system doesn't have that problem because there's nothing to migrate. It's folders and files on your computer. Plain text. Nothing proprietary, nothing cloud-locked, nothing that belongs to a platform. The AI reads your files, but your files don't live inside the AI. If Obsidian disappears, the files still work. If Claude disappears, the files still work. If something better drops next week, you take your files and plug them into the new thing. Full context, day one.
 
 **This matters more than you think right now.** Companies are making AI decisions constantly. Your workplace might standardize on ChatGPT this quarter and switch to Claude next quarter. You might use one tool for personal stuff and be required to use another at work. A new tool might launch next month that's better than everything. The AI landscape is moving fast, and locking your knowledge into any single provider means rebuilding every time something changes.
 
