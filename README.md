@@ -55,7 +55,7 @@ That's noteOS. Here's what it looks like in practice:
 
 **Things start connecting themselves.** You're planning a ski trip to the Alps and you're reminded of a hotel your friend raved about two years ago in a completely different conversation. You're writing a birthday card for your dad and a story he told you that you'd completely forgotten you wrote down comes back to you. You're experimenting with a new recipe and it connects back to a cooking class you took on vacation. Your life is full of these threads. The system finds them for you.
 
-**It builds itself.** I thought I'd spend hours organizing notes. Instead I just talk. I tell it what happened in a meeting, what I'm thinking about, what I need to remember. It creates the notes, files them, links them to everything related. You don't build a productivity system. You just talk to AI and the system grows around you.
+**It builds itself while you talk.** I thought I'd spend hours setting up folders and organizing notes. I didn't. I just talk. I tell it what happened in a meeting, what I'm thinking about, what I need to remember. It creates the notes, links them to everything related, and the structure emerges on its own. Everything connects through links and references, like Wikipedia. You find things by following connections, not by remembering which folder you put something in. And when you want to reorganize or connect things differently, you just say so. "Hey, can you link this to my house hunt stuff?" or "I think this relates to that vendor conversation from last month." The organizing happens through conversation, not through dragging files into folders.
 
 The whole thing runs on plain text files and a free app. No code. No databases. You don't need to be technical. The system does the heavy lifting.
 
@@ -143,7 +143,7 @@ Other AI providers are building similar tools. The specific tool doesn't matter.
 
 ### Step 4: Start using it
 
-Just start talking. That's genuinely it. You don't need to open Obsidian and create notes by hand. You don't need to set up a system first. Just chat with AI the way you normally would, but now it's building your knowledge base as you go.
+Just start talking. That's genuinely it. You don't need to open Obsidian and create notes by hand. You don't need to set up folders or figure out an organizational scheme first. Just chat with AI the way you normally would, but now it's building your knowledge base as you go. The organization happens through links and references, not nested folders. And if you ever want to reorganize or make new connections, you just tell AI. "Connect this to my project Basecamp." "I think this relates to that meeting from last week." It's all conversational.
 
 Start with whatever's on your mind today. Tell it about a meeting you had. Ask it to create a daily note. Give it a document you need to remember. The first few notes will feel like scattered dots. But they start connecting fast.
 
@@ -234,7 +234,13 @@ My Vault/
 
 A **Basecamp** is a hub note for a topic. It links to everything related: meeting summaries, decisions, tickets, people. When you need to get up to speed on something, you start at its Basecamp and follow the links. You might have five. You might have twenty.
 
-**Notes** are the building blocks. Every piece of knowledge is a note. Most live in the root of the vault, not buried in subfolders. This is intentional. Traditional file systems make you think in hierarchies: "Does this go in Work or Health?" That question is a waste of time, and each file can only live in one place. Instead, the vault is flat. You find things through names and links. Over time, every note becomes part of a web. Not filed in a drawer. Connected to everything it relates to.
+**Notes** are the building blocks. Every piece of knowledge is a note. Most live in the root of the vault, not buried in subfolders. This is intentional.
+
+If you've ever tried to organize files on your computer, you know the problem. "Does this go in Work or Personal? Projects or Reference? Q2 or Clients?" You spend more time deciding where to put something than actually thinking about it. And each file can only live in one place. So when that note is relevant to both your house renovation and your budget, you pick one folder and hope you remember to check it next time.
+
+This system doesn't work that way. The vault is flat. Notes find each other through links and references, not folder paths. A note about your contractor quote links to your house hunt Basecamp, your budget notes, and the daily note from when you got the estimate. It doesn't need to "live" in any of those places. It's connected to all of them. That's the Wikipedia model. You navigate by following connections, and over time, every note becomes part of a web.
+
+You can absolutely organize things if you want to. But you do it by talking, not by filing. "Hey, can you connect this to my renovation Basecamp?" or "I think this ties back to that pricing discussion from February." AI makes the links, adds the references, and weaves it into what already exists. The point isn't that you can't organize. It's that organizing is a conversation, not a chore.
 
 Each note has a small section at the top called the **Compass**. A few sentences to get your bearings: what is this note about, and where does it connect?
 
