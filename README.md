@@ -2,46 +2,16 @@
 *A starter vault of folders, text files, and AI instructions that connects everything you know, gets more helpful the more you use it, and anyone can set up.*
 
 ## Table of Contents
-- [Before We Get Started](#before-we-get-started)
 - [Imagine a World...](#imagine-a-world)
 - [The Core Idea](#the-core-idea)
 - [Who's This For](#whos-this-for)
+- [Before We Get Started](#before-we-get-started)
 - [Getting Started](#getting-started)
 - [How It Actually Works](#how-it-actually-works)
 - [Making It More Powerful](#making-it-more-powerful-go-as-deep-as-you-want)
 - [Building the Habit](#building-the-habit)
 - [Why Portability Matters](#why-portability-matters)
 - [FAQ](#faq)
-
----
-
-## Before We Get Started
-
-### Glossary
-
-A few terms come up a lot in this guide. Here's what they mean in plain language.
-
-*Yes, we define what a folder is. If that offends you, you're probably fine skipping ahead to [Getting Started](#getting-started). But please don't let the beginner definitions turn you away. There's plenty here for technical folks too. :)*
-
-**Folder / Directory / File system.** When you open Finder on a Mac or File Explorer on Windows and see Documents, Downloads, Desktop, and the folders inside them, that's your file system. Folders hold files. Folders inside folders give you organization. This whole system is built on that. If you can create a folder on your computer, you already have the technical skills you need.
-
-**Vault.** Yet another name for a folder, like we just defined above. This one's specific to Obsidian, the app we use to browse, view, read, and edit all the notes, subfolders, and contents inside it. But there's nothing special about it. It's a regular folder with text files inside. You could open it in Finder or File Explorer and see everything right there.
-
-**Obsidian.** Speaking of which - Obsidian is the free app we use and recommend for this system. It makes your vault look good and easy to navigate. It adds clickable links between notes, instant search, a visual graph of how everything connects, and themes to make it yours. Under the hood, it's just reading and writing plain text files. You could delete Obsidian tomorrow and every file would still be there, readable in any text editor.
-
-**Note.** A single text file. That's it. A meeting summary is a note. A project overview is a note. A recipe is a note. Every piece of knowledge in the system is a note.
-
-**Basecamp.** A hub note for a topic. It doesn't contain everything about that topic. It links to everything about that topic. Your "Work Project" Basecamp links to related meeting summaries, decisions, tickets, and people. Think of it as a table of contents for an area of your life.
-
-**Map.** The folder that holds all your Basecamps. Think of it as the territory overview for your whole vault. You open the Map folder to see every topic you're tracking, then click into a Basecamp to go deeper.
-
-**Markdown.** A simple way to format text files using characters like `#` for headers, `**` for bold, and `-` for bullet lists. Most of the time AI writes it for you, but it's easy enough to pick up yourself, and knowing even a little makes you more effective when talking to AI. You can structure a request, format your own notes, or edit what AI created. It takes about five minutes to learn the basics. Obsidian renders it so it looks clean, and because markdown is plain text, your notes work in hundreds of apps, not just one.
-
-**Instruction file.** A text file (`CLAUDE.md`) that teaches AI how you work. Your preferences, your projects, your people, your formatting rules. AI reads it at the start of every conversation so it already knows your situation. You build it over time as you notice things you want AI to do differently.
-
-**AI chat apps** (ChatGPT, Claude in the browser, Gemini). Conversations that happen in a window, separate from your files. They can remember some things, but they can't read or write files on your computer. This is how most people use AI today.
-
-**AI file-system tools** (Claude Code, Claude Cowork, Cursor, GitHub Copilot). AI that runs on your computer and works directly inside your folders. It can read your notes, create new ones, edit existing ones, and search across everything. This is what makes the whole system work. Same conversational experience, but now AI lives inside your knowledge base instead of outside it.
 
 ---
 
@@ -90,6 +60,36 @@ This was built for normal people with busy lives who want AI to actually be usef
 **You're technical and want to build on this.** Developers, engineers, technical leads. You can customize the instruction file for code review workflows, architecture decision records, sprint planning, codebase analysis. The whole thing is just text files. Fork it, modify it, make it yours.
 
 The common thread: if you've ever thought "I know I wrote this down somewhere" or "I wish AI already knew my situation," this is the fix. The system scales from five notes to five hundred. Start where you are.
+
+---
+
+## Before We Get Started
+
+### Glossary
+
+A few terms come up a lot in this guide. Here's what they mean in plain language.
+
+*Yes, we define what a folder is. If that offends you, you're probably fine skipping ahead to [Getting Started](#getting-started). But please don't let the beginner definitions turn you away. There's plenty here for technical folks too. :)*
+
+**Folder / Directory / File system.** When you open Finder on a Mac or File Explorer on Windows and see Documents, Downloads, Desktop, and the folders inside them, that's your file system. Folders hold files. Folders inside folders give you organization. This whole system is built on that. If you can create a folder on your computer, you already have the technical skills you need.
+
+**Vault.** Yet another name for a folder, like we just defined above. This one's specific to Obsidian, the app we use to browse, view, read, and edit all the notes, subfolders, and contents inside it. But there's nothing special about it. It's a regular folder with text files inside. You could open it in Finder or File Explorer and see everything right there.
+
+**Obsidian.** Speaking of which - Obsidian is the free app we use and recommend for this system. It makes your vault look good and easy to navigate. It adds clickable links between notes, instant search, a visual graph of how everything connects, and themes to make it yours. Under the hood, it's just reading and writing plain text files. You could delete Obsidian tomorrow and every file would still be there, readable in any text editor.
+
+**Note.** A single text file. That's it. A meeting summary is a note. A project overview is a note. A recipe is a note. Every piece of knowledge in the system is a note.
+
+**Basecamp.** A hub note for a topic. It doesn't contain everything about that topic. It links to everything about that topic. Your "Work Project" Basecamp links to related meeting summaries, decisions, tickets, and people. Think of it as a table of contents for an area of your life.
+
+**Map.** The folder that holds all your Basecamps. Think of it as the territory overview for your whole vault. You open the Map folder to see every topic you're tracking, then click into a Basecamp to go deeper.
+
+**Markdown.** A simple way to format text files using characters like `#` for headers, `**` for bold, and `-` for bullet lists. Most of the time AI writes it for you, but it's easy enough to pick up yourself, and knowing even a little makes you more effective when talking to AI. You can structure a request, format your own notes, or edit what AI created. It takes about five minutes to learn the basics. Obsidian renders it so it looks clean, and because markdown is plain text, your notes work in hundreds of apps, not just one.
+
+**Instruction file.** A text file (`CLAUDE.md`) that teaches AI how you work. Your preferences, your projects, your people, your formatting rules. AI reads it at the start of every conversation so it already knows your situation. You build it over time as you notice things you want AI to do differently.
+
+**AI chat apps** (ChatGPT, Claude in the browser, Gemini). Conversations that happen in a window, separate from your files. They can remember some things, but they can't read or write files on your computer. This is how most people use AI today.
+
+**AI file-system tools** (Claude Code, Claude Cowork, Cursor, GitHub Copilot). AI that runs on your computer and works directly inside your folders. It can read your notes, create new ones, edit existing ones, and search across everything. This is what makes the whole system work. Same conversational experience, but now AI lives inside your knowledge base instead of outside it.
 
 ---
 
