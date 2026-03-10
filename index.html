@@ -12,14 +12,38 @@
 </head>
 <body>
 
+    <!-- Table of Contents -->
+    <nav id="toc" class="toc">
+        <button class="toc-toggle" aria-label="Toggle table of contents">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="3" y1="5" x2="17" y2="5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <line x1="3" y1="15" x2="17" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </button>
+        <div class="toc-body">
+            <div class="toc-title">Contents</div>
+            <a href="#hero" class="toc-link active">Home</a>
+            <a href="#what" class="toc-link">What This Is</a>
+            <a href="#ceiling" class="toc-link">The Ceiling</a>
+            <a href="#fix" class="toc-link">The Fix</a>
+            <a href="#how" class="toc-link">How It Works</a>
+            <a href="#ownership" class="toc-link">Your Files</a>
+            <a href="#getting-started" class="toc-link">Getting Started</a>
+            <a href="#start-using" class="toc-link">Start Using It</a>
+            <a href="#going-deeper" class="toc-link">Going Deeper</a>
+            <a href="#reference" class="toc-link">Reference</a>
+        </div>
+    </nav>
+
     <!-- Hero -->
     <section id="hero">
         <div class="container hero-content">
             <h1>Your life is worth remembering.<br>All of it.</h1>
-            <p class="subhead">noteOS is a personal knowledge system powered by AI. A starter vault of folders, text files, and instructions that connects everything you know, gets smarter the more you use it, and belongs entirely to you.</p>
+            <p class="subhead">noteOS is a personal knowledge system powered by AI. Plain text files and folders on your computer that connect everything you know, get smarter the more you use them, and belong entirely to you.</p>
             <div class="cta-group">
                 <a href="https://github.com/BOOMCHOPALAKA/noteOS/releases/latest/download/noteOS-starter-vault.zip" class="btn-primary">Download the Starter Vault</a>
-                <a href="https://github.com/BOOMCHOPALAKA/noteOS#readme" class="btn-secondary">Read the full guide &rarr;</a>
+                <a href="#getting-started" class="btn-secondary">How to set it up &rarr;</a>
             </div>
         </div>
         <!-- Knowledge graph illustration -->
@@ -187,19 +211,19 @@
     <section id="what">
         <div class="container">
             <h2>What this actually is.</h2>
-            <p>Imagine you had a personal Wikipedia for your life. Work, side projects, health, finances, travel, recipes. All of it connected, searchable, and growing every day. Now imagine it's fully interactive. You can talk to it, ask it questions, and it talks back with the full weight of everything you've ever put into it.</p>
-            <p>That's noteOS. It's not an app. It's not a productivity system with dashboards and workflows. It's a folder of text files on your computer that AI works inside. You talk to AI the way you already do. The difference is now it has your entire knowledge base behind it. Every conversation makes the system smarter. Every note connects to everything related. The whole thing builds itself while you work.</p>
-            <p>And here's what makes it approachable: there's no folder-within-folder-within-folder structure to set up before you can start. No categories to define. No system to learn first. You just talk to AI, and the organization happens through links and references. Like Wikipedia. Every note connects to what it relates to, and you find things by following those connections. Want to reorganize later? Just say so. "Connect this to my house hunt stuff." "I think this relates to that budget conversation." The organizing happens through conversation, not filing. The result is a web, not a filing cabinet.</p>
+            <p>A personal Wikipedia for your life. Work, side projects, health, finances, travel, recipes. All of it connected, searchable, and growing every day. Fully interactive. You type to it, ask it questions, and it responds with the full weight of everything you've ever put into it.</p>
+            <p>noteOS is not an app. It's a folder of text files on your computer that AI works inside. You chat with AI the way you already do. The difference is it has your entire knowledge base behind it. Every conversation makes the system smarter. Every note connects to everything related. The whole thing builds itself while you work.</p>
+            <p>There's no folder-within-folder-within-folder structure to set up. No categories to define. No system to learn first. You type to AI, and the organization happens through links and references. Like Wikipedia. Every note connects to what it relates to, and you find things by following those connections.</p>
             <p class="secondary">Think of it this way. If you had the world's best personal assistant, their value wouldn't just be their skills. It would be the six months they spent learning how you work, what you care about, and what's going on in your life. If they quit, all of that walks out the door. This system is like writing all of that down so the next assistant, or AI, can pick it up on day one.</p>
         </div>
     </section>
 
-    <!-- The Problem -->
-    <section id="problem">
+    <!-- The Ceiling Problem -->
+    <section id="ceiling">
         <div class="container">
             <h2>You're probably already hitting the ceiling.</h2>
-            <p>You've used ChatGPT, Claude, Gemini. It's helpful. But the memory is shallow. A few saved facts, some conversation history. You still end up re-explaining context, pasting things in, managing what it knows and doesn't know. It's like having a really smart coworker who remembers your name and your title but nothing about what happened in last week's meetings.</p>
-            <p>And when you ask "where did you get that?" the answer is vague. "Based on our previous conversations." "From the documents you shared." You're trusting the AI's summary of its own reasoning with no easy way to check. And everything you've built is locked inside that one app. Claude doesn't know what you told ChatGPT. ChatGPT doesn't know what you told Gemini. The more you put into one, the harder it is to leave.</p>
+            <p>You've used ChatGPT, Claude, Gemini. It's helpful. But the memory is shallow. A few saved facts, some conversation history. You still re-explain context, paste things in, manage what it knows and doesn't know. It's like having a smart coworker who remembers your name and title but nothing about last week's meetings.</p>
+            <p>When you ask "where did you get that?" the answer is vague. "Based on our previous conversations." You're trusting the AI's summary of its own reasoning with no way to check. And everything you've built is locked inside that one app. Claude doesn't know what you told ChatGPT. ChatGPT doesn't know what you told Gemini. The more you put into one, the harder it is to leave.</p>
         </div>
     </section>
 
@@ -233,7 +257,7 @@
                         </svg>
                     </div>
                     <h3>You can check its work.</h3>
-                    <p>Ask "where did you get that?" and AI points to specific notes and sections. Not "based on our previous conversations." Real references you can open and verify yourself. That changes the confidence level on everything.</p>
+                    <p>Ask "where did you get that?" and AI points to specific notes and sections. Not "based on our previous conversations." Real references you can open and verify. That changes the confidence level on everything.</p>
                 </div>
                 <div class="card">
                     <div class="card-icon">
@@ -251,74 +275,251 @@
         </div>
     </section>
 
-    <!-- How It Works -->
+    <!-- How It Works (full section) -->
     <section id="how">
         <div class="container">
-            <h2>Three steps. Twenty minutes.</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-icon">
-                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14 2L14 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M14 24L14 26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M2 14L4 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M24 14L26 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            <circle cx="14" cy="14" r="6" stroke="currentColor" stroke-width="2"/>
-                            <circle cx="14" cy="14" r="2" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <div class="step-content">
-                        <h3>Download Obsidian</h3>
-                        <p>Free app that makes your notes look beautiful. Clickable links between notes, instant search, and a visual graph of how everything connects.</p>
-                    </div>
+            <h2>How it works.</h2>
+            <p>Three things work together: a folder of plain text files that holds all your knowledge, <strong>Obsidian</strong> (a free app to browse and edit those files), and an <strong>AI tool</strong> that reads and writes inside the folder. That's the whole stack. A folder, a viewer, and an engine.</p>
+
+            <!-- Folder Structure -->
+            <h3 class="subsection-title" id="folder-structure">The folder structure</h3>
+            <p>This is what the vault looks like on your computer. Just a folder with subfolders and text files.</p>
+            <div class="code-block">
+                <pre><code>My Vault/
+├── Map/              Basecamps live here. Your topic hubs.
+├── Calendar/         Daily notes, organized by month and week.
+│   └── March/
+│       └── Week 1/
+│           ├── 2026-03-03.md
+│           └── 2026-03-04.md
+├── Downloads/        Raw inputs. Transcripts, PDFs, docs.
+├── Attachments/      Images, exports, diagrams. Non-text files.
+├── Templates/        Instructions for AI on how to build notes.
+├── CLAUDE.md         Your instruction file. AI reads this every session.
+├── MEMORY.md         Things AI remembers across conversations.
+└── [everything else] Your notes. All in the root, not buried
+                      in subfolders. Links do the organizing.</code></pre>
+            </div>
+
+            <!-- Navigation Metaphor -->
+            <h3 class="subsection-title" id="navigation">The navigation metaphor</h3>
+            <p>The system borrows its naming from backcountry travel:</p>
+            <div class="metaphor-grid">
+                <div class="metaphor-item">
+                    <strong>Map</strong>
+                    <span>The folder that holds all your Basecamps. Your territory overview.</span>
                 </div>
-                <div class="step">
-                    <div class="step-icon">
-                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4 8H24V22C24 23.1046 23.1046 24 22 24H6C4.89543 24 4 23.1046 4 22V8Z" stroke="currentColor" stroke-width="2"/>
-                            <path d="M4 8L8 4H20L24 8" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                            <line x1="11" y1="13" x2="17" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            <line x1="11" y1="17" x2="15" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <div class="step-content">
-                        <h3>Get the starter vault</h3>
-                        <p>A pre-built folder with templates, structure, and an instruction file that teaches AI how you work. Fill in a few personal details and you're ready.</p>
-                    </div>
+                <div class="metaphor-item">
+                    <strong>Basecamp</strong>
+                    <span>A home base note for a topic. High-level overview plus links to detailed notes on the subject.</span>
                 </div>
-                <div class="step">
-                    <div class="step-icon">
-                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="3" y="6" width="22" height="16" rx="3" stroke="currentColor" stroke-width="2"/>
-                            <circle cx="8" cy="18" r="1.5" fill="currentColor"/>
-                            <circle cx="12" cy="18" r="1.5" fill="currentColor"/>
-                            <circle cx="16" cy="18" r="1.5" fill="currentColor"/>
-                            <line x1="7" y1="11" x2="21" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                        </svg>
+                <div class="metaphor-item">
+                    <strong>Compass</strong>
+                    <span>The orientation section at the top of each note. A quick summary of what this note is, why it matters, and what it connects to.</span>
+                </div>
+                <div class="metaphor-item">
+                    <strong>Trails</strong>
+                    <span>Curated links from a Basecamp to the notes that matter most. AI builds these connections as the system grows.</span>
+                </div>
+            </div>
+
+            <p>A <strong>note</strong> is a single text file. A meeting summary, a project overview, a recipe. Most notes live in the root of the folder, not buried in subfolders. Instead of deciding "does this go in Work or Personal?" you create the note and let links connect it to everything related.</p>
+            <p>A <strong>daily note</strong> is a running log of what happened that day, organized by date in the Calendar folder. Over time it becomes a searchable journal. "What was I working on the first week of February?" AI knows.</p>
+            <p><strong>Downloads</strong> is your inbox. Drop a meeting transcript, a contract, an export from some app. Tell AI to process it. The raw file stays in Downloads. The structured knowledge goes into the vault as notes.</p>
+            <p><strong>Templates</strong> are instructions for AI, not forms for you to fill in. You say "create a Basecamp for my house renovation" and AI reads the template and builds it. The template is the recipe. AI is the cook.</p>
+            <p>The result is a web where you can start anywhere and get anywhere. "What did we decide about vendor pricing?" leads to the meeting summary, which links to the project Basecamp, which has the full history. The more notes you add, the denser the web gets. The denser the web, the better AI can trace through it.</p>
+            <p class="secondary">This is a framework, not a rulebook. Add folders, rename things, create templates that aren't included. Some people will use it as-is. Some will reshape it completely. Both are right.</p>
+
+            <!-- Instruction File -->
+            <h3 class="subsection-title" id="instruction-file">The instruction file</h3>
+            <p>This is what makes the whole thing work with AI. There's a file called <code>CLAUDE.md</code> that AI reads at the start of every conversation. Think of it as a briefing document. If you've used Claude's project instructions or ChatGPT's custom instructions, same idea, except it lives in your folder instead of inside the AI app.</p>
+            <ul class="clean-list">
+                <li>Here's who I am and what I'm focused on</li>
+                <li>Here are my active projects and areas of life I'm tracking</li>
+                <li>Here are the people who come up a lot (and how to spell their names)</li>
+                <li>Here's how I like my notes formatted</li>
+                <li>Here's what to include in a meeting summary and what to leave out</li>
+                <li>Here's how I communicate (my tone, my style, what to avoid)</li>
+            </ul>
+            <p>You don't need to fill all of this out before you start. Five lines is enough. "I'm a contracts director at a nonprofit. My main projects are X, Y, Z. I prefer concise summaries." That alone puts you ahead of most AI users because every conversation starts with context instead of from scratch. Or just start using the system and let AI fill it in over time.</p>
+            <p>The starter vault comes with this file already built out with tested conventions for meeting processing, daily notes, linking, and more. It works out of the box. You customize it over time.</p>
+
+            <!-- Obsidian -->
+            <h3 class="subsection-title" id="obsidian">Obsidian: your viewer and editor</h3>
+            <p><a href="https://obsidian.md" target="_blank" rel="noopener">Obsidian</a> is a free app that reads the files in your folder and makes them look good. It adds clickable links between notes, instant search, a visual graph of how everything connects, and themes to make it yours. Under the hood, it's just reading plain text files. Delete Obsidian tomorrow and every file is still there, readable in any text editor.</p>
+            <p>Obsidian is not an AI tool. It doesn't process anything or respond to you. It's where you go to read your notes, click through links, and see your knowledge base visually. The AI conversation happens in a separate tool. But having both means you always have two paths to the same information: ask AI, or open Obsidian and browse.</p>
+
+            <!-- AI Tool -->
+            <h3 class="subsection-title" id="ai-engine">The AI tool: your engine</h3>
+            <p>You open an AI tool, point it at your vault folder, and start chatting. AI reads your files, writes new ones, builds links between notes, and answers questions using everything you've built. Same conversational experience you're used to, except now it has your entire knowledge base behind it.</p>
+            <p>Because AI lives inside your folder, it can see everything. Not just the note you're working on, but every note, every link, every Basecamp, every trail. When it creates something new, it searches the vault for related content and links to it. That meeting summary connects to the project Basecamp, which connects to the decision log. Over time, the web gets denser and AI has more paths to trace when you ask a question.</p>
+
+            <!-- Using it is building it -->
+            <h3 class="subsection-title" id="compounding">Using it is building it</h3>
+            <p>This is where the three pieces stop being a stack and start being a cycle.</p>
+            <p>You type to AI. AI creates notes and links them to what's already there. You open Obsidian and see the new notes connected and searchable. Next time you chat with AI, it has even more context. Better answers, better notes, more connections. Obsidian shows a richer web. AI has more to draw from. Round and round.</p>
+            <p>The more you put in, the more useful it gets. Not because the AI improved. Because <em>your</em> knowledge base got richer. Brainstorming, processing meetings, drafting documents, thinking out loud. All of these generate notes as a natural byproduct. Those same notes are what AI searches when you ask questions later. The system grows because you're using it, not because you're maintaining it.</p>
+        </div>
+    </section>
+
+    <!-- Your Knowledge, Your Files -->
+    <section id="ownership">
+        <div class="container">
+            <h2>Your knowledge, your files.</h2>
+            <p>Everything in this system lives in folders and files on your computer. Plain text. Nothing proprietary, nothing cloud-locked, nothing that belongs to a specific platform. The AI tool reads your files, but your files aren't locked inside the AI tool.</p>
+            <p>The AI landscape is moving fast. Your workplace might standardize on ChatGPT this quarter and switch to Claude next quarter. A better tool might launch next month. With this system, you don't rebuild. Your folder is the constant. The AI tool is just what you plug into it today. Switch tools? Everything you've built is still right there. Nothing moves, nothing exports, nothing breaks.</p>
+            <p><strong>Own the playbook, rent the tech.</strong></p>
+        </div>
+    </section>
+
+    <!-- Getting Started -->
+    <section id="getting-started">
+        <div class="container">
+            <h2>Getting started.</h2>
+            <p>The whole thing takes about 20 minutes.</p>
+
+            <!-- Step 1 -->
+            <div class="setup-step">
+                <div class="setup-step-number">1</div>
+                <div class="setup-step-content">
+                    <h3>Download Obsidian</h3>
+                    <p>Go to <a href="https://obsidian.md" target="_blank" rel="noopener">obsidian.md</a> and download it. Free, works on Mac, Windows, Linux, and mobile. This is the app you'll use to browse and edit your vault.</p>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="setup-step">
+                <div class="setup-step-number">2</div>
+                <div class="setup-step-content">
+                    <h3>Get the starter vault</h3>
+                    <p><a href="https://github.com/BOOMCHOPALAKA/noteOS/releases/latest/download/noteOS-starter-vault.zip" class="btn-primary btn-small">Download noteOS Starter Vault</a></p>
+                    <p>Unzip it and put the folder somewhere on your computer. Desktop, Documents, wherever. You can rename it to whatever you want.</p>
+                    <p>Open Obsidian, select <strong>Open folder as vault</strong>, and point it at the folder. You now have a working vault with:</p>
+                    <ul class="clean-list">
+                        <li>An <strong>instruction file</strong> (<code>CLAUDE.md</code>) pre-loaded with conventions for meeting processing, daily notes, linking, and more</li>
+                        <li>A <strong>memory file</strong> (<code>MEMORY.md</code>) with system-level patterns that AI follows and adds to over time</li>
+                        <li><strong>Templates</strong> for daily notes, Basecamps, meeting summaries, and weekly status reports</li>
+                        <li>The <strong>folder structure</strong> already set up: Map, Calendar, Downloads, Attachments, Templates</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="setup-step">
+                <div class="setup-step-number">3</div>
+                <div class="setup-step-content">
+                    <h3>Connect your AI tool</h3>
+                    <p>Same chat experience you already know. You're still typing messages and getting answers in natural language. The one difference: instead of chatting with AI that only sees what you paste in, you point it at your vault folder. Now AI can search all your notes, create summaries, and answer questions using everything you've built.</p>
+                    <p><strong>This does require a paid AI account.</strong> The system needs an AI tool that can read and write files on your computer. The cost is comparable to a streaming subscription, and the value compounds over time in a way Netflix doesn't.</p>
+
+                    <!-- Claude Cowork -->
+                    <div class="tool-option tool-option-primary">
+                        <h4>Claude Cowork <span class="badge">Recommended starting point</span></h4>
+                        <p>The easiest option for most people. If you already have the Claude desktop app (or <a href="https://claude.ai" target="_blank" rel="noopener">download it from claude.ai</a>), Cowork is built right in.</p>
+                        <ol class="clean-list numbered">
+                            <li>Open the Claude desktop app</li>
+                            <li>Click the <strong>Cowork</strong> tab at the top (next to "Chat")</li>
+                            <li>In the message area, click the <strong>folder icon</strong> and select your vault folder</li>
+                            <li>Start typing</li>
+                        </ol>
+                        <p>That's it. You're chatting with the same Claude you know, except it can read and write files in your vault. Create notes, process meeting transcripts, search across everything you've built. It can even handle longer tasks on its own, working through steps while you do other things.</p>
+                        <p class="secondary">Requires a paid Claude subscription (Pro at $20/month, Max at $100/month, or Team/Enterprise). <a href="https://support.claude.com/en/articles/13345190-get-started-with-cowork" target="_blank" rel="noopener">Getting started with Cowork</a></p>
                     </div>
-                    <div class="step-content">
-                        <h3>Point your AI tool at it</h3>
-                        <p>Same chat experience you already know. One setting change. Now AI can read, create, and search through all your notes. That's it.</p>
+
+                    <!-- Claude Code -->
+                    <div class="tool-option">
+                        <h4>Claude Code <span class="badge badge-alt">For technical users</span></h4>
+                        <p>A command-line tool. If you don't know what that means, skip this and use Cowork. You won't miss anything. Claude Code does the same thing in a terminal window instead of a desktop app. A bit more powerful, a bit more flexible. Usage-based pricing (pay for what you use). <a href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener">Getting started with Claude Code</a></p>
+                    </div>
+
+                    <p>Both tools read the same instruction file, work inside the same vault, and produce the same notes. You're choosing an interface, not a platform. Everything you build is the same either way.</p>
+
+                    <!-- Other tools -->
+                    <h4 class="subsection-title-sm">What about other AI tools?</h4>
+                    <p>This system is portable. Any AI tool that can read and write files in a local folder will work. The landscape is evolving fast:</p>
+                    <ul class="clean-list">
+                        <li><strong>OpenAI/ChatGPT</strong> launched <a href="https://openai.com/index/introducing-chatgpt-agent/" target="_blank" rel="noopener">ChatGPT agent</a>, which can interact with local apps and create files. Also has <a href="https://github.com/openai/codex" target="_blank" rel="noopener">Codex CLI</a>, a terminal tool with full local file access.</li>
+                        <li><strong>Google Gemini</strong> has <a href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener">Gemini CLI</a>, a terminal tool that reads local files. No visual desktop equivalent yet.</li>
+                        <li><strong>Other tools</strong> like Cursor, GitHub Copilot, and Windsurf support instruction files and local file access, though they're primarily built for software development.</li>
+                    </ul>
+                    <p>Any of these providers could release a Cowork-equivalent tomorrow. When they do, your vault works with them immediately. No migration, no export, no starting over.</p>
+
+                    <p>The starter vault includes <code>CLAUDE.md</code> because that's what Claude auto-discovers. To use a different tool, rename or copy the file:</p>
+
+                    <div class="table-wrap">
+                        <table class="clean-table">
+                            <thead>
+                                <tr>
+                                    <th>Tool</th>
+                                    <th>Instruction file it reads</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Claude Code / Claude Cowork</td><td><code>CLAUDE.md</code></td></tr>
+                                <tr><td>GitHub Copilot</td><td><code>.github/copilot-instructions.md</code></td></tr>
+                                <tr><td>Cursor</td><td><code>.cursor/rules/*.mdc</code> or <code>AGENTS.md</code></td></tr>
+                                <tr><td>OpenAI Codex CLI</td><td><code>AGENTS.md</code></td></tr>
+                                <tr><td>Gemini CLI</td><td><code>GEMINI.md</code></td></tr>
+                                <tr><td>Windsurf</td><td><code>.windsurfrules</code></td></tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- In Practice -->
-    <section id="practice">
+    <!-- Start Using It -->
+    <section id="start-using">
         <div class="container">
-            <h2>What it looks like after a few months of just talking.</h2>
-            <p class="section-intro">I didn't plan any of this. I just kept talking to AI and the system built itself around those conversations.</p>
-            <div class="anecdote">
-                <div class="anecdote-icon">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 2C5.58 2 2 5.58 2 10s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14.4A6.41 6.41 0 013.6 10 6.41 6.41 0 0110 3.6 6.41 6.41 0 0116.4 10 6.41 6.41 0 0110 16.4z" fill="currentColor"/>
-                        <path d="M10.5 6H9v5l4.28 2.54.75-1.23-3.53-2.1V6z" fill="currentColor"/>
-                    </svg>
+            <h2>Start using it.</h2>
+            <p>Just start typing. That's genuinely it. You don't need to set up folders or figure out an organizational scheme. Chat with AI the way you normally would. It builds your knowledge base as you go.</p>
+
+            <h3 class="subsection-title">Things to try right away</h3>
+            <ul class="clean-list">
+                <li><strong>"Create a daily note for today. Here's what I worked on..."</strong> and give it a few bullets about your day.</li>
+                <li><strong>"Here's a meeting I had today. Summarize it and add it to my daily note."</strong> Paste in a transcript or your own notes.</li>
+                <li><strong>"Create a Basecamp for [topic]."</strong> A project, a trip you're planning, a side business.</li>
+            </ul>
+            <p>Start with whatever's on your mind. The first few notes will feel like scattered dots. They start connecting fast.</p>
+
+            <h3 class="subsection-title">How input works</h3>
+            <p><strong>The system knows what you tell it.</strong> It doesn't connect to your apps or pull data automatically. No fitness tracker sync, no calendar integration, no background magic. You give it information, and it remembers and connects it. That's by design. You control exactly what goes in.</p>
+            <p>In practice, that looks like:</p>
+            <ul class="clean-list">
+                <li><strong>Exporting data you already have.</strong> Most apps let you download your own data. Bank transactions, health data, attachments from email. Save those files into the vault's Downloads folder and tell AI to look at them.</li>
+                <li><strong>Typing about your day.</strong> "I did a 3-mile hike today, felt great." Type it out, paste stats from an app, or send a screenshot. AI logs it and the context builds over time.</li>
+                <li><strong>Sharing things as they come in.</strong> A meeting transcript, a recipe, a quote from a contractor, notes from a doctor's appointment. Drop it in and tell AI what it is.</li>
+            </ul>
+
+            <h3 class="subsection-title">Once the system has some weight behind it</h3>
+            <p>You stop asking generic questions and start asking things only your vault can answer:</p>
+            <div class="example-list">
+                <div class="example-item">
+                    <span class="example-quote">"I have a standup in 20 minutes. Catch me up on this week."</span>
+                    <span class="example-note">It reads your daily notes and gives you a briefing.</span>
                 </div>
-                <p>You had a conversation with your doctor three months ago. Details are fuzzy. You ask the system. It pulls up the full summary, links to related notes, and reminds you of the follow-up you said you'd do. Not because you organized everything perfectly. Because the system did.</p>
+                <div class="example-item">
+                    <span class="example-quote">"I'm planning a backpacking trip in August. What gear worked last time?"</span>
+                    <span class="example-note">It finds your trip notes, gear lists, and that comment about your pack being too heavy.</span>
+                </div>
+                <div class="example-item">
+                    <span class="example-quote">"Draft a status report for this week. You know the format."</span>
+                    <span class="example-note">It does. Because the instruction file has your format, your voice, your conventions.</span>
+                </div>
+                <div class="example-item">
+                    <span class="example-quote">"Here's a meeting transcript. Process it."</span>
+                    <span class="example-note">It summarizes, extracts action items, updates the daily note, links to relevant projects.</span>
+                </div>
+                <div class="example-item">
+                    <span class="example-quote">"When was the dog's last vet appointment?"</span>
+                    <span class="example-note">It finds the note, the vet's recommendation, the follow-up timeline.</span>
+                </div>
             </div>
+            <p>You don't get here on day one. But you get here faster than you'd think.</p>
+
+            <h3 class="subsection-title">Where this goes</h3>
+            <p class="section-intro">To give you a sense of what this looks like after a few months of just using it:</p>
             <div class="anecdote">
                 <div class="anecdote-icon">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -326,7 +527,7 @@
                         <path d="M6 8h8M6 11h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                     </svg>
                 </div>
-                <p>A contractor gave you a quote last fall. You can't find the email. You ask. The system traces through your notes and gives you the number, the date, and what you said you'd want changed. One question, full context.</p>
+                <p>I manage a dev team across two clients. I pointed the AI at our code repositories and had it analyze the commit history. Now it knows who built what, who has the deepest expertise, and where the knowledge gaps are. When an issue comes up, I can ask "who would be best to look at this?" and get a real answer based on actual contribution history.</p>
             </div>
             <div class="anecdote">
                 <div class="anecdote-icon">
@@ -339,19 +540,186 @@
                         <line x1="12.5" y1="10" x2="11" y2="13" stroke="currentColor" stroke-width="1.2"/>
                     </svg>
                 </div>
-                <p>You're planning a trip and the system connects it to a restaurant your friend mentioned six months ago in a completely different conversation. Your life is full of these threads. The system finds them for you.</p>
+                <p>I run a small brewing cacao business on the side. I have a Basecamp for it linking to supplier notes, customer order patterns, pricing strategy, product development ideas. I'm also into hiking, backcountry skiing, rucking. I exported my Garmin data and now whenever I log a workout, AI has years of context. It tells me things about my own data that Garmin never surfaced.</p>
+            </div>
+            <div class="anecdote">
+                <div class="anecdote-icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 2C5.58 2 2 5.58 2 10s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14.4A6.41 6.41 0 013.6 10 6.41 6.41 0 0110 3.6 6.41 6.41 0 0116.4 10 6.41 6.41 0 0110 16.4z" fill="currentColor"/>
+                        <path d="M10.5 6H9v5l4.28 2.54.75-1.23-3.53-2.1V6z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <p>I didn't sit down and manually create notes for any of that. It grew from conversations. None of it was planned. I kept using the system and it built itself around those conversations.</p>
             </div>
         </div>
     </section>
 
-    <!-- Get Started -->
-    <section id="start">
+    <!-- Going Deeper -->
+    <section id="going-deeper">
+        <div class="container">
+            <h2>Going deeper.</h2>
+
+            <h3 class="subsection-title">Start simple</h3>
+            <ul class="clean-list">
+                <li>After a meeting or important conversation, tell AI what happened. It creates the note, links it, organizes it.</li>
+                <li>Keep a daily note. A few bullets about what you worked on, what's pending, any decisions made.</li>
+                <li>When you make a decision, capture the reasoning. Gold when you need to reference it later.</li>
+            </ul>
+
+            <h3 class="subsection-title">Go deeper when you're ready</h3>
+            <ul class="clean-list">
+                <li>Feed it documents from your life. Contracts, proposals, reports, recipes, research. Drop them in Downloads and tell AI to process them.</li>
+                <li>Share your writing samples and let it learn your voice. Once it understands how you communicate, it can draft things that sound like you.</li>
+                <li>Build out Basecamps with curated links for your most active areas. The more structured your hubs, the better AI navigates between topics.</li>
+            </ul>
+
+            <h3 class="subsection-title">Building the habit</h3>
+            <p>The value comes from using it consistently. In the first couple weeks, focus on daily notes and telling AI to save things worth remembering. When AI gets something wrong, add a line to your instruction file: "Don't do X. Do Y instead." That's how the system learns.</p>
+            <p>After a few weeks, you'll notice topics that keep coming up. Tell AI to create Basecamps for those. Start feeding it documents you reference regularly.</p>
+            <p>After a month, your instruction file has real depth, your daily notes form a searchable journal, and notes are linking to each other in ways that surface connections you wouldn't have made on your own.</p>
+        </div>
+    </section>
+
+    <!-- Reference -->
+    <section id="reference">
+        <div class="container">
+            <h2>Reference.</h2>
+
+            <!-- Markdown basics -->
+            <h3 class="subsection-title" id="markdown">Markdown basics</h3>
+            <p>Markdown is a simple way to format text files. AI writes it for you most of the time, but knowing the basics makes you faster. Five minutes:</p>
+            <div class="code-block">
+                <pre><code># This is a heading
+## This is a smaller heading
+
+**This text is bold**
+*This text is italic*
+
+- This is a bullet point
+- Another bullet point
+  - A nested bullet
+
+[[Link to another note]]</code></pre>
+            </div>
+            <p><code>#</code> for headings (more <code>#</code>s = smaller), <code>**</code> for bold, <code>-</code> for bullets, <code>[[]]</code> for links between notes. That's most of what you need.</p>
+
+            <!-- FAQ -->
+            <h3 class="subsection-title" id="faq">FAQ</h3>
+
+            <div class="faq-item">
+                <button class="faq-question">What does this cost?</button>
+                <div class="faq-answer">
+                    <p>Obsidian is free. The AI tool is where pricing comes in. Claude Pro ($20/month) or Max ($100/month) gives you access to Cowork. Claude Code is usage-based. Other providers have their own pricing. The landscape evolves fast, so check current pricing when you're ready.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">How is this different from Notion or Roam?</button>
+                <div class="faq-answer">
+                    <p>Most note apps are about organizing notes. This system is about AI working inside your notes. AI reads your instruction file, processes raw inputs into structured notes, builds the links, and searches across all of it. Traditional note apps give you a place to put things. This gives you a partner that does the putting and the finding.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">Does it have to be Obsidian?</button>
+                <div class="faq-answer">
+                    <p>Not technically. Anything that edits markdown files works. But Obsidian handles linking natively, has the graph view, and it's free. If you ever switch apps, you take your vault with you.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">How do I know if AI's answers are accurate?</button>
+                <div class="faq-answer">
+                    <p>Ask it to show its work. With a vault, AI points to specific notes and sections. You can open them in Obsidian and verify. Not a guarantee of accuracy, but a level of transparency you don't get from a regular chat window.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">How long before it starts feeling useful?</button>
+                <div class="faq-answer">
+                    <p>A few days if you commit to daily notes and the instruction file. A few weeks before the linking and compounding really kicks in. The first time you ask about something from three weeks ago and get a perfect answer with full context, you'll get it.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">I barely use AI now. Is this overkill?</button>
+                <div class="faq-answer">
+                    <p>Maybe. If you're happy with how you manage your information, you don't need this. But if you've ever thought "I know I wrote this down somewhere" or "I spend too much time getting AI up to speed," this is the fix.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">What about privacy? Is my data safe?</button>
+                <div class="faq-answer">
+                    <p>Your vault files live on your computer. Only you can see them. AI doesn't permanently store your vault somewhere.</p>
+                    <p>When you type something into Cowork or Code, that message goes to the AI provider's servers for processing. This is true of every AI chat tool. On personal plans, your conversations can be used to improve models unless you opt out. On business plans (Team, Enterprise), your data is not used for training.</p>
+                    <p>If you work somewhere with an AI policy, that policy is your guide. Some people mask sensitive details before sharing. Others keep sensitive material out of the vault entirely. Both approaches work. Start with what feels safe. Expand when you're comfortable.</p>
+                </div>
+            </div>
+
+            <!-- Graph View -->
+            <h3 class="subsection-title" id="graph-view">The graph view</h3>
+            <p>One of Obsidian's best features. It shows your entire vault as a visual network. Every note is a dot, every link is a line. You can watch your knowledge base grow from scattered dots into a dense, interconnected web. It helps you spot clusters, find orphan notes, and see which topics are most central to your thinking.</p>
+
+            <!-- Shortcuts -->
+            <h3 class="subsection-title" id="shortcuts">Obsidian tips and shortcuts</h3>
+            <p>You don't need to memorize any of this. But once you're using the vault regularly, a few shortcuts make everything faster.</p>
+
+            <h4 class="table-heading">Finding things fast</h4>
+            <div class="table-wrap">
+                <table class="clean-table">
+                    <thead>
+                        <tr>
+                            <th>Action</th>
+                            <th>Mac</th>
+                            <th>Windows/Linux</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Quick switcher (jump to any note)</td><td><kbd>Cmd+O</kbd></td><td><kbd>Ctrl+O</kbd></td></tr>
+                        <tr><td>Command palette (any action)</td><td><kbd>Cmd+P</kbd></td><td><kbd>Ctrl+P</kbd></td></tr>
+                        <tr><td>Search all notes</td><td><kbd>Shift+Cmd+F</kbd></td><td><kbd>Ctrl+Shift+F</kbd></td></tr>
+                        <tr><td>Search current note</td><td><kbd>Cmd+F</kbd></td><td><kbd>Ctrl+F</kbd></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>The <strong>quick switcher</strong> is the one to learn first. Start typing a note name and it finds it instantly. The <strong>command palette</strong> is the Swiss army knife. Not sure how to do something? Open it and start typing.</p>
+
+            <h4 class="table-heading">Editing and navigating</h4>
+            <div class="table-wrap">
+                <table class="clean-table">
+                    <thead>
+                        <tr>
+                            <th>Action</th>
+                            <th>Mac</th>
+                            <th>Windows/Linux</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Create new note</td><td><kbd>Cmd+N</kbd></td><td><kbd>Ctrl+N</kbd></td></tr>
+                        <tr><td>Toggle bold</td><td><kbd>Cmd+B</kbd></td><td><kbd>Ctrl+B</kbd></td></tr>
+                        <tr><td>Toggle italic</td><td><kbd>Cmd+I</kbd></td><td><kbd>Ctrl+I</kbd></td></tr>
+                        <tr><td>Insert link</td><td><kbd>Cmd+K</kbd></td><td><kbd>Ctrl+K</kbd></td></tr>
+                        <tr><td>Toggle edit/reading view</td><td><kbd>Cmd+E</kbd></td><td><kbd>Ctrl+E</kbd></td></tr>
+                        <tr><td>Open graph view</td><td><kbd>Cmd+G</kbd></td><td><kbd>Ctrl+G</kbd></td></tr>
+                        <tr><td>Go back</td><td><kbd>Alt+Cmd+Left</kbd></td><td><kbd>Ctrl+Alt+Left</kbd></td></tr>
+                        <tr><td>Go forward</td><td><kbd>Alt+Cmd+Right</kbd></td><td><kbd>Ctrl+Alt+Right</kbd></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p><strong>Linking tip:</strong> Type <code>[[</code> and start typing a note name. Obsidian autocompletes it. Faster than the insert link shortcut.</p>
+            <p><strong>Other useful things:</strong> Customize shortcuts in Settings > Hotkeys. Hold Cmd (Mac) or Ctrl (Windows) while clicking a link to open in a new pane. Bookmark notes you reference often.</p>
+        </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section id="download">
         <div class="container cta-bottom">
             <h2>Start building your second brain.</h2>
             <p class="subhead">Free. No account needed. Just a folder of text files and an AI tool you already have.</p>
             <div class="cta-group">
                 <a href="https://github.com/BOOMCHOPALAKA/noteOS/releases/latest/download/noteOS-starter-vault.zip" class="btn-primary">Download the Starter Vault</a>
-                <a href="https://github.com/BOOMCHOPALAKA/noteOS#readme" class="btn-secondary">Read the full guide &rarr;</a>
+                <a href="https://github.com/BOOMCHOPALAKA/noteOS" class="btn-secondary">View on GitHub &rarr;</a>
             </div>
         </div>
     </section>
