@@ -148,9 +148,11 @@ Sometimes AI will create notes automatically, like generating a daily note when 
 
 ## Your Knowledge, Your Files
 
-Everything in this system lives in folders and files on your computer. Plain text. Nothing proprietary, nothing cloud-locked, nothing that belongs to a platform. The AI reads your files, but your files don't live inside the AI.
+I know I keep reiterating this but that's only because I think this part the most important part of this whole thing. Everything in this system lives in folders and files on your computer. Plain text. Nothing proprietary, nothing complicated, nothing cloud-locked, nothing that belongs to a specific platform. The AI platform you choose to use reads your files, but your files aren't locked inside the AI platform.
 
 This matters because the AI landscape is moving fast. Your workplace might standardize on ChatGPT this quarter and switch to Claude next quarter. A new tool might launch next month that's better than everything. With this system, you don't rebuild. Your folder is the constant. The AI tool is just what you plug into it today. Your company switches tools? Everything you've built is still right there. You want to try something new? It's all still there. Nothing moves, nothing exports, nothing breaks. Own the playbook, rent the tech.
+
+Now, finally, with all that being said... Let's get you a personal operating system!
 
 ---
 
