@@ -40,13 +40,20 @@ Think of it this way. If you had the world's best personal assistant, their valu
 
 ---
 
-## How It Works
+## How It Works: 
+### Folders & Files + Obsidian + AI = Your Personal Operating System
 
-Before you download anything, here's what you're building and why it's structured the way it is. Three things work together: a folder structure for your knowledge, an instruction file that teaches AI how you work, and a loop where using the system is the same thing as building it.
+Before you download anything, here's what you're building and why it's structured the way it is. Three things work together:
 
-### The folder structure
+1. **A main folder of subfolders and plain text files** that holds all your knowledge. This is where all the content you create will live and where we point the AI to work in and supercharge it.
+2. **Obsidian**, a free app to browse, search, and edit those files visually. Think of it as a really nice window into your folder.
+3. **An AI tool** (like Claude) that reads and writes inside the folder. It's the engine that builds notes, makes connections, and answers your questions.
 
-This is what the system looks like on your computer. It's just a folder with subfolders and text files inside it.
+That's the whole stack. A folder, a viewer, and an AI engine. They don't just sit next to each other. They feed into each other in a continuous loop. Everything below explains how they fit together.
+
+### The folder and file structure
+
+This is what the vault folder looks like on your computer. It's just a folder with subfolders and text files inside it.
 
 ```
 My Vault/
@@ -66,7 +73,7 @@ My Vault/
                         in subfolders. Links do the organizing.
 ```
 
-#### A few things to know:
+#### A few things to know
 
 ##### The navigation metaphor
 
@@ -76,7 +83,7 @@ The system borrows its naming from backcountry travel:
 - **Basecamp** — A home base note for a main topic. It provides a high-level overview of whatever the subject is and then also houses links and references to other more detailed notes on the subject. 
 - **Compass** — The orientation and summary section at the top of each note. Think of it like a TL;DR that tells you what this note is about, why it's important, and what it connects to.
 - **Trails** — Curated links from a Basecamp to the notes that matter most for that topic. The AI can automatically make these connections as you build the system out for yourself.
-##### Glossary:
+##### Glossary
 
 A **note** is a single text file. A meeting summary is a note. A project overview is a note. A recipe is a note. Every piece of knowledge in the system is a note. Most notes live in the root of the folder, not buried in subfolders. This is intentional. Instead of deciding "does this go in Work or Personal? Projects or Reference?" you just create the note and let links connect it to everything related.
 
@@ -92,7 +99,7 @@ The result is a web where you can start anywhere and get anywhere. "What did we 
 
 **This is a framework, not a rulebook.** Add folders, rename things, create templates that aren't included. Some people will use it as-is. Some will reshape it into something unrecognizable. Both are the right answer.
 
-### The instruction file
+#### The Instruction File
 
 This is what makes the whole thing work the way it does with AI. There's a file called `CLAUDE.md` that AI reads at the start of every conversation. Now the CLAUDE.md file is obviously specific to Claude but other systems use similar files (we talk about using other AI tools below in Getting Started).
 
@@ -109,9 +116,31 @@ You don't need to fill all of this out before you start. You can start with five
 
 The starter vault comes with this file already built out with tested conventions for meeting processing, daily notes, linking, and more. It works out of the box. You customize it over time as you develop your own preferences.
 
+### Obsidian: your viewer and editor
+
+[Obsidian](https://obsidian.md) is a free app that reads the files in your folder and makes them look good and easily readable. Obsidian calls your folder a "vault." It adds clickable links between notes, instant search, a visual graph of how everything connects, and themes to make it yours. Under the hood, it's just reading plain text files. You could delete Obsidian tomorrow and every file would still be there, readable in any text editor.
+
+Obsidian is not an AI tool. It doesn't process anything or talk back to you. It's where you go to read your notes, click through links, and see your knowledge base visually. The AI conversation happens in a separate tool (we cover that in Getting Started). But having both means you always have two paths to the same information: ask AI, or open Obsidian and browse.
+
+You don't have to use Obsidian. Any text editor works since the files are just plain text. But Obsidian handles linking natively, makes everything super easy to find and read, has some great keyboard shortcuts, and even has a really amazing graph view to see how everything you make is connected visually. And it's free. In our opinion, it's the best way to experience what you're building.
+
+### The AI tool: your engine
+
+This is the piece that makes everything feel alive. You open an AI tool, point it at your vault folder, and start chatting. The AI reads your files, writes new ones, builds links between notes, and answers questions using everything you've built. It's the same conversational experience you're used to from ChatGPT or Claude, except now it has your entire knowledge base behind it.
+
+Remember the instruction file from earlier? This is where it really matters. Every conversation starts with context. AI already knows your preferences, your projects, how you write, how you think. The instruction file turns a general-purpose AI into *your* AI.
+
+And because AI is living inside your folder, it can see everything. Not just the note you're working on, but every note, every link, every Basecamp, every trail. When it creates something new, it searches the vault for related content and links to it. That meeting summary connects to the project Basecamp, which connects to the decision log. Over time, the web gets denser and AI has more paths to trace when you ask a question. Each note makes every other note more findable. Each link makes every future question easier to answer. It's not just adding information. It's multiplying the value of what's already there.
+
+The AI tool and Obsidian are separate but connected. They work on the same files, so anything AI creates shows up in Obsidian immediately, and anything you edit in Obsidian is available to AI next time you chat. We cover the specific tools and setup in [Getting Started](#getting-started) below. The short version: we recommend Claude, and the easiest option is called Cowork. It requires a paid account. The system works with any AI tool that can read and write files in a folder.
+
 ### Using it is building it
 
-This is the part that surprised me most. When you use this system, you're building it at the same time. Brainstorming, processing meetings, drafting documents, thinking out loud. All of these generate notes as a natural byproduct. And then those same notes are what AI searches when you ask questions later. The more you put in, the more useful it gets. Not because the AI improved. Because *your* knowledge base got richer.
+This is where the three pieces stop being a stack and start being a cycle.
+
+You talk to AI. AI creates notes and links them to what's already in your folder. You open Obsidian and see the new notes sitting alongside everything else, connected and searchable. Next time you talk to AI, it has even more context to work with. Which means better answers, better notes, more connections. Which means Obsidian shows you an even richer web. Which means AI has even more to draw from next time. The folder gets richer. Obsidian shows you more. AI gets smarter about your world. Round and round.
+
+That's the part that surprised me most. When you use this system, you're building it at the same time. Brainstorming, processing meetings, drafting documents, thinking out loud. All of these generate notes as a natural byproduct. And then those same notes are what AI searches when you ask questions later. The more you put in, the more useful it gets. Not because the AI improved. Because *your* knowledge base got richer.
 
 Sometimes AI will create notes automatically, like generating a daily note when you give it a meeting transcript. Other times you'll tell it to. "Create a note on what we just talked about." "Add this to my daily note." "Could we make this a Basecamp?" Over time, AI learns to proactively suggest it: "This is getting substantial. Want me to create a note?" The system grows because you're using it, not because you're maintaining it.
 
@@ -131,9 +160,7 @@ Now that you know what you're building and how the pieces fit together, here's h
 
 ### Step 1: Download Obsidian
 
-Go to [obsidian.md](https://obsidian.md) and download it. Free, works on Mac, Windows, Linux, and mobile.
-
-Obsidian is the app you use to browse, view, and edit all the notes in your vault. It adds clickable links between notes, instant search, a visual graph of how everything connects, and themes to make it yours. Under the hood, it's just reading and writing plain text files. You could delete Obsidian tomorrow and every file would still be there, readable in any text editor. It is not an AI tool. Think of it as a really nice window into your folder.
+Go to [obsidian.md](https://obsidian.md) and download it. Free, works on Mac, Windows, Linux, and mobile. This is the app you'll use to browse and edit your vault. (We covered what it does and why we use it in [How It Works](#obsidian-your-viewer-and-editor) above.)
 
 ### Step 2: Get the starter vault
 
@@ -215,7 +242,7 @@ In practice, that looks like:
 - **Just telling it about your day.** "I did a 3-mile hike today, felt great, legs weren't as heavy as last week." Type it out, paste stats from an app, or send a screenshot. AI logs it and the context builds over time.
 - **Sharing things as they come in.** A meeting transcript, a recipe you tried, a quote from a contractor, notes from a doctor's appointment. Drop it in and tell AI what it is.
 
-After your first conversation, switch over to Obsidian and take a look. The notes are just there. Click on one. See how it's formatted, how it links to other notes. Click a link and you're in another note. That's the Wikipedia layer.
+After your first conversation, switch over to Obsidian and take a look. The notes are just there. Click on one. See how it's formatted, how it links to other notes. Click a link and you're in another note. That's the Wikipedia layer. A few keyboard shortcuts will make navigating Obsidian feel fast. See the [Obsidian tips and shortcuts](#obsidian-tips-and-shortcuts) section in the Reference below.
 
 You now have two paths to the same information. You can ask AI "what happened yesterday?" and get the answer in the chat. Or you can open Obsidian, navigate to yesterday's daily note, and read through it yourself. Both work. In practice, most of the interaction happens through the chat. But the visual layer is always there when you want to explore, read, or edit on your own.
 
@@ -331,3 +358,40 @@ Start with what feels safe. Expand when and if you're comfortable.
 ### The graph view
 
 One of Obsidian's best features. It shows your entire vault as a visual network. Every note is a dot, every link is a line between them. You can watch your knowledge base grow from a handful of scattered dots into a dense, interconnected web. It's not just eye candy. It's a real way to spot clusters, find orphan notes, and see which topics are most central to your thinking.
+
+### Obsidian tips and shortcuts
+
+You don't need to memorize any of this to get started. But once you're using the vault regularly, a few shortcuts make everything faster. These are the ones that matter most.
+
+**Finding things fast:**
+
+| Action | Mac | Windows/Linux |
+|---|---|---|
+| Quick switcher (jump to any note by name) | Cmd+O | Ctrl+O |
+| Command palette (search for any action) | Cmd+P | Ctrl+P |
+| Search across all notes | Shift+Cmd+F | Ctrl+Shift+F |
+| Search within current note | Cmd+F | Ctrl+F |
+
+The **quick switcher** is the one to learn first. Start typing a note name and it finds it instantly. You'll use this more than anything else in Obsidian.
+
+The **command palette** is the Swiss army knife. If you're not sure how to do something, open it and start typing. "Graph", "daily", "template", whatever. It searches every available action.
+
+**Editing and navigating:**
+
+| Action | Mac | Windows/Linux |
+|---|---|---|
+| Create new note | Cmd+N | Ctrl+N |
+| Toggle bold | Cmd+B | Ctrl+B |
+| Toggle italic | Cmd+I | Ctrl+I |
+| Insert link | Cmd+K | Ctrl+K |
+| Toggle edit/reading view | Cmd+E | Ctrl+E |
+| Open graph view | Cmd+G | Ctrl+G |
+| Go back (like a browser) | Alt+Cmd+Left | Ctrl+Alt+Left |
+| Go forward | Alt+Cmd+Right | Ctrl+Alt+Right |
+
+**Linking tip:** To link to another note while typing, just type `[[` and start typing the note name. Obsidian autocompletes it for you. This is faster than the insert link shortcut for wiki links.
+
+**Other things worth knowing:**
+- You can customize any shortcut in Settings > Hotkeys
+- Clicking a link while holding Cmd (Mac) or Ctrl (Windows) opens the note in a new pane, so you can see both notes side by side
+- Star/bookmark notes you reference often so they're always one click away in the sidebar
