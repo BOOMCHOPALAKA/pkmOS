@@ -26,8 +26,8 @@
 
 ---
 
-## Related
-<!-- Cross-vault connections. Other Basecamps, profiles, or notes that touch this topic. -->
+## Trails
+<!-- The paths worth taking from this Basecamp. Not everything that mentions this topic — just the notes that matter if you're exploring this territory. Other Basecamps, profiles, knowledge notes, and cross-vault connections that are genuinely worth clicking into from here. -->
 - [[Basecamps]]
 
 <!--
@@ -39,7 +39,7 @@ through conversation. The human talks, you build.
 
 - Rename the sections to match the topic. A work project might use "The Business /
   Current Work / Systems / Processes." A personal topic might use "Overview / Active /
-  Reference / Related." The section names above are starting suggestions, not labels
+  Reference / Trails." The section names above are starting suggestions, not labels
   to keep.
 - Write the Compass based on what the human tells you about the topic. Dense, orienting,
   with links to related notes and Basecamps that already exist in the vault.
@@ -47,4 +47,7 @@ through conversation. The human talks, you build.
   Link to everything relevant. Don't create an island.
 - The Basecamp links TO notes. It doesn't contain the knowledge itself. Keep descriptions
   to one line per link. The detail lives in the individual notes.
+- The Trails section is curated, not exhaustive. Every link should earn its spot. Ask:
+  "Would someone exploring this Basecamp actually benefit from going here?" If the
+  answer isn't clearly yes, leave it out.
 -->

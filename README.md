@@ -296,7 +296,7 @@ The system borrows from backcountry travel:
 - **Map** — The folder that holds your hub notes. Your territory overview.
 - **Basecamp** — A hub note for a topic. Links to everything related.
 - **Compass** — The orientation section at the top of each note. What is this, and where does it connect?
-- **Trail** — A curated sequence of linked notes that walks through a topic in order.
+- **Trails** — The paths worth taking from a Basecamp. Not everything that mentions the topic, just the notes that matter if you're exploring that territory. Curated, not exhaustive.
 
 You don't build most of this by hand. You tell AI to do it. "Create a Basecamp for this project." "Summarize this meeting and link it to the relevant notes." AI reads your instruction file, knows your conventions, and builds it the way you've taught it to.
 
@@ -350,7 +350,7 @@ The basic system works with just notes and an instruction file. How far you go i
 
 **For the ambitious:**
 - Build out full knowledge bases on specific subjects. Individual notes are useful, but when they start linking to each other, the system surfaces connections you wouldn't have made yourself.
-- Create Basecamps and Trails for your most active areas. The more structured your hubs, the better AI navigates between topics.
+- Build out Basecamps with curated Trails for your most active areas. The more structured your hubs, the better AI navigates between topics.
 - Analyze codebases or document libraries to map expertise and identify knowledge gaps.
 
 **On privacy:** You control what goes in. Some people feed it everything. Others keep it strictly professional. The structure works at any level. It just gets more powerful the more context it has. Never put anything in that you're not comfortable with.

@@ -34,9 +34,12 @@
 - Other teams' internal work stays off the list. Visibility in the meeting is enough.
 - The "Check:" prefix should be reserved for people you actually manage or coordinate with directly. Don't overuse it.
 
-## Vault Research Discipline
-- **Report what's actually in the vault.** Don't cross-pollinate answers from unrelated projects to fill gaps. A clear "the vault doesn't have this" is the correct answer when the information doesn't exist.
-- **Search thoroughly before concluding the vault doesn't have the answer.** Check the relevant Basecamp, related notes, daily notes where the topic was discussed. Don't stop at the first near-miss result.
+## Vault-First Search
+- **ALWAYS search the vault before responding to any question or starting any task.** Don't assume you don't know something. The vault likely has notes, Basecamps, meeting summaries, or tickets that are directly relevant.
+- **Never say "I don't have information on that" without searching first.** The vault is your knowledge base. Use it.
+- **How to search:** Check Map/ for a relevant Basecamp first (read Compass and Trails). Then search keywords/names/topics across the vault. Follow links from what you find.
+- **Report what's actually there.** Don't cross-pollinate answers from unrelated projects to fill gaps. A clear "the vault doesn't have this" is correct AFTER a thorough search.
+- **Search thoroughly.** Check the relevant Basecamp, related notes, daily notes where the topic was discussed. Don't stop at the first near-miss result.
 - Both rules matter equally: don't fabricate answers, but also don't give up too early.
 
 ## Meeting Transcript Processing

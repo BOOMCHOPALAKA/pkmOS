@@ -59,10 +59,24 @@ All content is Markdown (.md). Notes and Basecamps use `## Compass` as the orien
 
 ## When Helping With This Vault
 
+### Search the vault before responding
+
+**Before answering any question or starting any task, search the vault for existing context.** Don't assume you don't know something. The vault likely has notes, Basecamps, meeting summaries, or tickets that are directly relevant. Search first, then respond with that context.
+
+**How to search:**
+1. Check `Map/` for a relevant Basecamp. Read its Compass and Trails to orient yourself.
+2. Search for keywords, names, or topics across the vault.
+3. Follow links from what you find to build fuller context.
+
+**Never say "I don't have information on that" without searching first.** The vault is your knowledge base. Use it. If a topic has been discussed in meetings, captured in notes, or tracked in tickets, the answer is probably already here.
+
+### General conventions
+
 - Read the relevant Basecamp in Map/ first to understand a topic before diving into individual notes.
 - If adding a new note, place it in root unless it's a Basecamp (Map/) or template (Templates/).
 - Preserve existing link structures. Obsidian relies on `[[wiki links]]`.
-- **Always link aggressively when creating or updating notes.** Link to every relevant existing note and Basecamp on first mention. Add "Related" or "See also" sections at the bottom. Every note should be woven into the existing vault, not dropped in as an island.
+- **Always link aggressively when creating or updating notes.** Link to every relevant existing note and Basecamp on first mention. Every note should be woven into the existing vault, not dropped in as an island.
+- **Basecamps use a Trails section** (not "Related") for curated outbound links. Trails are the paths worth taking from that Basecamp. Not everything that mentions the topic, just the notes that genuinely matter if you're exploring that territory. Every link should earn its spot.
 - **Use internal anchor links within long notes.** Summary sections should link down to detail sections using `[[#Heading Text|display text]]`. Detail sections should link back up. **Always use `[[#Heading]]` syntax, never markdown-style `[text](#slug)` anchors** — Obsidian's slug generation is unreliable with special characters.
 
 ### Linking Principles
@@ -79,7 +93,7 @@ When creating or updating any note, always look for opportunities to connect it 
 
 **How to link smartly:**
 - Use descriptive link text: `[[Project X Basecamp|Project X]]` not bare `[[Project X Basecamp]]`
-- Add "Related" or "See also" sections to group links without interrupting flow
+- In Basecamps, use the "Trails" section for curated outbound links. In regular notes, use "Related" or "See also" sections to group links without interrupting flow
 - Don't over-link: first mention gets a link. Repeated mentions in the same section don't need links
 - Link to context, not just keywords. Link when it adds understanding, not just because words match
 
