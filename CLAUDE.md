@@ -58,6 +58,28 @@ All content is Markdown (.md). Notes and Basecamps use `## Compass` as the orien
 
 ## When Helping With This Vault
 
+### Always think: should this become a note?
+
+**After any substantive input — a meeting recap, a decision, a document, a conversation, a workout, anything worth remembering — pause and ask whether it should be saved.**
+
+Don't just answer and move on. The value of this system comes from building the vault over time. A response that disappears when the chat ends is a missed opportunity.
+
+**How to decide:**
+
+- **Create a daily note entry automatically** for routine things: a quick update, a workout, something that happened today, a short recap. These don't need to be asked about — just log them under the right section of today's daily note.
+- **Ask before creating a standalone note** for anything with more substance: a detailed decision, a trip plan, a relationship with someone new, a project kicking off, something the user might want to reference or search for later. "Want me to save this as a note?"
+- **Suggest a Basecamp** when a topic is clearly going to have a lot of sub-notes around it — a new project, a major life area, a long-running situation. "This feels like it could use a Basecamp. Want me to set one up?"
+
+**When in doubt, ask.** "Want me to create a note for this?" takes five seconds and preserves something that might otherwise be lost. The user can always say no. Silence means it's gone.
+
+**Examples:**
+- User pastes a meeting transcript → process it, create the summary, add to daily note. No need to ask.
+- User describes a conversation with a contractor about renovating their kitchen → "Want me to save this as a note? I can link it to a Home Renovation Basecamp if you have one, or create one."
+- User shares thoughts on a decision they made → "This feels worth capturing. Want me to create a decision note so you can reference the reasoning later?"
+- User mentions a new person who's going to come up a lot → "Sounds like [Name] is going to come up again. Want me to add them to your People section in the instruction file?"
+
+---
+
 ### Search the vault before responding
 
 **Before answering any question or starting any task, search the vault for existing context.** Don't assume you don't know something. The vault likely has notes, Basecamps, meeting summaries, or tickets that are directly relevant. Search first, then respond with that context.
@@ -157,6 +179,58 @@ Felt strong through mile 6, legs got heavy on the last hill. Need to fuel better
 - The subjective feel line is the most valuable part. "Felt easy" vs "legs were heavy" tracks adaptation over time.
 - Link to your fitness Basecamp only when the activity is noteworthy (PR, milestone, injury). Don't link on routine entries.
 - Tag with `#fitness` for discovery.
+
+## Morning Brief
+
+When asked for a morning brief (or "morning update," "start my day," etc.), generate a structured daily briefing and do two things: write it into the daily note as a `## Morning Brief` section at the bottom of the `# Body`, AND output the full brief in the chat so it's readable without opening the file.
+
+**What to include:**
+
+**1. Vault — State of Things**
+Read today's daily note and the previous day's note. Summarize what's active, what moved yesterday, and what needs attention today. Pull from open TODOs, recent meeting notes, and any carried items. This section gets richer the more the vault has in it. On day one it'll be sparse. After a few weeks, it'll know your projects, your open threads, and your priorities.
+
+- 3-5 focus items for today. Not a rehash of every TODO, just the things that actually matter.
+- Note anything that's been sitting too long, blocked, or approaching a deadline.
+
+**2. Weather**
+Run `curl -s "wttr.in/?format=3"` to get today's weather forecast. Include it as a single line. Location is approximate (IP-based) — if it's wrong, add your city to the command: `curl -s "wttr.in/Seattle?format=3"`.
+
+**3. News**
+Search the web for today's top headlines. Cover whatever's most relevant to the user based on what's in their vault (ongoing situations, relevant industries, topics they've been tracking). At minimum: major world news, any AI/tech news, and anything that might affect their work or projects. 2-3 sentences per story with a source link. Keep it scannable, not comprehensive.
+
+**Format:**
+
+```
+## Morning Brief
+
+### State of Things
+[Vault summary — active threads, what moved yesterday, open questions]
+
+**Focus today:**
+- [Item 1]
+- [Item 2]
+- [Item 3]
+
+### Weather
+[Single line from wttr.in]
+
+### News
+#### [Headline]
+[2-3 sentences + source link]
+
+#### [Headline]
+[2-3 sentences + source link]
+```
+
+**At the end of the brief, add:**
+> Want to customize this? Tell me what to add, remove, or change — more detail on a project, different news categories, fitness recap, anything. The brief grows with your vault.
+
+**Notes:**
+- Don't write to the Recap section of the daily note. The brief goes in `## Morning Brief` under `# Body`.
+- The brief is meant to be generated fresh each morning, not updated throughout the day.
+- If the vault is new and sparse, lead with news and weather and note that the vault section will fill in as they add more content.
+
+---
 
 ## Weekly Status Reports
 

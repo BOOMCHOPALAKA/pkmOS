@@ -113,7 +113,16 @@ Think of it as a briefing document. If you've used Claude's project instructions
 
 You don't need to fill all of this out before you start. You can start with five lines. "I'm a contracts director at a nonprofit. My main projects are X, Y, Z. I prefer concise summaries over detailed ones." That alone puts you ahead of most AI users because now every conversation starts with context instead of from scratch. Or just start using the system and let AI fill it in over time based on your conversations.
 
-The starter vault comes with this file already built out with tested conventions for meeting processing, daily notes, linking, and more. It works out of the box. You customize it over time as you develop your own preferences.
+The starter vault comes with this file already built out with tested conventions for daily notes, linking, and more. **It works out of the box.** Here's what it already knows how to do on day one:
+
+- **Morning brief** — Ask "give me a morning brief" and it pulls today's weather, top news, and whatever's active across your life. Sparse on day one. Rich after a few weeks.
+- **Daily notes** — It creates them, files them, and keeps them organized. A running log of your day — work, personal, fitness, whatever you tell it about.
+- **Processing anything you drop on it** — Meeting transcript, doctor's notes, a recipe you want to save, a contractor's quote, a trip itinerary. Drop it in and tell it what it is. It'll either create the note automatically or ask if you want it to — and suggest whether it should be a daily note entry, a standalone note, or a full Basecamp depending on how substantial it is.
+- **Vault search before answering** — Before it responds to any question, it reads your notes. Not guessing. Actually tracing through what you've built and telling you what's there.
+- **Activity and fitness log** — Tell it about a workout, a hike, a training block. It knows how to log it in your daily note and build context over time.
+- **Voice and drafting** — Fill in the Communication Style section and it drafts messages, emails, and documents that sound like you, not like a template.
+
+That's what's pre-built. Everything else you build over time. When AI does something wrong, add a line to the instruction file: "Don't do X. Do Y instead." When something new becomes active in your life, add it to the Active Projects section. When a name keeps getting mangled, add it to People. The file grows with you. That's how it gets personal.
 
 ### Obsidian: your viewer and editor
 
@@ -229,6 +238,7 @@ Just start typing. That's genuinely it. You don't need to set up folders or figu
 
 Here are some things you can try right out of the gate:
 
+- **"Give me a morning brief."** You can use this on day one. It pulls today's weather, top news headlines, and whatever's active in your vault. On day one that last part is sparse — but as you add meetings, projects, and notes, the brief gets more personal. After a few weeks it's reading your open TODOs, your active projects, what happened yesterday, and what needs attention today. It grows with your vault.
 - **"Create a daily note for today. Here's what I worked on..."** and give it a few bullets about your day.
 - **"Here's a meeting I had today. Summarize it and add it to my daily note."** Paste in a transcript or your own notes.
 - **"Create a Basecamp for [topic]."** A project you're managing, a trip you're planning, a side business you're running.
