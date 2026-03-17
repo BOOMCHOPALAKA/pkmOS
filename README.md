@@ -1,5 +1,5 @@
-# noteOS - Your Personal "Operating System", Supercharged by AI
-*All your knowledge, connected and searchable. Built on simple text files and folders that anyone (and we mean anyone) can set up and use.*
+# noteOS - Your Personal Operating System. Powered by Simple Text Files, Supercharged by AI.
+*All your knowledge. Documented. Connected. Searchable. Conversational.*
 
 ## Table of Contents
 - [Imagine a World...](#imagine-a-world)
