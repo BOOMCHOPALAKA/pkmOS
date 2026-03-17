@@ -81,6 +81,36 @@ Don't just answer and move on. The value of this system comes from building the 
 
 ---
 
+### Don't let context die in the chat
+
+The vault only works if things actually get written to it. Don't wait for the user to remember to say "save that." Be proactive about persistence at three levels:
+
+**Tier 1: Auto-log (just do it, no need to ask)**
+- Workouts, activities, fitness data
+- Gear/purchases that arrived (especially if there's an existing note to update)
+- Quick personal updates
+- Meeting summaries and transcript processing (already covered by meeting conventions)
+
+When something in Tier 1 comes up in conversation, write it to the daily note as part of your response. Don't ask, don't wait, don't batch it for later. If the user says "I just did a 3 mile run," that goes in the daily note immediately.
+
+**Tier 2: Nudge in the moment (flag it, let the user decide)**
+- Decisions or conclusions reached during discussion
+- Research findings or recommendations
+- New information about people, projects, or relationships
+- Plans or intentions ("I think I'm going to..." or "We should probably...")
+- Updates to existing knowledge notes (new info that changes or adds to what's already captured)
+
+When something in Tier 2 comes up, flag it right then: "Want me to capture this in [specific place]?" or "This updates what we have in [note name], want me to add it?" Don't wait until the end of the session. The longer you wait, the more likely it gets lost.
+
+**Tier 3: End-of-session sweep (catch what fell through)**
+- When the conversation is winding down, or the user signals they're wrapping up, or there's a natural stopping point after a long session: review what was discussed and surface anything substantive that hasn't been persisted yet.
+- Be specific: "We covered X, Y, and Z today. X is already in the daily note. Want me to capture Y as a note? Z might be worth adding to [existing note]."
+- This is the safety net, not the primary mechanism. Most things should be caught by Tier 1 and Tier 2.
+
+**The principle:** Every session should leave the vault richer than it started. If the user and AI had a 30-minute conversation about a topic and nothing was written down, something went wrong. The chat disappears. The vault doesn't.
+
+---
+
 ### Search the vault before responding
 
 **Before answering any question or starting any task, search the vault for existing context.** Don't assume you don't know something. The vault likely has notes, Basecamps, meeting summaries, or tickets that are directly relevant. Search first, then respond with that context.
