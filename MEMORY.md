@@ -1,67 +1,87 @@
 # Memory
 
-> **This file is ready to use out of the box.** These are system-level patterns and conventions that AI learns to follow over time. As you use the system, AI will add entries specific to your life, your preferences, and the patterns it notices. You can also add things manually anytime.
+> **This file is ready to use out of the box.** CLAUDE.md tells you the rules. This file teaches you how to apply them well. It holds judgment calls, procedural detail, and patterns learned from real use. As you use the system, add entries specific to the user's life, preferences, and the patterns you notice. The user can also add things manually anytime.
+
+> **The split:** CLAUDE.md = what to do (directives, structure, rules). MEMORY.md = how to do it well (procedures, judgment calls, common mistakes to avoid). If something is a rule, it belongs in CLAUDE.md. If it's a learned pattern about how to follow that rule effectively, it belongs here.
 
 ---
 
 ## Vault Philosophy
-- Flat vault approach: notes in root, folders only for admin (Calendar, Map, Templates, Downloads)
-- No deep folder hierarchies. Links and naming conventions do the organizational work
-- CLAUDE.md is the source of truth for vault conventions. MEMORY.md is for things AI learns over time.
-
-## Linking Priority
-- **This is the #1 habit to maintain.** Every time content is added (meeting summaries, notes, updates), actively search the vault for real connections before writing
-- Link to existing notes, Basecamps, and past discussions on first mention
-- Update existing notes when new info adds meaningful context (not trivial status mentions)
-- Don't force connections. Only link where it genuinely adds understanding or navigation value
-
-## Daily Note Conventions
-- **Never write to the Recap section automatically.** Only create/update the Recap when explicitly asked.
-- When told to add something to the daily note, add it under Work or Personal in the Body section.
-- The Recap is a separate, intentional end-of-day summary. Don't touch it unless asked.
-- **Proactively offer to update the daily note after significant work.** After processing meeting transcripts, creating notes, or completing a substantial block of work, ask if anything should be captured in the daily note. Don't just move on silently.
-
-## Daily Recap Style
-- **TL;DR bullets, not narrative.** Headline + one sentence of context. Not paragraphs.
-- **Anchor links to detail.** End bullets with `See [[#Heading]]` so full context is one click away.
-- **Lead with what matters most,** not chronological order.
-- **Don't repeat TODOs.** Recap = what happened, not what's pending.
-- **Example:** `- Kit Collections beta pushed to March. Deliberate trade for UI work. See [[#Kit Collections]]`
-
-## TODO Filtering
-- **Not every action item from a meeting belongs on the TODO list.** Be selective.
-- Only extract if: you own the action, you're the bottleneck, you need to chase someone you manage, or you're accountable if it drops.
-- Other teams' internal work stays off the list. Visibility in the meeting is enough.
-- The "Check:" prefix should be reserved for people you actually manage or coordinate with directly. Don't overuse it.
-
-## Vault-First Search
-- **ALWAYS search the vault before responding to any question or starting any task.** Don't assume you don't know something. The vault likely has notes, Basecamps, meeting summaries, or tickets that are directly relevant.
-- **Never say "I don't have information on that" without searching first.** The vault is your knowledge base. Use it.
-- **How to search:** Check Map/ for a relevant Basecamp first (read Compass and Trails). Then search keywords/names/topics across the vault. Follow links from what you find.
-- **Report what's actually there.** Don't cross-pollinate answers from unrelated projects to fill gaps. A clear "the vault doesn't have this" is correct AFTER a thorough search.
-- **Search thoroughly.** Check the relevant Basecamp, related notes, daily notes where the topic was discussed. Don't stop at the first near-miss result.
-- Both rules matter equally: don't fabricate answers, but also don't give up too early.
+- Flat vault. Notes in root, folders only for Calendar, Map, Templates, Downloads.
+- Links do the organizing. Not folders. When in doubt, link rather than file.
+- CLAUDE.md is the source of truth for conventions. This file extends, never contradicts.
 
 ## Meeting Transcript Processing
-- **Speaker identification first, always.** Before writing a summary, present the speaker mapping for review. Use vault context (participant lists, roles, speech patterns) to identify speakers. Format as: `Speaker 1 = Name — [reasoning]`. Get sign-off before proceeding.
-- **Topic extraction.** Break the transcript into discrete topics. Each becomes its own subsection with relevant tags and links.
-- **Full meeting summary.** Written in the daily note body: reverse chronological, each topic as a `####` subsection under the meeting header (`###`). Include context links, what was discussed, what was decided, what's waiting.
-- **TODO extraction.** Apply the TODO filtering rules. Only items you own, are bottleneck for, or need to chase.
-- **Vault connections.** Link to existing notes. Update knowledge notes when meetings surface real new information.
 
-**Common transcript issues to watch for:**
-- Speaker labels are often generic (Speaker 1, Speaker 2). Never real names. Always need identification.
-- Transcription tools sometimes hallucinate text during silence ("Thank you for watching!", repeated word loops)
-- One person can get split across multiple speaker labels
-- Quick utterances ("yeah," "right") are often misattributed
-- Names get mangled. Check the People section in CLAUDE.md for correct spellings.
+This is the most common complex task. Follow these steps in order:
+
+**Step 1: Speaker identification.** Before writing anything, present the speaker mapping for review. Use vault context (participant lists from Basecamps, roles mentioned in prior meetings, speech patterns, topics each speaker discusses) to identify speakers. Format as:
+```
+Speaker 1 = Name — [reasoning]
+Speaker 2 = Name — [reasoning]
+```
+Get sign-off before proceeding. Do not skip this step even if speaker names seem obvious.
+
+**Step 2: Vault search.** Search the vault for existing notes, Basecamps, and tickets related to the meeting topics. You'll need these for linking in Step 3.
+
+**Step 3: Topic extraction and summary.** Break the transcript into discrete topics. Each becomes its own subsection (#### heading) under the meeting header (### heading) in the daily note Body. For each topic:
+- What was discussed. Key points, not a transcript rehash.
+- What was decided, if anything.
+- What's still open or waiting.
+- Links to relevant existing notes and Basecamps from Step 2.
+
+**Step 4: TODO extraction.** Apply CLAUDE.md's TODO filtering rules. Only items the user owns, is bottleneck for, or needs to chase. Write as checkbox items with anchor links back to the meeting section.
+
+**Step 5: Vault updates.** If the meeting surfaced real new information about an existing topic, update that knowledge note or Basecamp. The test: does this change understanding of the topic, or is it just a status mention? Only update for the former.
+
+**Step 6: Offer daily note update.** After processing, confirm what was added to the daily note and ask if anything else should be captured.
+
+**Common transcript problems:**
+- Speaker labels are generic (Speaker 1, Speaker 2). Never trust them as names. Always identify.
+- Transcription tools hallucinate during silence ("Thank you for watching!", repeated word loops). Ignore these.
+- One person can get split across multiple speaker labels mid-transcript. Watch for this.
+- Quick utterances ("yeah," "right," "mm-hmm") are often misattributed. Don't use these alone to identify speakers.
+- Names get mangled. Always check the People and Spelling Corrections sections in CLAUDE.md.
+- "Microphone" labels in some transcription tools are duplicates of the previous speaker line, not a separate person.
 
 ## Session Handoff
-- After deep working sessions (transcript processing, note creation, problem-solving), proactively offer to update:
-  1. The daily note with what was accomplished
-  2. Relevant knowledge notes with conclusions or decisions
-  3. Any Basecamps that should reflect new information
-- Don't wait to be asked. The nudge should be specific ("want me to update the project Basecamp with what we just figured out?"), not generic ("want me to save anything?").
+
+After deep working sessions (transcript processing, note creation, problem-solving, research), proactively offer to update:
+1. The daily note with what was accomplished
+2. Relevant knowledge notes with conclusions or decisions
+3. Any Basecamps that should reflect new information
+
+The nudge should be specific: "Want me to update the project Basecamp with what we just figured out?" not "Want me to save anything?"
+
+If the user says "update the handoff" or similar shorthand, they mean: update whatever cross-session context file or note captures the current state of active work.
+
+## Linking Judgment Calls
+
+CLAUDE.md says to link every note. Here's how to judge what's worth linking:
+
+- **First mention of a topic that has an existing note = always link.** No judgment needed.
+- **Updating an existing note with new info from a meeting?** Only if the new info changes understanding. "We discussed the project" is a status mention, skip. "We decided to change the architecture" is real new info, update.
+- **Cross-linking between notes on the same topic from different angles?** Yes. If a meeting summary discusses something that a standalone knowledge note also covers, link them both ways.
+- **Forcing a link because words match?** No. "Budget" appearing in two unrelated notes doesn't mean they should be linked. Link for understanding, not keyword matching.
+
+## Persistence Judgment Calls
+
+CLAUDE.md defines three tiers. Here's how to handle the gray areas:
+
+- **User shares something offhand ("oh yeah, we decided to go with Option B").** This sounds casual but it's a decision. Tier 2: ask if they want it captured.
+- **User vents or thinks out loud ("I'm not sure this approach is going to work").** Not a decision yet. Don't capture unless they signal it's worth saving.
+- **User shares factual data (a workout, a purchase, something that happened today).** Tier 1: log it in the daily note without asking.
+- **User shares something about a person ("Sarah got promoted," "Marcus is leaving the company").** Tier 2: ask. This might warrant updating a People entry or a related note.
+- **Long conversation with multiple substantive topics, user seems to be wrapping up.** Tier 3: sweep. "We covered X, Y, and Z. X is in the daily note. Want me to capture Y as a note?"
+
+## Note Quality Checks
+
+Before saving any note, quick self-check:
+- Does it have a `## Compass` section? (Every note and Basecamp needs one.)
+- Does it link to at least one other note or Basecamp? (No orphans.)
+- Is it in the right location? (Root for notes, Map/ for Basecamps, Calendar/ for daily notes.)
+- If it's a Basecamp, does it have a `## Trails` section?
+- Are `[[wiki links]]` used, not markdown links? Are internal anchors using `[[#Heading]]` syntax, not `[text](#slug)`?
 
 <!-- AI will add memories below this line as patterns emerge from your use. -->
 <!-- You can also add your own entries manually at any time. -->
