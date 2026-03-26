@@ -9,6 +9,9 @@ Thumbs.db
 *.tmp
 *~
 
+# Superpowers brainstorm artifacts
+.superpowers/
+
 # Repos (separate git repos living inside the vault — visible to AI, invisible to Obsidian)
 # Clone your projects here. AI can see both your knowledge base and your code.
 repos/
