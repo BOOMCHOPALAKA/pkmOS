@@ -30,11 +30,21 @@ The whole thing runs on plain text files and a free app. No code. No databases. 
 
 ## What This Actually Is
 
-You're probably already using AI. ChatGPT, Claude, Gemini, whatever. Maybe you've had it help draft an email, summarize a meeting, explain something complicated, or brainstorm an idea. Maybe you've even set up projects or custom instructions, and the memory features mean it remembers some things between conversations.
+You're probably already using AI. ChatGPT, Claude, Gemini, whatever. Maybe you've had it help draft an email, summarize a meeting, explain something complicated. Maybe you've even set up custom instructions or used the memory features.
 
-But there's a ceiling. The memory is shallow. A few saved facts, some conversation history. You still end up re-explaining context, pasting things in, managing what it knows and doesn't know. It's like having a really smart coworker who remembers your name and your title but nothing about what happened in last week's meetings. And when you ask "where did you get that?" the answer is vague. "Based on our previous conversations." You're trusting the AI's summary of its own reasoning with no easy way to check.
+But there's a ceiling. And if you've used AI enough, you've felt it.
 
-This system removes that ceiling. Instead of AI that remembers fragments, you get AI that searches through a structured knowledge base of everything you've built. Your projects, your people, your decisions, your preferences. All of it lives in files you control on your computer. Plain text. Nothing proprietary. noteOS reads those files, works inside them, and gets more helpful the more you add.
+### Things You Won't Have to Do Anymore
+
+**Re-explain yourself every session.** noteOS loads an instruction file automatically. AI already knows your projects, your people, your preferences. You just start talking.
+
+**Manage fuzzy memory.** Your knowledge lives in structured files AI reads every conversation. Not fragments. Actual files you can open, read, and verify. They get richer the more you use the system.
+
+**Babysit the tool.** The instruction file has rules for when AI should act, when to ask, and what to leave alone. When something goes wrong, you add a line and it doesn't happen again.
+
+**Treat every conversation as an island.** Notes link to other notes. AI searches your vault before answering. The denser the web gets, the better it navigates. You build that density just by using it.
+
+**Re-type the same prompts.** The instruction file ships with tested conventions for meeting processing, daily notes, TODO filtering, and more. Works on the first conversation. You customize over time.
 
 Think of it this way. If you had the world's best personal assistant, their value wouldn't just be their skills. It would be the six months they spent learning how you work, what you care about, and what's going on in your life. If they quit, all of that walks out the door. This system is like writing all of that down so the next assistant, or AI, can pick it up on day one. The intelligence is in the structure, not the tool.
 
