@@ -34,6 +34,8 @@ You're probably already using AI. ChatGPT, Claude, Gemini, whatever. Maybe you'v
 
 But there's a ceiling. And if you've used AI enough, you've felt it.
 
+noteOS is a starter kit of folders, text files, and an instruction file that turns AI into something that actually knows you. Your projects, your people, your decisions, your preferences. All of it lives in files you control on your computer. Plain text. Nothing proprietary. AI reads those files, works inside them, and gets more helpful the more you add.
+
 ### Things You Won't Have to Do Anymore
 
 **Re-explain yourself every session.** noteOS loads an instruction file automatically. AI already knows your projects, your people, your preferences. You just start talking.
