@@ -1022,3 +1022,56 @@ footer a {
         left: 24px;
     }
 }
+
+/* What's New / Release Notes */
+#whats-new {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+#whats-new h2 {
+    margin-bottom: 24px;
+}
+
+.release-note {
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 8px;
+    padding: 24px 28px;
+    max-width: 720px;
+}
+
+.release-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.release-date {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.release-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-heading);
+}
+
+.release-note p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--color-text);
+}
+
+.release-note code {
+    background: var(--color-code-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.88em;
+}
