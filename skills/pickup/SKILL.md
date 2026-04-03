@@ -52,13 +52,14 @@ Keep it tight. This is a launchpad, not a report.
 
 ### 5. Bridge
 
-Close with: **"Where would you like to pick up from?"** followed by 2-4 natural language options drawn from the active threads. These aren't just topic labels. Frame them as continuations of a conversation:
+Close with: **"Where do you want to pick up from?"** followed by 2-4 subject lines. Brief topic label plus one-line summary of where it stands or what's next. No fake quoted prompts. Just a scannable menu.
 
-- "We were looking into the performance issue. Want to plan next steps with the hosting provider?"
-- "The product launch is next week. Want to check where the team is on the remaining items?"
-- "You mentioned wanting to draft that follow-up email. Want to work on that?"
+Example:
+- **Hosting performance** . Stable after the fix, need a plan for re-enabling scheduled jobs safely
+- **Product launch prep** . Production target next week, waiting on team confirmation
+- **Consulting onboarding** . Offer not accepted yet, start date Monday
 
-Lead with the thread that feels most urgent or time-sensitive. Make it easy to just say "yeah, let's do the first one" and go.
+Lead with the most urgent or time-sensitive item.
 
 ## Hard Rules
 
