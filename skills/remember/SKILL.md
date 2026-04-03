@@ -44,7 +44,7 @@ For each substantive item, decide the right destination. Common targets:
 | Something that changes how you'd understand a whole topic | Basecamp in Map/ |
 | New topic with enough substance for its own note | Ask first, then create |
 
-**Minimum targets per session:** Daily note entry. If the vault has a Current Context file, refresh that too. Most sessions will also touch project notes or knowledge notes.
+**Minimum targets per session:** Daily note entry. If the vault has a Current Context file, refresh that too. Most sessions will also touch project notes or knowledge notes. Current Context covers everything discussed, not just work projects. Personal projects, hobbies, research, side work. If it's an active thread, it belongs there.
 
 ### 3. Execute Updates
 
