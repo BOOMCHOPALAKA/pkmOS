@@ -90,7 +90,7 @@ After all updates, output a brief summary in chat:
 - Anything you chose NOT to persist and why (if relevant)
 - Any new notes you'd recommend creating (don't create without asking)
 
-**Always close with:** "Running session log: [[Chat Log]]"
+**Always close with a natural reminder about the Chat Log.** The Chat Log is a running record of all sessions, what was discussed, what got persisted, and key context. Remind the user it's there if they want to review. Vary the phrasing. Examples: "All session entries live in [[Chat Log]] if you want to look back at what's been captured." / "Everything's logged. [[Chat Log]] has the full history across sessions."
 
 ## Hard Rules
 

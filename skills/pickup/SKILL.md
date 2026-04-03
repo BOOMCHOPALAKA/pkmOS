@@ -42,7 +42,7 @@ Give a concise briefing:
 
 **Where we left off:** 2-3 sentences. What was the last session about, what was the last thing discussed or decided.
 
-**What's ready to pick up:** Bulleted list of threads that have clear next steps. Lead with the most actionable ones.
+**Active threads:** Bulleted list of threads that have clear next steps. Lead with the most actionable ones.
 
 **What's waiting on others:** Anything blocked on someone else. Quick status if known.
 
