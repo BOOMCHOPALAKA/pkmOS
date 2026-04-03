@@ -4,7 +4,7 @@
 ## What's New
 
 **April 2026 — Skills System**
-The vault now ships with a `skills/` folder containing 16 on-demand workflow guides. Meeting processing, deep analysis, session capture, drafting in your voice, weekly reports, and more. Each one is a markdown file that walks AI through a proven workflow step by step. They load when relevant and stay out of the way when they're not. The instruction file (`CLAUDE.md`) has been trimmed to take advantage of this. Conventions that apply to every conversation stay inline. Multi-step workflows that only apply in specific contexts moved to skills, which keeps the instruction file lighter and gives AI more room to work with your actual content. [Read more about skills.](#skills-teaching-ai-how-you-work)
+The vault now ships with a `skills/` folder containing 15 on-demand workflow guides. Meeting processing, deep analysis, session capture, drafting in your voice, weekly reports, and more. Each one is a markdown file that walks AI through a proven workflow step by step. They load when relevant and stay out of the way when they're not. The instruction file (`CLAUDE.md`) has been trimmed to take advantage of this. Conventions that apply to every conversation stay inline. Multi-step workflows that only apply in specific contexts moved to skills, which keeps the instruction file lighter and gives AI more room to work with your actual content. [Read more about skills.](#skills-teaching-ai-how-you-work)
 
 ---
 
@@ -382,9 +382,8 @@ And the instruction file still works on its own. Every workflow section has a qu
 | `deep-analysis` | Thinking partner for decisions. Pushes back, stress-tests assumptions, steelmans the other side |
 | `situation-assessment` | Paste a messy email thread or ticket history, get a clear picture of what's actually going on |
 | `next-steps` | Crystallizes "what now" after any discussion. Concrete actions, open questions, and softer suggestions |
-| `remember` | On-demand session capture. Type `/remember` and AI figures out what to save and where. Logs everything to the right notes and keeps a running session log |
+| `remember` | On-demand session capture. Type `/remember` (or "log this chat") and AI figures out what to save and where. Also nudges proactively at natural breakpoints |
 | `pickup` | Resume where you left off. Type `/pickup` and AI reads your last session's context and orients you on what's active, what's next, and what to read |
-| `session-handoff` | Proactive end-of-session context preservation. Nudges you to save before things fall through the cracks |
 | `skill-creation` | Guided intake for building new skills. Asks the right questions before writing anything |
 | `ticket-creation` | Scannable dev tickets that people actually read |
 | `codebase-investigation` | Systematic debugging. Traces code paths, checks the vault for prior context, documents findings |

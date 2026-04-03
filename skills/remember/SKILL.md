@@ -1,6 +1,6 @@
 ---
 name: remember
-description: Use when the user says /remember or asks to capture/log/document what was discussed in the current session. On-demand session persistence.
+description: Use when the user says /remember, "log this chat," or asks to capture/log/document what was discussed in the current session. Also offer proactively at natural breakpoints after substantial work. On-demand session persistence.
 ---
 
 # Remember
@@ -10,6 +10,8 @@ description: Use when the user says /remember or asks to capture/log/document wh
 ## Overview
 
 On-demand session capture. When fired, assess everything substantive from the current conversation and persist it to the right places in the vault. The user shouldn't have to explain what or where. Figure it out.
+
+**Also offer proactively** at natural breakpoints: after processing transcripts, after a big decision, after creating multiple notes, after any substantial block of work. The nudge should be specific: "Want me to log this session? We covered X, Y, and Z."
 
 ## Workflow
 
@@ -57,13 +59,14 @@ For each target:
 This is the bridge between sessions. A new conversation reads Current Context first. Write it for a cold reader who needs to pick up where you left off.
 
 1. Read existing content. Preserve other sessions' entries.
-2. For each active thread discussed this session, write entries that answer:
+2. **Timestamp every entry.** Run `date` (step 0) and include the date in each thread heading or entry. Also update the file's `*Last updated:*` line at the top if it has one. This makes it obvious how fresh each piece of context is when a future session reads it.
+3. For each active thread discussed this session, write entries that answer:
    - What's the current state? (not history, just where things stand right now)
    - Where did we stop? (the last thing discussed or decided)
    - What's the immediate next step?
    - What files should a new session read to get full context? (daily note sections, analysis docs, project notes. Use specific `[[links]]` and section anchors)
-3. Update "Open For Next Session" as a pickup prompt, not just a checklist. Each item should have enough context that a new session can act on it without needing re-explanation.
-4. Remove resolved items. Prune stale entries.
+4. Update "Open For Next Session" as a pickup prompt, not just a checklist. Each item should have enough context that a new session can act on it without needing re-explanation.
+5. Remove resolved items. Prune stale entries.
 
 ### 4. Log to Chat Log
 
@@ -80,9 +83,19 @@ If the vault has a Chat Log (or similar session log), append an entry in reverse
 **Key context:** 1-3 sentences of non-obvious context that would help a future session understand why this work mattered or what was left unresolved.
 ```
 
+**Key context is the most important field.** Notes and project files are findable. The thinking that led to them, the connections made in conversation, the things discussed but not yet written down. That's what gets lost between sessions.
+
 If no Chat Log exists, suggest creating one.
 
-### 5. Report Back
+### 5. Persistence Sweep
+
+Before reporting back, check: is there anything substantive from this session that hasn't been persisted? Be specific:
+- "We discussed X but I didn't write it anywhere yet. Want me to add it to [specific note]?"
+- "The analysis we did on Y would be worth capturing as [specific type of note]."
+
+Don't be generic ("anything else to save?"). Name what and where.
+
+### 6. Report Back
 
 After all updates, output a brief summary in chat:
 - Which files were updated
@@ -94,6 +107,7 @@ After all updates, output a brief summary in chat:
 
 ## Hard Rules
 
+- **Every remember run gets its own Chat Log entry.** Never update or merge into a previous entry. Even if remember ran 10 minutes ago in the same session, create a new entry with a new timestamp. The Chat Log is an append-only log.
 - **Read before writing.** Every file, every time. No blind overwrites.
 - **Section updates over full rewrites.** Touch what needs touching.
 - **Ask before creating new standalone notes.** Daily note entries and section updates to existing notes just happen. New files need a yes.
