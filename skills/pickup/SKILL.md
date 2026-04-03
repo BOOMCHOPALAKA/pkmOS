@@ -48,7 +48,17 @@ Give a concise briefing:
 
 **What needs attention:** Items from "Open For Next Session" that look time-sensitive or stale.
 
-Keep it tight. This is a launchpad, not a report. The user will say "let's pick up on X" and then you're in it.
+Keep it tight. This is a launchpad, not a report.
+
+### 5. Bridge
+
+Close with: **"Where would you like to pick up?"** followed by 2-4 natural language options drawn from the active threads. These aren't just topic labels. Frame them as continuations of a conversation:
+
+- "We were looking into the performance issue. Want to plan next steps with the hosting provider?"
+- "The product launch is next week. Want to check where the team is on the remaining items?"
+- "You mentioned wanting to draft that follow-up email. Want to work on that?"
+
+Lead with the thread that feels most urgent or time-sensitive. Make it easy to just say "yeah, let's do the first one" and go.
 
 ## Hard Rules
 
