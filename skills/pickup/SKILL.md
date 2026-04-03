@@ -52,7 +52,7 @@ Keep it tight. This is a launchpad, not a report.
 
 ### 5. Bridge
 
-Close with: **"Where would you like to pick up?"** followed by 2-4 natural language options drawn from the active threads. These aren't just topic labels. Frame them as continuations of a conversation:
+Close with: **"Where would you like to pick up from?"** followed by 2-4 natural language options drawn from the active threads. These aren't just topic labels. Frame them as continuations of a conversation:
 
 - "We were looking into the performance issue. Want to plan next steps with the hosting provider?"
 - "The product launch is next week. Want to check where the team is on the remaining items?"
