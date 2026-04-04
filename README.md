@@ -47,6 +47,22 @@ But there's a ceiling. And if you've used these tools enough, you've hit your he
 
 That's where this idea of a personal operating system comes in. What if instead of managing an intern, you were working with a partner who already knew your projects, your history, and your preferences? Who you could trust to check their own work against real context? Who got sharper the more you worked together, not because the AI got smarter, but because the system around it got richer? That's noteOS.
 
+### How session continuity actually works
+
+Two commands. `/remember` is the save. `/pickup` is the load.
+
+You're in a session and you've covered a lot of ground. Decisions made, new information surfaced, things still open. You type `/remember`. AI assesses everything substantive from the conversation, figures out where each piece goes. Daily note, project notes, your cross-session context file, your chat log. You don't have to explain what to save or where. It reads the conversation, reads the vault, and connects the dots. It also nudges you when it notices a natural breakpoint. After a big decision, after processing a meeting, after any substantial block of work. Use it whenever it feels right. Mid-session, end of session, multiple times in a long conversation. Think of it like hitting save.
+
+There's a practical reason this matters beyond convenience. AI tools have a context window. The longer a conversation goes, the more likely things get missed, repeated, or slightly off. Starting fresh conversations regularly is genuinely better practice. But only if you have a way to carry the important stuff forward. That's what remember does. You get the benefits of a clean slate without the cost of lost context.
+
+Next session. You type `/pickup`. AI reads what was saved, traces the links to the relevant notes, and gives you a concise briefing. Where you left off. What's active. What's waiting on someone else. What needs attention. Then it asks where you want to pick up from. You pick one and you're back in it.
+
+Here's what's actually happening. When you run `/remember`, AI writes to your vault. Meeting notes and updates go to your daily note. Status changes go to project notes. A context file tracks what's active, what's blocked, and what's next. A chat log records what was discussed and what got saved. Everything gets linked together. When you run `/pickup`, AI reads that context file, follows the links, and reconstructs where you are. It's not magic. It's just well-organized text files that AI knows how to read and write.
+
+noteOS is already set up to persist things proactively as you work. Auto-logging routine items, nudging you when something substantive comes up that should be captured. But `/remember` is you taking control. It's the manual save that makes sure nothing gets missed. The system tries to catch things on its own. Remember guarantees it.
+
+That's the loop. Save when you've done meaningful work. Load when you're back. The more you use it, the more natural it gets.
+
 ### Things You Won't Have to Do Anymore
 
 **Re-explain yourself every session.** noteOS loads an instruction file automatically. AI already knows your projects, your people, your preferences. You just start talking.
@@ -55,7 +71,7 @@ That's where this idea of a personal operating system comes in. What if instead 
 
 **Babysit the tool.** The instruction file has rules for when AI should act, when to ask, and what to leave alone. When something goes wrong, you add a line and it doesn't happen again.
 
-**Treat every conversation as an island.** Notes link to other notes. AI searches your vault before answering. The denser the web gets, the better it navigates. You build that density just by using it.
+**Treat every conversation as an island.** `/remember` saves where you are. `/pickup` gets you back. Your notes link to each other, AI searches across them, and the context compounds over time. New sessions start informed, not blank.
 
 **Re-type the same prompts.** The instruction file and skills folder ship with tested workflows for meeting processing, daily notes, TODO filtering, deep analysis, and more. Works on the first conversation. You customize over time.
 
