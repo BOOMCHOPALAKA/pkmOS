@@ -407,13 +407,14 @@ And the instruction file still works on its own. Every workflow section has a qu
 
 #### What's included
 
-The starter vault ships with 17 skills:
+The starter vault ships with 18 skills:
 
 | Skill | What it does |
 |---|---|
 | `onboarding` | First-run experience. Detects a fresh vault and runs a guided conversation to personalize everything. Creates your personal Basecamp, fills in the instruction file, and seeds the vault |
 | `remember` | On-demand session capture. Type `/remember` and AI figures out what to save and where. Updates your notes, context file, and chat log. Nudges proactively at natural breakpoints |
 | `pickup` | Resume where you left off. Type `/pickup` and AI reads your last session's context, briefs you, and asks where you want to pick up from |
+| `pickup-work` | Work-only pickup. Same briefing flow as `/pickup` but filtered to professional threads. Pulls fresh repo data, groups by client, skips personal items |
 | `meeting-processing` | Speaker ID, structured summaries, TODO extraction, vault linking, takeaway analysis |
 | `deep-analysis` | Thinking partner for decisions. Pushes back, stress-tests assumptions, steelmans the other side |
 | `situation-assessment` | Paste a messy email thread or ticket history, get a clear picture of what's actually going on |
