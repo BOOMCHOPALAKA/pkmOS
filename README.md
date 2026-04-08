@@ -1,23 +1,23 @@
 # noteOS - Your Personal Operating System. Powered by Simple Text Files, Supercharged by AI.
-*All your knowledge. Documented. Connected. Searchable. Conversational.*
+*The system that remembers what you don't.*
 
 ## What's New
 
 **April 2026 — Onboarding Experience**
-Your first conversation with noteOS is now a guided setup. The system detects a fresh vault and walks you through a short conversation to personalize everything. By the end of a few questions, you have a personal Basecamp, a configured instruction file, and a vault ready to use. No manual setup required. [Read more about getting started.](#start-using-it)
+Your first conversation with noteOS is now a guided setup. The system detects a fresh vault and walks you through a short conversation to personalize everything. By the end of a few questions, you have a personal Basecamp, a configured instruction file, and a vault ready to use. No manual setup required.
 
 **April 2026 — Skills System**
-The vault now ships with 17 skills. These are step-by-step workflow guides that AI follows when you're doing specific things. Process a meeting, analyze a situation, draft something in your voice, capture a session. Each one is a markdown file in `skills/` that loads when relevant and stays out of the way when it's not. Two highlights: `/remember` saves everything from your current session to the right places in the vault. `/pickup` reads what was saved and gets you back up to speed in a new conversation. Together they solve the biggest pain point in working with AI: losing context between sessions. [Read more about skills.](#skills-teaching-ai-how-you-work)
+The vault now ships with 18 skills. Step-by-step workflow guides that AI follows for specific tasks. Process a meeting, analyze a situation, draft something in your voice, capture a session. Each one is a markdown file in `skills/` that loads when relevant and stays out of the way when it's not. Two highlights: `/remember` saves everything from your current session to the right places in the vault. `/pickup` reads what was saved and gets you back up to speed in a new conversation. Together they solve the biggest pain point in working with AI: losing context between sessions.
 
 ---
 
 ## Table of Contents
 - [Imagine a World...](#imagine-a-world)
 - [What This Actually Is](#what-this-actually-is)
+- [What Changes](#what-changes)
 - [How It Works](#how-it-works)
 - [Your Knowledge, Your Files](#your-knowledge-your-files)
 - [Getting Started](#getting-started)
-- [Start Using It](#start-using-it)
 - [Going Deeper](#going-deeper)
 - [Reference](#reference)
 
@@ -36,8 +36,6 @@ That's noteOS.
 
 **It builds itself while you use it.** I thought I'd spend hours setting up folders and organizing notes. I didn't. I just type. I tell it what happened in a meeting, what I'm thinking about, what I need to remember. It creates the notes, links them to everything related, and the structure emerges on its own. Everything connects through links and references, like Wikipedia. You find things by following connections, not by remembering which folder you put something in.
 
-**You get answers you can have much higher confidence in.** A regular AI chat will give you a wrong answer with complete confidence and you'd never know. It fills gaps with plausible guesses because it has nothing to check against. noteOS changes that. AI searches your vault before responding. When it tells you something, it's pulling from your notes, your meeting summaries, your project docs. You can ask "where did you get that?" and get a real answer. Specific files. Specific sections. Click through in Obsidian and verify. And the instruction file trains AI to say "I don't know" instead of guessing, to flag when it's inferring vs. stating fact, and to separate what it found from what it thinks. It's not perfect. But the confidence level is significantly higher than what you get from a blank chat window.
-
 The whole thing runs on plain text files and a free app. No code. No databases. You don't need to be technical. The system does the heavy lifting.
 
 ---
@@ -46,56 +44,253 @@ The whole thing runs on plain text files and a free app. No code. No databases. 
 
 You're probably already using AI. ChatGPT, Claude, Gemini, whatever. Maybe you've had it help draft an email, summarize a meeting, do some research. Maybe you've even set up custom instructions or used the memory features.
 
-But there's a ceiling. And if you've used these tools enough, you've hit your head on it. Every conversation seems to start from scratch. You re-explain your projects, your thoughts on something, the background, your preferences. You tell it things you've told it before. You double-check its answers because you know it's filling gaps with confident guesses. It's like working with a brilliant intern. Smart, fast, capable. But every morning they show up having forgotten everything from yesterday. So you manage them. You re-explain context. You verify their work. You get useful output, but it takes effort to get there every time.
+But there's a ceiling. And if you've used these tools enough, you've hit your head on it. Every conversation starts from scratch. You re-explain your projects, your preferences, your situation. You tell it things you've told it before. You double-check its answers because you know it's filling gaps with confident guesses. It's like working with a brilliant intern. Smart, fast, capable. But every morning they show up having forgotten everything from yesterday.
 
-That's where this idea of a personal operating system comes in. What if instead of managing an intern, you were working with a partner who already knew your projects, your history, and your preferences? Who you could trust to check their own work against real context? Who got sharper the more you worked together, not because the AI got smarter, but because the system around it got richer? That's noteOS.
+What if instead of managing that intern, you were working with a partner who already knew your projects, your history, and your preferences? Who you could trust to check their own work against real context? Who got sharper the more you worked together, not because the AI got smarter, but because the system around it got richer?
 
-### How session continuity actually works
+That's noteOS. A folder of plain text files, a free app to browse them, and AI that reads and writes inside them. Your instruction file loads every session, so AI already knows who you are. Your notes link to each other, so AI can trace connections you'd never find manually. And when you close your laptop Friday afternoon and come back Monday morning, you pick up right where you left off. What you were working on, what's still open, what needs attention. No re-explaining. No scrolling through old chats. The context carries forward because it lives in your files, not in a chat history that disappears.
 
-Two commands. `/remember` is the save. `/pickup` is the load.
-
-You're in a session and you've covered a lot of ground. Decisions made, new information surfaced, things still open. You type `/remember`. AI assesses everything substantive from the conversation, figures out where each piece goes. Daily note, project notes, your cross-session context file, your chat log. You don't have to explain what to save or where. It reads the conversation, reads the vault, and connects the dots. It also nudges you when it notices a natural breakpoint. After a big decision, after processing a meeting, after any substantial block of work. Use it whenever it feels right. Mid-session, end of session, multiple times in a long conversation. Think of it like hitting save.
-
-There's a practical reason this matters beyond convenience. AI tools have a context window. The longer a conversation goes, the more likely things get missed, repeated, or slightly off. Starting fresh conversations regularly is genuinely better practice. But only if you have a way to carry the important stuff forward. That's what remember does. You get the benefits of a clean slate without the cost of lost context.
-
-Next session. You type `/pickup`. AI reads what was saved, traces the links to the relevant notes, and gives you a concise briefing. Where you left off. What's active. What's waiting on someone else. What needs attention. Then it asks where you want to pick up from. You pick one and you're back in it.
-
-Here's what's actually happening. When you run `/remember`, AI writes to your vault. Meeting notes and updates go to your daily note. Status changes go to project notes. A context file tracks what's active, what's blocked, and what's next. A chat log records what was discussed and what got saved. Everything gets linked together. When you run `/pickup`, AI reads that context file, follows the links, and reconstructs where you are. It's not magic. It's just well-organized text files that AI knows how to read and write.
-
-noteOS is already set up to persist things proactively as you work. Auto-logging routine items, nudging you when something substantive comes up that should be captured. But `/remember` is you taking control. It's the manual save that makes sure nothing gets missed. The system tries to catch things on its own. Remember guarantees it.
-
-That's the loop. Save when you've done meaningful work. Load when you're back. The more you use it, the more natural it gets.
-
-### Things You Won't Have to Do Anymore
-
-**Re-explain yourself every session.** noteOS loads an instruction file automatically. AI already knows your projects, your people, your preferences. You just start talking.
-
-**Manage fuzzy memory.** Your knowledge lives in structured files AI reads every conversation. Not fragments. Actual files you can open, read, and verify. They get richer the more you use the system.
-
-**Babysit the tool.** The instruction file has rules for when AI should act, when to ask, and what to leave alone. When something goes wrong, you add a line and it doesn't happen again.
-
-**Treat every conversation as an island.** `/remember` saves where you are. `/pickup` gets you back. Your notes link to each other, AI searches across them, and the context compounds over time. New sessions start informed, not blank.
-
-**Re-type the same prompts.** The instruction file and skills folder ship with tested workflows for meeting processing, daily notes, TODO filtering, deep analysis, and more. Works on the first conversation. You customize over time.
-
-**Wonder if the answer is made up.** Regular AI fills knowledge gaps with confident guesses. With a vault, AI checks your actual notes before responding. It tells you where it found something, flags when it's making an inference, and says "I don't know" when it doesn't know. You stop asking "is this right?" and start asking "show me where."
-
-Think of it this way. If you had the world's best personal assistant, their value wouldn't just be their skills. It would be the six months they spent learning how you work, what you care about, and what's going on in your life. If they quit, all of that walks out the door. This system is like writing all of that down so the next assistant, or AI, can pick it up on day one. The intelligence is in the structure, not the tool.
+The longer you use it, the better it gets. Not because the AI improved. Because your knowledge base got richer.
 
 ---
 
-## How It Works: 
-### Folders & Files + Obsidian + AI = Your Personal Operating System
+## What Changes
 
-Before you download anything, here's what you're building and why it's structured the way it is. Three things work together:
+If you've been using Claude or ChatGPT for a while, you've probably built up your own bag of tricks. You tell it not to rewrite the whole document. You re-explain your context at the start of every chat. You paste in the same briefing docs over and over. All of that works. But it's manual, it's fragile, and it resets every time you start a new conversation. noteOS gives you a foundation where those problems get smaller the more you use it.
 
-1. **A main folder of subfolders and plain text files** that holds all your knowledge. This is where all the content you create will live and where we point the AI to work in and supercharge it.
-2. **Obsidian**, a free app to browse, search, and edit those files visually. Think of it as a really nice window into your folder.
-3. **An AI tool** (like Claude) that reads and writes inside the folder. It's the engine that builds notes, makes connections, and answers your questions.
+| | What you're probably doing now | What noteOS gives you |
+|---|---|---|
+| **Context** | Every new conversation starts from zero. You upload documents, set roles, say "ground this to these files." Every. Single. Time. | An instruction file loads automatically at the start of every conversation. AI already knows your projects, your people, your preferences. You just start talking. |
+| **Memory** | Claude remembers fragments. A few saved facts, some vague conversation history. You still end up re-explaining what you're working on and what happened last week. | Your knowledge lives in structured files AI reads every session. Not fuzzy recall. Actual files you can open, read, and verify. The more you use the system, the richer they get. |
+| **Control** | Ask Claude to fix one sentence and it rewrites the whole document. You learn to add "do not do anything until I say so" to every prompt. You're managing the tool instead of using it. | The instruction file comes pre-loaded with rules for when AI should act, when to ask, and what to leave alone. Not perfect out of the box, but when something goes wrong, you add a line and it doesn't happen again. |
+| **Continuity** | Each conversation is an island. There's no way to tell AI "always check that document" or "remember everything from this project." It can't connect things across sessions on its own. | Save where you are at the end of a session. Pick up where you left off at the start of the next one. Your notes link to each other, AI searches across them, and the context compounds over time. New sessions start informed, not blank. |
+| **Setup Tax** | You figure out the same tricks everyone else figures out. "Be concise." "Cite your sources." "Don't be polite." You re-type them every session, or forget, and wonder why the output got worse. | The instruction file ships with tested conventions for meeting processing, daily notes, TODO filtering, communication style, and more. Works on the first conversation. You customize over time. |
 
-That's the whole stack. A folder, a viewer, and an AI engine. They don't just sit next to each other. They feed into each other in a continuous loop. Everything below explains how they fit together.
+Think of it this way. If you had the world's best personal assistant, their value wouldn't just be their skills. It would be the six months they spent learning how you work, what you care about, and what's going on in your life. If they quit, all of that walks out the door. This system is like writing all of that down so the next assistant, or AI, can pick it up on day one. The intelligence is in the structure, not the tool.
 
-### The folder and file structure
+### What this looks like in practice
+
+To give you a sense of where this goes after a few months of just using it:
+
+I manage a dev team across two clients. Early on I pointed Claude at our GitHub repos and had it analyze the commit history. Now it knows who built what, who has the deepest expertise in each part of the codebase, and where the knowledge gaps are. When an issue comes up, I can ask "who would be the best person to look at this?" and get a real answer based on actual contribution history.
+
+I also run a small brewing cacao business on the side. I have a hub page for it (we call these Basecamps in noteOS) that links to supplier notes, customer order patterns, pricing strategy, product development ideas.
+
+I'm into hiking, backcountry skiing, rucking. I exported my Garmin data into the vault and now whenever I log a workout, AI has years of context behind it. It knows my resting heart rate trends, my training patterns, my peak fitness benchmarks. It tells me things about my own data that Garmin never surfaced.
+
+At work, I have Basecamps for each client with every stakeholder, every project, every decision linked and traceable. When someone mentions a name in a meeting, AI already knows who they are, what they work on, and what they said three weeks ago.
+
+I didn't sit down and build any of that manually. It grew from conversations I was already having. That's the part that surprised me most. You don't maintain the system. You just use it and it builds itself.
+
+You stop asking generic questions and start asking things only your vault can answer:
+
+- **"I have a standup in 20 minutes. Catch me up on everything that's happened this week."** It reads your daily notes and recent updates and gives you a briefing.
+- **"I'm planning a backpacking trip in August. What gear worked last time and what did I say I'd change?"** It finds your trip notes, your gear lists, that comment you made about your pack being too heavy.
+- **"Draft a status report for this week. You know the format."** It does. Because the instruction file has your format, your voice, your conventions.
+- **"Here's a meeting transcript. Process it."** It knows what that means. Summarize, extract your action items, update the daily note, link to relevant projects.
+- **"When was the dog's last vet appointment and what did they say about her knee?"** It finds the note, the vet's recommendation, the follow-up timeline.
+
+You don't get here on day one. But you get here faster than you'd think.
+
+---
+
+## How It Works
+
+Three things work together:
+
+1. **A folder of plain text files** that holds all your knowledge. Notes, meeting summaries, project docs, daily logs. Everything lives here.
+2. **[Obsidian](https://obsidian.md)**, a free app to browse, search, and edit those files visually. Clickable links between notes, instant search, and a graph that shows how everything connects. Under the hood, it's just reading plain text files. You could delete Obsidian tomorrow and every file would still be there, readable in any text editor.
+3. **An AI tool** (like Claude) that reads and writes inside the folder. It builds notes, makes connections, and answers your questions using everything you've put in.
+
+That's the whole stack. A folder, a viewer, and an AI engine.
+
+### The instruction file
+
+This is what ties it together. There's a file called `CLAUDE.md` that AI reads at the start of every conversation. Think of it as a briefing document. Here's who I am. Here are my projects. Here's how I like things formatted. Here's what to do with a meeting transcript. The starter vault includes symlinks so every major AI tool finds its own version of this file automatically. One file to maintain, every tool picks it up.
+
+You don't need to fill it all out before you start. Five lines puts you ahead of most AI users. "I'm a contracts director at a nonprofit. My main projects are X, Y, Z. I prefer concise summaries over detailed ones." That alone means every conversation starts with context instead of from scratch. Or just start using the system and let AI fill it in over time based on your conversations.
+
+The starter vault ships with tested conventions that work out of the box:
+
+- **Morning brief** . Ask for one and it pulls today's weather, top news, and whatever's active in your vault. Sparse on day one. Rich after a few weeks.
+- **Daily notes** . It creates them, files them, keeps them organized. A running log of your day.
+- **Processing anything you drop on it** . Meeting transcript, doctor's notes, a recipe, a contractor's quote. Drop it in and tell it what it is.
+- **Vault search before answering** . Before it responds to any question, it reads your notes. Not guessing. Actually tracing through what you've built.
+- **Voice and drafting** . Fill in the Communication Style section and it drafts messages that sound like you, not like a template.
+
+When something goes wrong, add a line: "Don't do X. Do Y instead." When a new project kicks off, add it. When a name keeps getting mangled, add it to People. The file grows with you. That's how it gets personal.
+
+### Using it is building it
+
+You talk to AI. AI creates notes and links them to what's already there. Next time you talk to AI, it has more context to work with. Better answers, better notes, more connections. Round and round. The folder gets richer. AI gets sharper about your world. Not because it improved. Because your knowledge base did.
+
+That's what surprised me most. You're not maintaining the system. You're building it by using it. Brainstorming, processing meetings, drafting documents, thinking out loud. All of it generates notes as a natural byproduct. Those same notes are what the system searches when you ask questions later. The more you put in, the more useful it gets.
+
+---
+
+## Your Knowledge, Your Files
+
+Everything in this system lives in folders and files on your computer. Plain text. Nothing proprietary, nothing cloud-locked, nothing that belongs to a platform.
+
+This matters because the AI landscape moves fast. Your workplace might standardize on ChatGPT this quarter and switch to Claude next quarter. With noteOS, you don't rebuild. Your folder is the constant. The AI tool is just what you plug into it today. Own the playbook, rent the tech.
+
+---
+
+## Getting Started
+
+The whole thing takes about 20 minutes.
+
+### Step 1: Download Obsidian
+
+Go to [obsidian.md](https://obsidian.md) and download it. Free, works on Mac, Windows, Linux, and mobile. This is the app you'll use to browse and read your notes visually.
+
+### Step 2: Get the starter vault
+
+Download the starter vault from this [noteOS GitHub repo](https://github.com/BOOMCHOPALAKA/noteOS). Click the green **Code** button at the top of the page and select **Download ZIP**. Unzip it and put the folder somewhere on your computer. Desktop, Documents, wherever. You can rename the folder to whatever you want.
+
+Open Obsidian, select **Open folder as vault**, and point it at the folder you just downloaded. You now have a working vault with:
+- An **instruction file** (`CLAUDE.md`) pre-loaded with conventions for meeting processing, daily notes, linking, and more. Works out of the box.
+- A **memory file** (`MEMORY.md`) that AI adds to over time as it learns your preferences.
+- **Templates** for daily notes, Basecamps, meeting summaries, and weekly reports.
+- The **folder structure** already set up and ready to go.
+
+### Step 3: Connect your AI tool
+
+This is where the magic happens. If you've used ChatGPT, Claude, or Gemini, you already know how to do this. You're still typing messages and getting answers in natural language. Nothing about how you interact changes.
+
+The one difference: instead of chatting with AI that can only see what you paste into the conversation, you point it at your vault folder. Now AI can search through all your notes. When you tell it about a meeting, it creates the summary, files it, and links it to everything related. When you ask "what did we decide about X last month?" it traces through your notes and gives you a real answer.
+
+**This does require a paid AI account.** The system needs an AI tool that can read and write files directly on your computer. That's a step beyond what free AI chat tools offer today. The cost is comparable to a streaming subscription, and the value compounds in a way Netflix doesn't.
+
+The most complete option for non-technical users right now is **Claude** from Anthropic. It has two tools that both work out of the box:
+
+**Claude Cowork** *(Recommended starting point)* is the easiest starting point and what most people should use. If you already have the Claude desktop app (or download it from [claude.ai](https://claude.ai)), Cowork is built right in. Here's how to connect it to your vault:
+
+1. Open the Claude desktop app
+2. Click the **Cowork** tab at the top (next to "Chat")
+3. In the message area, click the **folder icon** and select your vault folder
+4. Start typing
+
+That's it. You're now chatting with the same Claude you already know, except it can read and write files in your vault. Create notes, process meeting transcripts, search across everything you've built. It can even handle longer tasks on its own, breaking things into steps and working through them while you do other things. The whole experience is visual and conversational. If you've used ChatGPT or Claude in the browser, this will feel immediately familiar. You just gained superpowers.
+
+Cowork requires a paid Claude subscription (Pro at $20/month, Max at $100/month, or Team/Enterprise). [Getting started with Cowork](https://support.claude.com/en/articles/13345190-get-started-with-cowork)
+
+**Claude Code** *(For technical users)* is a command-line tool. If you don't know what that means, skip this paragraph and stick with Cowork. You won't miss anything. Claude Code does the same thing as Cowork, just in a terminal window instead of a desktop app. You open a terminal, navigate to your vault folder, and type `claude`. It's a little more powerful and a little more flexible. You get more control over how AI interacts with your files, and it's more extensible if you want to customize how the system works under the hood. It's usage-based pricing, meaning you pay for what you use rather than a monthly subscription. If you're technical, curious, or want to grow into it, it's there when you're ready. [Getting started with Claude Code](https://code.claude.com/docs/en/overview)
+
+**Both tools read the same instruction file, work inside the same vault folder, and produce the same notes.** You're not choosing a platform. You're choosing an interface. Everything you build is the same either way, and you can switch between them anytime.
+
+#### What about other AI tools?
+
+The vault is designed to be portable. Any AI tool that can read and write files in a local folder will work. The starter vault includes instruction files that every major tool auto-discovers: Claude, ChatGPT's Codex CLI, Gemini CLI, Cursor, GitHub Copilot, Windsurf, Cline. One file to maintain, every tool picks it up. See the [full compatibility table](#ai-tool-compatibility) in the Reference section below.
+
+This is moving fast. Any of these providers could ship a Cowork equivalent tomorrow. When they do, your vault works with them immediately. No migration, no export, no starting over. That's the whole point.
+
+### Just start typing
+
+That's genuinely it. Say hello, ask a question, tell it what you're working on. Anything.
+
+**Your first session is special.** The system detects that it's a fresh vault and kicks off a short onboarding conversation. It'll ask you a few questions. Who you are, what you're working on, how you like to communicate. As you answer, it builds out your vault in real time. Your personal profile, your instruction file, your first daily note. By the end of 5-7 questions, the system knows who you are and you have a personal Basecamp you can go browse. Every session after that starts with that context already loaded.
+
+If you'd rather skip the onboarding and just start using it, just say so. You can always run it later.
+
+**Some things to try:**
+
+- **"Give me a morning brief."** Works on day one. Pulls today's weather, top headlines, and whatever's active in your vault. Sparse at first. After a few weeks it knows your open TODOs, your active projects, what happened yesterday.
+- **"Create a daily note for today. Here's what I worked on..."** and give it a few bullets about your day.
+- **"Here's a meeting I had today. Summarize it and add it to my daily note."** Paste in a transcript or your own notes.
+- **"Create a Basecamp for [topic]."** A project you're managing, a trip you're planning, a side business you're running.
+
+Start with whatever's on your mind today. The first few notes will feel like scattered dots. They start connecting fast.
+
+**A few things to know:**
+
+**The system knows what you tell it.** It doesn't connect to your apps or pull data automatically. No fitness tracker sync, no calendar integration, no background magic. You give it information and it remembers and connects it. That's by design. You control exactly what goes in. In practice, that looks like exporting data from apps you already use, telling it about your day in conversation, or dropping documents into the vault and telling it to process them.
+
+**You can nudge it.** If something feels like it should be a note, say so. If a topic is getting big, ask "should we make a Basecamp for this?" If you want it to remember something small, just say "remember this." The system gets more proactive over time, but a nudge goes a long way.
+
+**You can verify everything.** With a normal chat, "where did you get that?" gets a vague response. With a vault, AI points to specific notes. You can open them in Obsidian and check. It's not a guarantee of accuracy, but it's transparency you don't get anywhere else.
+
+After a conversation, switch to Obsidian and take a look. Click a note. See how it links to others. After a few sessions, open the graph view (Cmd+G on Mac, Ctrl+G on Windows). Every note is a dot, every link is a line. What you'll see looks like a neural network. Clusters forming around your big topics, connections you didn't consciously create. That's when the whole thing clicks.
+
+---
+
+## Going Deeper
+
+The basic system works with just notes and an instruction file. How far you go is entirely up to you.
+
+**Start simple:**
+- After a meeting or important conversation, tell AI what happened. It creates the note, links it, and organizes it. Or write it yourself in Obsidian. Both work.
+- Keep a daily note. A few bullets about what you worked on, what's pending, any decisions made.
+- When you make a decision, capture the reasoning. This is gold when you need to reference it later.
+
+**Go deeper when you're ready:**
+- Feed it documents from your life. Contracts, proposals, reports, recipes, research. Drop them in Downloads and tell AI to process them.
+- Share your writing samples and let it learn your voice. Once it understands how you communicate, it can draft things that sound like you.
+- Build out Basecamps with curated links for your most active areas. The more structured your Basecamps, the better AI navigates between topics.
+
+### Session continuity: save and load
+
+Two commands. `/remember` is the save. `/pickup` is the load.
+
+You're in a session and you've covered a lot of ground. Decisions made, new information surfaced, things still open. Type `/remember`. AI reads the conversation, figures out what's substantive, and writes it where it belongs. Daily note, project notes, your cross-session context file. You don't have to explain what to save or where. It reads the conversation, reads the vault, and connects the dots. Use it whenever it feels right. Mid-session, end of session, multiple times in a long conversation. Think of it like hitting save.
+
+Next session. Type `/pickup`. AI reads what was saved, traces the links, and gives you a concise briefing. Where you left off. What's active. What needs attention. Then it asks where you want to pick up. You pick one and you're back in it.
+
+There's a practical reason this matters beyond convenience. AI tools have a context window. The longer a conversation goes, the more likely things get missed or go slightly off. Starting fresh sessions regularly is genuinely better practice. But only if you have a way to carry the important stuff forward. That's what remember does. You get the benefits of a clean slate without the cost of lost context.
+
+The system also persists things proactively as you work. Auto-logging routine items, nudging you when something substantive comes up. But `/remember` is you taking control. The manual save that makes sure nothing gets missed.
+
+### Skills: teaching AI how you work
+
+Here's the problem skills solve. You process a meeting transcript and AI nails it. Speaker identification, TODO extraction, vault linking. Perfect. Then a week later you process another one and it misses half the steps. Not because it forgot. Because the new session interpreted the condensed instructions differently.
+
+The fix: take the full workflow and put it in its own file. Not in the instruction file that loads every conversation. In a separate file that only loads when you need it. That's what skills are. Markdown files that walk AI through a proven workflow step by step. Consistent results, every session.
+
+The instruction file tells AI who you are. Skills tell AI how to do specific things for you.
+
+#### What skills look like in practice
+
+You drop a meeting transcript in chat. AI loads the meeting processing skill and follows it. Identifies the speakers, presents a mapping for you to confirm, searches the vault for related notes, writes the summary, extracts only the TODOs you're responsible for, and gives you the "so what" layer. Not a summary rehash. The part where it tells you what changed, what connects, and what doesn't add up. Every session. Consistent.
+
+You need to make a tough call. The deep analysis skill kicks in. It doesn't list pros and cons. It challenges your assumptions, steelmans the other side, separates what you know from what you're inferring. It pushes back when you're rationalizing.
+
+You've covered a lot of ground in this session. Type `/remember`. Everything gets saved, linked, timestamped. Tomorrow, type `/pickup`. Caught up in 30 seconds.
+
+#### 18 skills included
+
+| Skill | What it does |
+|---|---|
+| Onboarding | First-run experience. Detects a fresh vault, walks you through setup, creates your personal Basecamp |
+| Remember | Type `/remember` and AI saves what matters, where it matters, with links and timestamps |
+| Pickup | Type `/pickup` to resume where you left off with a concise briefing |
+| Pickup (Work) | Work-only variant of pickup. Filters to professional threads, pulls repo updates, groups by client |
+| Meeting Processing | Speaker ID, summaries, TODO extraction, vault linking, takeaway analysis |
+| Deep Analysis | Thinking partner that pushes back and stress-tests your assumptions |
+| Situation Assessment | Paste a messy thread, get a clear picture of what's going on |
+| Next Steps | Crystallizes "what now" after any discussion |
+| Drafting Voice | Learns how you write and drafts messages in your voice |
+| Morning Brief | Daily briefing with vault state, weather, and news |
+| Weekly Status Report | Sourcing, structure, and external sharing format |
+| Activity Logging | Fitness and activity tracking to daily notes |
+| Session Handoff | Proactive nudges to save context at natural breakpoints |
+| Skill Creation | Guided intake for building your own skills |
+| Ticket Creation | Scannable dev tickets that people actually read |
+| Codebase Investigation | Systematic debugging with vault context |
+| Codebase Team Assessment | Maps who knows what in a repo |
+
+If you're using **Claude Code**, skills are discovered automatically. If you're using **anything else**, just tell your AI "read `skills/meeting-processing/SKILL.md` and follow it." They're just files. Any tool can read a file.
+
+As you develop workflows that click, capture them. The skill creation skill walks you through the intake. What's the problem? What triggers it? What does good output look like? The skills you build become part of your system. They travel with your vault.
+
+### Building the habit
+
+First couple weeks: focus on daily notes and telling the system to save things worth remembering. When something goes wrong, add a correction to the instruction file. After a few weeks you'll notice topics keep coming up. Create Basecamps for those. After a month, your instruction file has real depth, your daily notes form a searchable journal, and connections are surfacing that you wouldn't have made on your own.
+
+---
+
+## Reference
+
+### The vault structure
 
 This is what the vault folder looks like on your computer. It's just a folder with subfolders and text files inside it.
 
@@ -125,155 +320,34 @@ My Vault/
                         in subfolders. Links do the organizing.
 ```
 
-Every major AI tool looks for a different instruction filename. Instead of maintaining copies, the starter vault uses **symlinks** that all point back to `CLAUDE.md`. Edit one file, every tool picks up the changes. This works out of the box on Mac and Linux. On Windows, git may need to be configured to support symlinks (run `git config core.symlinks true` before cloning).
+Every major AI tool looks for a different instruction filename. Instead of maintaining copies, the starter vault uses **symlinks** that all point back to `CLAUDE.md`. Edit one file, every tool picks up the changes. Works out of the box on Mac and Linux. On Windows, git may need `git config core.symlinks true` before cloning.
 
-#### A few things to know
-
-##### The navigation metaphor
+### Terminology
 
 The system borrows its naming from backcountry travel:
 
-- **Map** - The folder that holds all your Basecamps. Your territory overview.
-- **Basecamp** - A home base note for a main topic. It provides a high-level overview of whatever the subject is and then also houses links and references to other more detailed notes on the subject. 
-- **Compass** - The orientation and summary section at the top of each note. Think of it like a TL;DR that tells you what this note is about, why it's important, and what it connects to.
-- **Trails** - Curated links from a Basecamp to the notes that matter most for that topic. noteOS can automatically make these connections as you build the system out for yourself.
-##### Glossary
+- **Map** . The folder that holds all your Basecamps. Your territory overview.
+- **Basecamp** . A home base note for a main topic. It provides a high-level overview of whatever the subject is and then also houses links and references to other more detailed notes on the subject.
+- **Compass** . The orientation and summary section at the top of each note. Think of it like a TL;DR that tells you what this note is about, why it's important, and what it connects to.
+- **Trails** . Curated links from a Basecamp to the notes that matter most for that topic. noteOS can automatically make these connections as you build the system out for yourself.
 
-A **note** is a single text file. A meeting summary, a project overview, a recipe - every piece of knowledge in the system is a note. Most live in the root of the folder, not buried in subfolders. Instead of deciding where something goes, you just create the note and let links connect it to everything related.
+A **note** is a single text file. A meeting summary, a project overview, a recipe. Most live in the root of the folder, not buried in subfolders. Instead of deciding where something goes, you just create the note and let links connect it to everything related.
 
-A **Basecamp** is a hub note for a topic. It doesn't contain everything about that topic - it links to everything. Think of it as a table of contents for an area of your life. When you need to get up to speed on something, you start at its Basecamp and follow the links. They all live in the **Map** folder.
+A **Basecamp** is a hub note for a topic. It doesn't contain everything about that topic. It links to everything. Think of it as a table of contents for an area of your life. They all live in the **Map** folder.
 
-A **daily note** is a running log of what happened that day, organized by date in the **Calendar** folder. Over time it becomes a searchable journal. "What was I working on the first week of February?" The system knows.
+A **daily note** is a running log of what happened that day, organized by date in the **Calendar** folder. Over time it becomes a searchable journal.
 
 **Downloads** is your inbox. Drop a transcript, a contract, an export. Tell the system to process it. The raw file stays in Downloads. The structured knowledge goes into the vault as notes.
 
-**Templates** are instructions for AI, not forms for you to fill in. You say "create a Basecamp for my house renovation" and the system reads the template and builds it. The template is the recipe. noteOS is the cook.
+**Templates** are instructions for AI, not forms for you to fill in. You say "create a Basecamp for my house renovation" and the system reads the template and builds it.
 
-The result is a web where you can start anywhere and get anywhere. "What did we decide about vendor pricing?" leads to the meeting summary, which links to the project Basecamp, which has the full history. One question, full context. The denser the web, the better noteOS can trace through it.
+The result is a web where you can start anywhere and get anywhere. One question, full context. The denser the web, the better noteOS can trace through it.
 
 **This is a framework, not a rulebook.** Add folders, rename things, create templates that aren't included. Some people will use it as-is. Some will reshape it into something unrecognizable. Both are the right answer.
 
-#### The Instruction File
+### AI tool compatibility
 
-This is what makes the whole thing work the way it does with AI. There's a file called `CLAUDE.md` that AI reads at the start of every conversation. It's called CLAUDE.md because that's what Claude auto-discovers, but the starter vault includes symlinks so every major AI tool finds it automatically. More on that in Getting Started.
-
-Think of it as a briefing document. If you've used Claude's project instructions or ChatGPT's custom instructions, it's the same idea, except it lives in your folder instead of inside the AI app.
-
-- Here's who I am and what I'm focused on
-- Here are my active projects and areas of life I'm tracking
-- Here are the people who come up a lot (and how to spell their names)
-- Here's how I like my notes formatted
-- Here's what to include in a meeting summary and what to leave out
-- Here's how I communicate (my tone, my style, what to avoid)
-
-You don't need to fill all of this out before you start. You can start with five lines. "I'm a contracts director at a nonprofit. My main projects are X, Y, Z. I prefer concise summaries over detailed ones." That alone puts you ahead of most AI users because now every conversation starts with context instead of from scratch. Or just start using the system and let AI fill it in over time based on your conversations.
-
-The starter vault comes with this file already built out with tested conventions for daily notes, linking, and more. **It works out of the box.** Here's what it already knows how to do on day one:
-
-- **Morning brief** - Ask "give me a morning brief" and it pulls today's weather, top news, and whatever's active across your life. Sparse on day one. Rich after a few weeks.
-- **Daily notes** - It creates them, files them, and keeps them organized. A running log of your day - work, personal, fitness, whatever you tell it about.
-- **Processing anything you drop on it** - Meeting transcript, doctor's notes, a recipe you want to save, a contractor's quote, a trip itinerary. Drop it in and tell it what it is. It'll either create the note automatically or ask if you want it to - and suggest whether it should be a daily note entry, a standalone note, or a full Basecamp depending on how substantial it is.
-- **Vault search before answering** - Before it responds to any question, it reads your notes. Not guessing. Actually tracing through what you've built and telling you what's there.
-- **Activity and fitness log** - Tell it about a workout, a hike, a training block. It knows how to log it in your daily note and build context over time.
-- **Voice and drafting** - Fill in the Communication Style section and it drafts messages, emails, and documents that sound like you, not like a template.
-
-That's what's pre-built. Everything else you build over time. When something goes wrong, add a line: "Don't do X. Do Y instead." When a new project kicks off, add it. When a name keeps getting mangled, add it to People. The file grows with you. That's how it gets personal.
-
-### Obsidian: your viewer and editor
-
-[Obsidian](https://obsidian.md) is a free app that reads the files in your folder and makes them look good and easily readable. Obsidian calls your folder a "vault." It adds clickable links between notes, instant search, a visual graph of how everything connects, and themes to make it yours. Under the hood, it's just reading plain text files. You could delete Obsidian tomorrow and every file would still be there, readable in any text editor.
-
-Obsidian is not an AI tool. It doesn't process anything or talk back to you. It's where you go to read your notes, click through links, and see your knowledge base visually. The AI conversation happens in a separate tool (we cover that in Getting Started). But having both means you always have two paths to the same information: ask AI, or open Obsidian and browse.
-
-You don't have to use Obsidian. Any text editor works since the files are just plain text. But Obsidian handles linking natively, makes everything super easy to find and read, has some great keyboard shortcuts, and even has a really amazing graph view to see how everything you make is connected visually. And it's free. In our opinion, it's the best way to experience what you're building.
-
-### The AI tool: your engine
-
-This is the piece that makes everything feel alive. You open an AI tool, point it at your vault folder, and start chatting. The AI reads your files, writes new ones, builds links between notes, and answers questions using everything you've built. It's the same conversational experience you're used to from ChatGPT or Claude, except now it has your entire knowledge base behind it.
-
-Remember the instruction file from earlier? This is where it really matters. Every conversation starts with context. AI already knows your preferences, your projects, how you write, how you think. The instruction file turns a general-purpose AI into *your* AI.
-
-And because AI is living inside your folder, it can see everything. Not just the note you're working on, but every note, every link, every Basecamp, every trail. When it creates something new, it searches the vault for related content and links to it. That meeting summary connects to the project Basecamp, which connects to the decision log. Over time, the web gets denser and AI has more paths to trace when you ask a question. Each note makes every other note more findable. Each link makes every future question easier to answer. It's not just adding information. It's multiplying the value of what's already there.
-
-The AI tool and Obsidian are separate but connected. They work on the same files, so anything AI creates shows up in Obsidian immediately, and anything you edit in Obsidian is available to AI next time you chat. We cover the specific tools and setup in [Getting Started](#getting-started) below. The short version: we recommend Claude, and the easiest option is called Cowork. It requires a paid account. The system works with any AI tool that can read and write files in a folder.
-
-### Using it is building it
-
-This is where the three pieces stop being a stack and start being a cycle.
-
-You talk to AI. AI creates notes and links them to what's already in your folder. You open Obsidian and see the new notes sitting alongside everything else, connected and searchable. Next time you talk to AI, it has even more context to work with. Which means better answers, better notes, more connections. Which means Obsidian shows you an even richer web. Which means AI has even more to draw from next time. The folder gets richer. Obsidian shows you more. AI gets smarter about your world. Round and round.
-
-That's what surprised me most. When you use this system, you're building it at the same time. Brainstorming, processing meetings, drafting documents, thinking out loud - all of it generates notes as a natural byproduct. Those same notes are what the system searches when you ask questions later. The more you put in, the more useful it gets. Not because the AI improved. Because *your* knowledge base got richer. The system grows because you're using it, not because you're maintaining it.
-
----
-
-## Your Knowledge, Your Files
-
-I know I keep reiterating this but that's only because I think this part the most important part of this whole thing. Everything in this system lives in folders and files on your computer. Plain text. Nothing proprietary, nothing complicated, nothing cloud-locked, nothing that belongs to a specific platform. The AI platform you choose to use reads your files, but your files aren't locked inside the AI platform.
-
-This matters because the AI landscape is moving fast. Your workplace might standardize on ChatGPT this quarter and switch to Claude next quarter. A new tool might launch next month that's better than everything. With this system, you don't rebuild. Your folder is the constant. The AI tool is just what you plug into it today. Your company switches tools? Everything you've built is still right there. You want to try something new? It's all still there. Nothing moves, nothing exports, nothing breaks. Own the playbook, rent the tech.
-
-Now, finally, with all that being said... Let's get you a personal operating system!
-
----
-
-## Getting Started
-
-Now that you know what you're building and how the pieces fit together, here's how to set it up. The whole thing takes about 20 minutes.
-
-### Step 1: Download Obsidian
-
-Go to [obsidian.md](https://obsidian.md) and download it. Free, works on Mac, Windows, Linux, and mobile. This is the app you'll use to browse and edit your vault. (We covered what it does and why we use it in [How It Works](#obsidian-your-viewer-and-editor) above.)
-
-### Step 2: Get the starter vault
-
-Download the starter vault from this [noteOS GitHub repo](https://github.com/BOOMCHOPALAKA/noteOS). Click the green **Code** button at the top of the page and select **Download ZIP**. Unzip it and put the folder somewhere on your computer. It can go anywhere you'd like. Desktop, Documents, your Home folder. Anywhere works great. You can also rename the folder to whatever you want (yournameOS maybe??).
-
-Open Obsidian, select **Open folder as vault**, and point it at the folder you just downloaded. You now have a working vault with:
-- **An instruction file** (`CLAUDE.md`) pre-loaded with conventions for meeting processing, daily notes, linking, and more. Works out of the box.
-- **A memory file** (`MEMORY.md`) with system-level patterns that AI follows. AI adds to this over time as it learns your preferences.
-- **Templates** for daily notes, Basecamps, meeting summaries, and weekly status reports.
-- **Skills** for meeting processing, deep analysis, drafting, weekly reports, and more. Detailed workflow guides that load when you need them.
-- **The folder structure** already set up: Map, Calendar, Downloads, Templates, skills.
-
-### Step 3: Connect your AI tool
-
-This is the part where the magic happens and here's the good news: if you've already used ChatGPT, Claude, or Gemini, you already know how to do this. You're still typing messages and getting answers in natural language. Nothing about how you interact changes.
-
-The one difference: instead of chatting with AI that can only see what you paste into the conversation, you point it at your vault folder. Now when you ask a question, AI can search through all your notes. When you tell it about a meeting, it can create the summary, file it in the right place, and link it to everything related. When you ask "what did we decide about X last month?" it traces through your notes and gives you a real answer instead of asking you to paste in the context.
-
-Same conversation. Same chat window. But now AI has your entire knowledge base behind it.
-
-**This does require a paid AI account.** The system needs an AI tool that can read and write files directly in a folder on your computer. That's a step beyond what free AI chat tools offer today. The good news is the cost is comparable to a streaming subscription, and the value compounds over time in a way Netflix doesn't.
-
-Right now, the most complete option for non-technical users in our opinion is **Claude** from Anthropic. It's what this system was built and tested with, and it has two tools that both work out of the box:
-
-**Claude Cowork** is the easiest starting point and what most people should use. If you already have the Claude desktop app (or download it from [claude.ai](https://claude.ai)), Cowork is built right in. Here's how to connect it to your vault:
-
-1. Open the Claude desktop app
-2. Click the **Cowork** tab at the top (next to "Chat")
-3. In the message area, click the **folder icon** and select your vault folder
-4. Start typing
-
-That's it. You're now chatting with the same Claude you already know, except it can read and write files in your vault. Create notes, process meeting transcripts, search across everything you've built. It can even handle longer tasks on its own, breaking things into steps and working through them while you do other things. The whole experience is visual and conversational. If you've used ChatGPT or Claude in the browser, this will feel immediately familiar. You just gained superpowers.
-
-Cowork requires a paid Claude subscription (Pro at $20/month, Max at $100/month, or Team/Enterprise). [Getting started with Cowork](https://support.claude.com/en/articles/13345190-get-started-with-cowork)
-
-**Claude Code** is a command-line tool. If you don't know what that means, skip this paragraph and stick with Cowork. You won't miss anything. Claude Code does the same thing as Cowork, just in a terminal window instead of a desktop app. You open a terminal, navigate to your vault folder, and type `claude`. It's a little more powerful and a little more flexible. You get a little more control over how AI interacts with your files, and it's more extensible if you want to customize how the system works under the hood. It's usage-based pricing, meaning you pay for what you use rather than a monthly subscription. If you're technical, curious, or want to grow into it, it's there when you're ready. [Getting started with Claude Code](https://code.claude.com/docs/en/overview)
-
-**The important thing:** both tools read the same `CLAUDE.md` instruction file, work inside the same vault folder, and produce the same markdown notes. You're not choosing a platform. You're choosing an interface. Everything you build is the same either way, and you can switch between them anytime.
-
-#### What about other AI tools?
-
-This system is designed to be portable. It's just folders and text files. Any AI tool that can read and write files in a local folder will work. That said, the landscape is still evolving. Here's where things stand as of early 2026:
-
-- **OpenAI/ChatGPT** recently launched [ChatGPT agent](https://openai.com/index/introducing-chatgpt-agent/), which can interact with local apps and create files on your computer. It's getting closer to what Cowork does but works differently. It uses a virtual computer to interact with your apps rather than reading and writing directly in a folder. ChatGPT also has [Codex CLI](https://github.com/openai/codex), a terminal tool with full local file access that reads an `AGENTS.md` instruction file. Available on Plus ($20/month) and up.
-- **Google Gemini** has a CLI tool ([Gemini CLI](https://github.com/google-gemini/gemini-cli)) that works similarly to Claude Code. It can read and write local files and supports its own instruction file (`GEMINI.md`). But it's terminal-only. There's no visual desktop equivalent to Cowork yet for non-technical users.
-- **Other tools** like Cursor, GitHub Copilot, and Windsurf also support instruction files and local file access, though they're primarily built for software development.
-
-This is moving fast. Any of these providers could ship a Cowork-equivalent tomorrow. When they do, your vault works with them immediately. No migration, no export, no starting over. That's the whole point.
-
-**Using a different AI tool?** The starter vault already includes symlinks for every major AI tool. You don't need to rename or copy anything. Just open your preferred tool and point it at the vault folder. It will find its instruction file automatically because they all point back to the same `CLAUDE.md`.
+The starter vault includes instruction files for every major AI tool. They all point back to the same `CLAUDE.md` via symlinks. One file to maintain, every tool picks it up. If you ever need to give a specific tool different instructions, just replace its symlink with a real file.
 
 | Tool | File it reads | Included in vault |
 |---|---|---|
@@ -285,163 +359,11 @@ This is moving fast. Any of these providers could ship a Cowork-equivalent tomor
 | Windsurf | `.windsurfrules` | Symlink → CLAUDE.md |
 | Cline | `.clinerules` | Symlink → CLAUDE.md |
 
-One file to maintain. Every tool picks it up. If you ever need to give a specific tool different instructions, just replace its symlink with a real file.
+Additional context on tools beyond Claude:
 
----
-
-## Start Using It
-
-Just start typing. That's genuinely it. Say hello, ask a question, tell it what you're working on. Anything.
-
-**Your first session is special.** The system detects that it's a fresh vault and kicks off a short onboarding conversation. It'll ask you a few questions. Who you are, what you're working on, how you like to communicate. As you answer, it builds out your vault in real time. Your personal profile, your instruction file, your first daily note. By the end of 5-7 questions, the system knows who you are and you have a personal Basecamp you can go browse. Every session after that starts with that context already loaded.
-
-If you'd rather skip the onboarding and just start using it, just say so. You can always run `/onboarding` later to set up your profile.
-
-After onboarding, here are some things you can try:
-
-- **"Give me a morning brief."** Works on day one. Pulls today's weather, top headlines, and whatever's active in your vault. Sparse at first. After a few weeks it knows your open TODOs, your active projects, what happened yesterday. It grows with your vault.
-- **"Create a daily note for today. Here's what I worked on..."** and give it a few bullets about your day.
-- **"Here's a meeting I had today. Summarize it and add it to my daily note."** Paste in a transcript or your own notes.
-- **"Create a Basecamp for [topic]."** A project you're managing, a trip you're planning, a side business you're running.
-
-Start with whatever's on your mind today. The first few notes will feel like scattered dots. But they start connecting fast.
-
-**You're the driver.** noteOS can do a lot on its own. Point it at a task and it'll work through it, do research, build out notes, make connections. But it doesn't decide what matters to you. You do. The more intentional you are about directing it, the better the output.
-
-Sometimes it will handle things automatically. It might create a note without being asked, or pause and say "this feels worth saving, want me to create a note?" But when it doesn't, a nudge goes a long way:
-
-- If something feels like it should be a note, say so. "Can we save this as a note?" AI will figure out where it fits and what to link it to.
-- If a topic is getting big enough to deserve its own hub, ask. "Should we make a Basecamp for this?"
-- If you just want it to remember something small - a preference, a detail, a name - just say "remember this." It'll either add it to your memory file or instruction file depending on what it is. No full note needed.
-- If you start a new session and AI seems to not know something you've already captured, point it at the vault. "Yes you do, look through the vault." It'll find it. That nudge takes two seconds and the answer you get back will be more grounded and specific than anything you'd get from a regular chat.
-
-The system grows because you keep using it. You get out of it what you put in. But what you get back is usually better than you expected.
-
-**One thing to know: the system knows what you tell it.** It doesn't connect to your apps or pull data automatically. There's no fitness tracker sync, no calendar integration, no background magic. You give it information, and it remembers and connects it. That's by design. You control exactly what goes in.
-
-In practice, that looks like:
-
-- **Exporting data you already have.** Most apps let you download your own data. Export transactions from your bank, health data from Apple Health, attachments from email. Save those files into the vault's `Downloads/` folder and tell the system to look at them.
-- **Just telling it about your day.** "I did a 3-mile hike today, felt great, legs weren't as heavy as last week." Type it out, paste stats from an app, or send a screenshot. noteOS logs it and the context builds over time.
-- **Sharing things as they come in.** A meeting transcript, a recipe you tried, a quote from a contractor, notes from a doctor's appointment. Drop it in and tell the system what it is.
-
-After a conversation, switch over to Obsidian and take a look. The notes are just there. Click on one. See how it's formatted, how it links to other notes. Click a link and you're in another note. That's the Wikipedia layer. A few keyboard shortcuts will make navigating Obsidian feel fast. See the [Obsidian tips and shortcuts](#obsidian-tips-and-shortcuts) section in the Reference below.
-
-Once you've had a few sessions and you're starting to see notes multiply, Basecamps forming, connections being made between things you talked about at different times - that's when you open the graph view in Obsidian (sidebar icon, or Cmd+G on Mac). Every note is a dot. Every link is a line. What you'll see looks like a neural network. Nodes branching out, clusters forming around your big topics, connections you didn't even consciously create. It's one of those moments where the whole thing clicks. This is a big reason we love Obsidian specifically - nothing else gives you this visual layer on top of your own knowledge.
-
-You now have two paths to the same information: ask noteOS, or open Obsidian and browse. Most interaction happens through the chat. But the visual layer is always there when you want to explore or read on your own.
-
-**This also changes how much you can trust the answers.** With a normal chat, "where did you get that?" gets a vague response. With a vault, the answer is "I got this from your March 3rd meeting summary and your pricing strategy note." Specific files. You can click through in Obsidian and verify. It doesn't guarantee accuracy, but it's transparency you don't get anywhere else.
-
-### Once the system has some weight behind it
-
-You stop asking generic questions and start asking things only your vault can answer:
-
-- **"I have a standup in 20 minutes. Catch me up on everything that's happened this week."** It reads your daily notes and recent updates and gives you a briefing.
-- **"I'm planning a backpacking trip in August. What gear worked last time and what did I say I'd change?"** It finds your trip notes, your gear lists, that comment you made about your pack being too heavy.
-- **"Draft a status report for this week. You know the format."** It does. Because the instruction file has your format, your voice, your conventions.
-- **"Here's a meeting transcript. Process it."** It knows what that means. Summarize, extract your action items, update the daily note, link to relevant projects.
-- **"When was the dog's last vet appointment and what did they say about her knee?"** It finds the note, the vet's recommendation, the follow-up timeline.
-
-You don't get here on day one. But you get here faster than you'd think.
-
-### Where this goes
-
-To give you a sense of what this looks like after a few months of just using it:
-
-I manage a dev team across two clients. Early on I pointed Claude at our GitHub repos and had it analyze the commit history. Now it knows who built what, who has the deepest expertise in each part of the codebase, and where the knowledge gaps are. When an issue comes up, I can ask "who would be the best person to look at this?" and get a real answer based on actual contribution history.
-
-I also run a small brewing cacao business (shameless plug www.understorycacao.com) on the side. I have a Basecamp for it that links to supplier notes, customer order patterns, pricing strategy, product development ideas. 
-
-I'm also into hiking, backcountry skiing, rucking. I exported my Garmin data into the vault and now whenever I log a workout, AI has years of context behind it. It knows my resting heart rate trends, my training patterns, my peak fitness benchmarks. It tells me things about my own data that Garmin never surfaced.
-
-At work, I have Basecamps for each client with every stakeholder, every project, every decision linked and traceable. When someone mentions a name in a meeting, AI already knows who they are, what they work on, and what they said three weeks ago. I walk into every conversation with context I didn't have to prepare.
-
-I didn't sit down and manually create notes for any of that. It grew from conversations I was having with Claude within Claude Code. None of this was necessarily planned either. I just kept using the system and it built itself around those conversations. That's the magic.
-
----
-
-## Going Deeper
-
-The basic system works with just notes and an instruction file. How far you go is entirely up to you.
-
-**Start simple:**
-- After a meeting or important conversation, tell AI what happened. It creates the note, links it, and organizes it. Or write it yourself in Obsidian. Both work.
-- Keep a daily note. A few bullets about what you worked on, what's pending, any decisions made.
-- When you make a decision, capture the reasoning. This is gold when you need to reference it later.
-
-**Go deeper when you're ready:**
-- Feed it documents from your life. Contracts, proposals, reports, recipes, research. Drop them in Downloads and tell AI to process them.
-- Share your writing samples and let it learn your voice. Once it understands how you communicate, it can draft things that sound like you.
-- Build out Basecamps with curated links for your most active areas. The more structured your hubs, the better AI navigates between topics.
-
-### Skills: teaching AI how you work
-
-Here's the problem skills solve. You have a great conversation with AI. You process a meeting transcript and it nails it. Speaker identification, TODO extraction, linking to existing notes. Perfect. Then a week later you process another transcript in a new session and it misses half the steps. Not because it forgot. Because the instruction file had a condensed version of the workflow and the new session interpreted it differently.
-
-The fix was obvious once I saw it. Take the full workflow and put it in its own file. Not in the instruction file that loads every conversation. In a separate file that only loads when you're actually doing that specific thing. That's what skills are. Markdown files that walk AI through a proven workflow step by step. Consistent results, every session, no matter how long it's been since the last time you did that specific thing.
-
-**Why this matters more than it sounds.** The instruction file tells AI who you are and how you work. Skills tell AI how to do specific things for you. The instruction file is always loaded. Skills load on demand. That's what makes the whole system scale. Your instruction file stays lean. Your skills get as detailed as they need to be. And AI only pulls in what's relevant to what you're actually doing right now.
-
-Think of it this way. The instruction file is like briefing a new assistant on your preferences. Skills are like handing them your playbook for specific tasks. "Here's exactly how I process meetings. Here's how I like my status reports structured. Here's how I want you to handle it when I say 'save this.'" The assistant doesn't need to memorize all of that on day one. They just need to know where the playbook is when the task comes up.
-
-#### Session continuity
-
-The remember/pickup workflow is covered in detail above. See [How session continuity actually works](#how-session-continuity-actually-works). The skills section here focuses on the other workflows that ship with the vault.
-
-#### What skills look like in practice
-
-You drop a meeting transcript in chat. AI recognizes what you're doing, loads the meeting processing skill, and follows it. Identifies the speakers, presents a mapping for you to confirm before writing anything, searches the vault for related notes, writes the summary, extracts only the TODOs you're actually responsible for, and then gives you the "so what" layer in chat. Not a summary rehash. The part where it tells you what changed, what connects, and what doesn't add up. All of that is in the skill. Every session. Consistent.
-
-You need to make a tough call. You ask AI to help you think through it. The deep analysis skill kicks in. It doesn't just list pros and cons. It challenges your assumptions, steelmans the other side, separates what you actually know from what you're inferring, and makes the tradeoffs explicit. It pushes back when you're rationalizing. It tells you what it doesn't know. The instruction file can't hold that level of detail for every workflow. But a skill can.
-
-You've covered a lot of ground in this session. You type `/remember`. Everything gets saved, linked, timestamped. Tomorrow you type `/pickup`. Caught up in 30 seconds.
-
-**How you use them depends on your AI tool:**
-
-If you're using **Claude Code**, skills just work. It discovers them automatically when the task matches. To connect your vault's skills, one command: `ln -s /path/to/your/vault/skills ~/.claude/skills`. Done.
-
-If you're using **anything else**, you can still use them. Just tell your AI tool "read `skills/meeting-processing/SKILL.md` and follow it." They're just files. Any tool can read a file when you point it there.
-
-And the instruction file still works on its own. Every workflow section has a quick version inline. If your AI tool doesn't load skills, it still gets enough to do a decent job. The skill is the full playbook. The instruction file is the cheat sheet.
-
-#### What's included
-
-The starter vault ships with 18 skills:
-
-| Skill | What it does |
-|---|---|
-| `onboarding` | First-run experience. Detects a fresh vault and runs a guided conversation to personalize everything. Creates your personal Basecamp, fills in the instruction file, and seeds the vault |
-| `remember` | On-demand session capture. Type `/remember` and AI figures out what to save and where. Updates your notes, context file, and chat log. Nudges proactively at natural breakpoints |
-| `pickup` | Resume where you left off. Type `/pickup` and AI reads your last session's context, briefs you, and asks where you want to pick up from |
-| `pickup-work` | Work-only pickup. Same briefing flow as `/pickup` but filtered to professional threads. Pulls fresh repo data, groups by client, skips personal items |
-| `meeting-processing` | Speaker ID, structured summaries, TODO extraction, vault linking, takeaway analysis |
-| `deep-analysis` | Thinking partner for decisions. Pushes back, stress-tests assumptions, steelmans the other side |
-| `situation-assessment` | Paste a messy email thread or ticket history, get a clear picture of what's actually going on |
-| `next-steps` | Crystallizes "what now" after any discussion. Concrete actions, open questions, and softer suggestions |
-| `drafting-voice` | Learns how you write and drafts messages in your voice |
-| `morning-brief` | Daily briefing with vault state, weather, and news |
-| `weekly-status-report` | Sourcing, structure, and external sharing format |
-| `activity-logging` | Fitness and activity logging to daily notes |
-| `session-handoff` | Proactive end-of-session context preservation. The nudge layer that works alongside remember |
-| `skill-creation` | Guided intake for building new skills. Walks you through the right questions before writing anything |
-| `ticket-creation` | Scannable dev tickets that people actually read |
-| `codebase-investigation` | Systematic debugging. Traces code paths, checks the vault for prior context, documents findings |
-| `codebase-team-assessment` | Analyzes a repo's commit history, maps who knows what, flags knowledge gaps and bus-factor risks |
-
-#### Building your own
-
-This is where it gets personal. As you develop workflows that click, capture them. There's even a skill for that. The `skill-creation` skill walks you through a structured intake. What's the problem? What triggers it? What does good output look like? What are the hard rules? It asks the questions before writing anything.
-
-Create a folder in `skills/`, write a `SKILL.md` that describes what you do and how. AI learns the process once and follows it every time after that. The skills you build become part of your system. They travel with your vault. They work with whatever AI tool you're using. And if you ever share your vault with someone, they get your workflows too.
-
-**Building the habit:**
-
-The value comes from using it consistently. First couple weeks: focus on daily notes and telling the system to save things worth remembering. When something goes wrong, add a correction to the instruction file. After a few weeks you'll notice topics keep coming up. Create Basecamps for those. After a month, your instruction file has real depth, your daily notes form a searchable journal, and connections are surfacing that you wouldn't have made on your own.
-
----
-
-## Reference
+- **OpenAI/ChatGPT** recently launched [ChatGPT agent](https://openai.com/index/introducing-chatgpt-agent/), which can interact with local apps and create files on your computer. ChatGPT also has [Codex CLI](https://github.com/openai/codex), a terminal tool with full local file access that reads an `AGENTS.md` instruction file. Available on Plus ($20/month) and up.
+- **Google Gemini** has a CLI tool ([Gemini CLI](https://github.com/google-gemini/gemini-cli)) that works similarly to Claude Code. It can read and write local files and supports its own instruction file (`GEMINI.md`). Terminal-only for now.
+- **Other tools** like Cursor, GitHub Copilot, and Windsurf also support instruction files and local file access, though they're primarily built for software development.
 
 ### Markdown basics
 
