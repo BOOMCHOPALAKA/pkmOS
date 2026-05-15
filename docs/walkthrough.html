@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>noteOS — What If Your AI Remembered Everything?</title>
+  <title>noteOS — What If Your AI Never Forgot?</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,23 +12,32 @@
       --bg: #FDFBF7;
       --accent: #5B7F5B;
       --accent-light: rgba(91, 127, 91, 0.08);
+      --accent-glow: rgba(91, 127, 91, 0.15);
       --text: #2D2D2D;
       --text-secondary: #5A5A5A;
       --border: #e8e4dc;
-      --border-dark: #e0dbd2;
-      --chat-ai-bg: #f0ede6;
       --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --chat-bg: #F5F0E8;
+      --user-bubble: #EE7B30;
+      --claude-bubble: #FFFFFF;
+
+      --obs-bg: #1e1e2e;
+      --obs-sidebar: #181825;
+      --obs-text: #cdd6f4;
+      --obs-text-dim: #6c7086;
+      --obs-accent: #89b4fa;
+      --obs-green: #a6e3a1;
+      --obs-border: #313244;
+
+      --graph-node: #a3c9a3;
+      --graph-hub: #7fb87f;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     html {
       scroll-snap-type: y mandatory;
-      overflow-y: scroll;
       scroll-behavior: smooth;
     }
 
@@ -36,368 +45,1211 @@
       font-family: var(--font);
       background: var(--bg);
       color: var(--text);
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
 
+    /* === PANELS === */
     .panel {
-      height: 100vh;
+      min-height: 100vh;
       scroll-snap-align: start;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 48px 64px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .panel-inner {
-      display: flex;
-      align-items: center;
-      gap: 64px;
-      max-width: 1200px;
-      width: 100%;
+      padding: 60px 40px;
       opacity: 0;
-      transform: translateY(32px);
+      transform: translateY(30px);
       transition: opacity 0.7s ease, transform 0.7s ease;
+      position: relative;
     }
 
-    .panel-inner.visible {
+    .panel.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    .panel-text {
-      flex: 0 0 40%;
-      max-width: 40%;
+    .panel:first-child {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .panel-visual {
-      flex: 0 0 56%;
-      max-width: 56%;
+    .panel-inner {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
     }
 
-    .panel-text h2 {
-      font-size: 2.4rem;
+    /* === LAYOUT VARIANTS === */
+    .layout-centered {
+      text-align: center;
+    }
+
+    .layout-centered .panel-inner {
+      max-width: 800px;
+    }
+
+    .layout-side-by-side {
+      /* flex row */
+    }
+
+    .layout-side-by-side .panel-inner {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .layout-side-by-side .panel-text {
+      flex: 0 0 30%;
+    }
+
+    .layout-side-by-side .panel-visual {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .layout-text-above .panel-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .layout-text-above .panel-text {
+      max-width: 700px;
+    }
+
+    .layout-text-above .panel-visual {
+      width: 100%;
+    }
+
+    /* === TYPOGRAPHY === */
+    .time-label {
+      font-size: 11px;
       font-weight: 700;
-      line-height: 1.15;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .panel h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.2;
       margin-bottom: 16px;
       color: var(--text);
     }
 
-    .panel-text p {
-      font-size: 1.15rem;
-      line-height: 1.6;
-      color: var(--text-secondary);
-    }
-
-    /* ---- Chat Mockup ---- */
-    .chat-window {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      box-shadow: 0 2px 24px rgba(0,0,0,0.04);
-    }
-
-    .chat-bubble {
-      max-width: 80%;
-      padding: 14px 20px;
-      border-radius: 18px;
-      font-size: 0.95rem;
-      line-height: 1.55;
-    }
-
-    .chat-bubble.user {
-      background: var(--accent);
-      color: #fff;
-      margin-left: auto;
-      border-bottom-right-radius: 6px;
-    }
-
-    .chat-bubble.ai {
-      background: var(--chat-ai-bg);
-      color: var(--text);
-      border-bottom-left-radius: 6px;
-    }
-
-    .chat-bubble.ai-positive {
-      background: var(--accent-light);
-      color: var(--text);
-      border-left: 3px solid var(--accent);
-      border-bottom-left-radius: 6px;
-    }
-
-    /* ---- File Tree ---- */
-    .file-tree {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: 0 2px 24px rgba(0,0,0,0.04);
-    }
-
-    .file-tree-label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 20px;
-    }
-
-    .file-tree ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .file-tree li {
-      padding: 6px 0;
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-    }
-
-    .file-tree li.folder {
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    .file-tree ul ul {
-      padding-left: 24px;
-    }
-
-    .file-tree .accent-file {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    /* ---- Obsidian Mockup ---- */
-    .obsidian-window {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 24px rgba(0,0,0,0.04);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .obsidian-titlebar {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 16px;
-      background: #f7f5f0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .titlebar-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-    }
-
-    .titlebar-dot.red { background: #FF5F57; }
-    .titlebar-dot.yellow { background: #FEBC2E; }
-    .titlebar-dot.green { background: #28C840; }
-
-    .titlebar-label {
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-      margin-left: 8px;
-      font-weight: 500;
-    }
-
-    .obsidian-body {
-      display: flex;
-      min-height: 320px;
-    }
-
-    .obsidian-main {
-      flex: 1;
-      padding: 28px 32px;
-    }
-
-    .obsidian-main h3 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      color: var(--text);
-    }
-
-    .obsidian-main .note-link {
-      display: block;
-      color: var(--accent);
-      text-decoration: underline;
-      text-decoration-color: rgba(91, 127, 91, 0.3);
-      text-underline-offset: 3px;
-      padding: 5px 0;
-      font-size: 0.95rem;
-      cursor: default;
-    }
-
-    .obsidian-sidebar {
-      width: 200px;
-      background: #faf8f3;
-      border-left: 1px solid var(--border);
-      padding: 20px 16px;
-    }
-
-    .obsidian-sidebar h4 {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+    .panel p {
+      font-size: 1.05rem;
+      line-height: 1.7;
       color: var(--text-secondary);
       margin-bottom: 12px;
     }
 
-    .obsidian-sidebar .backlink {
+    .panel p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* === BREATHING PANELS === */
+    .breathing {
+      background: #F8F5EE;
+    }
+
+    .breathing .panel-inner {
+      max-width: 700px;
+      text-align: center;
+    }
+
+    .breathing p {
+      font-size: 1.3rem;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .breathing .highlight-line {
+      font-weight: 600;
+      color: var(--text);
+      font-size: 1.5rem;
+      margin-bottom: 28px;
+    }
+
+    /* === CLAUDE CHAT === */
+    .chat-container {
+      background: var(--chat-bg);
+      border-radius: 16px;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+      overflow: hidden;
+      font-size: 0.92rem;
+    }
+
+    .chat-header {
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
       font-size: 0.85rem;
       color: var(--text-secondary);
-      padding: 4px 0;
     }
 
-    /* ---- Graph ---- */
-    .graph-container {
+    .chat-header-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .chat-messages {
+      padding: 20px;
       display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .chat-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .chat-row.user {
+      flex-direction: row-reverse;
+    }
+
+    .chat-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
       justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+      color: white;
     }
 
-    .graph-container svg {
+    .chat-avatar.claude-avatar {
+      background: linear-gradient(135deg, #D4A574, #C4956A);
+    }
+
+    .chat-avatar.user-avatar {
+      background: var(--accent);
+    }
+
+    .chat-bubble {
+      max-width: 80%;
+      padding: 12px 16px;
+      line-height: 1.55;
+      font-size: 0.9rem;
+    }
+
+    .chat-bubble.user-bubble {
+      background: var(--user-bubble);
+      color: white;
+      border-radius: 18px 18px 6px 18px;
+    }
+
+    .chat-bubble.claude-bubble {
+      background: var(--claude-bubble);
+      color: var(--text);
+      border-radius: 18px 18px 18px 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    .chat-bubble strong {
+      font-weight: 600;
+    }
+
+    .chat-bubble ul {
+      margin: 6px 0;
+      padding-left: 18px;
+    }
+
+    .chat-bubble li {
+      margin-bottom: 4px;
+    }
+
+    .chat-bubble table {
       width: 100%;
-      max-width: 520px;
+      border-collapse: collapse;
+      margin: 10px 0;
+      font-size: 0.85rem;
     }
 
-    .graph-line {
-      opacity: 0;
+    .chat-bubble th, .chat-bubble td {
+      padding: 6px 10px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
     }
 
-    .graph-node {
-      opacity: 0;
+    .chat-bubble th {
+      font-weight: 600;
+      background: #f8f8f8;
     }
 
-    .graph-container.animated .graph-line {
-      animation: fadeInLine 0.5s ease forwards;
+    .chat-bubble .proactive {
+      border-left: 3px solid var(--accent);
+      background: rgba(91, 127, 91, 0.04);
+      padding: 8px 12px;
+      margin-top: 10px;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.88rem;
     }
 
-    .graph-container.animated .graph-node {
-      animation: fadeInNode 0.5s ease forwards;
+    .chat-bubble h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin: 10px 0 6px 0;
     }
 
-    @keyframes fadeInLine {
-      from { opacity: 0; }
-      to { opacity: var(--target-opacity, 0.3); }
+    .chat-input-bar {
+      padding: 12px 20px;
+      border-top: 1px solid rgba(0,0,0,0.06);
     }
 
-    @keyframes fadeInNode {
-      from { opacity: 0; transform: scale(0.7); }
-      to { opacity: 1; transform: scale(1); }
+    .chat-input {
+      background: white;
+      border-radius: 24px;
+      padding: 10px 18px;
+      font-size: 0.85rem;
+      color: #999;
+      border: 1px solid #e0dbd3;
     }
 
-    /* ---- Before/After ---- */
-    .before-after {
+    .annotation {
+      font-style: italic;
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-top: 16px;
+    }
+
+    /* === OBSIDIAN MOCKUP === */
+    .obs-window {
+      background: var(--obs-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.25);
+      font-family: 'Inter', monospace;
+      font-size: 0.82rem;
+    }
+
+    .obs-chrome {
+      background: var(--obs-sidebar);
+      padding: 10px 16px;
       display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .obs-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .obs-dot.red { background: #ed6a5e; }
+    .obs-dot.yellow { background: #f5bf4f; }
+    .obs-dot.green { background: #61c554; }
+
+    .obs-chrome-label {
+      color: var(--obs-text-dim);
+      font-size: 0.75rem;
+      margin-left: 8px;
+    }
+
+    .obs-layout {
+      display: flex;
+      min-height: 320px;
+    }
+
+    .obs-sidebar {
+      background: var(--obs-sidebar);
+      width: 200px;
+      padding: 12px;
+      border-right: 1px solid var(--obs-border);
+      flex-shrink: 0;
+    }
+
+    .obs-file {
+      padding: 4px 8px;
+      color: var(--obs-text);
+      font-size: 0.78rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 4px;
+    }
+
+    .obs-file:hover {
+      background: rgba(255,255,255,0.04);
+    }
+
+    .obs-file .updated-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--obs-green);
+      flex-shrink: 0;
+    }
+
+    .obs-folder {
+      padding: 4px 8px;
+      color: var(--obs-text-dim);
+      font-size: 0.78rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .obs-content {
+      flex: 1;
+      padding: 20px 24px;
+      color: var(--obs-text);
+      line-height: 1.6;
+      font-size: 0.82rem;
+    }
+
+    .obs-content h2 {
+      color: var(--obs-text);
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    .obs-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+    }
+
+    .obs-content th, .obs-content td {
+      padding: 6px 10px;
+      text-align: left;
+      border-bottom: 1px solid var(--obs-border);
+      font-size: 0.8rem;
+    }
+
+    .obs-content th {
+      color: var(--obs-text-dim);
+    }
+
+    .obs-content .warning {
+      color: #fab387;
+      margin: 10px 0;
+    }
+
+    .obs-content .wiki-link {
+      color: var(--obs-accent);
+      text-decoration: none;
+    }
+
+    /* === SPLIT VISUAL (Panel 4) === */
+    .split-visual {
+      display: flex;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .split-left {
+      flex: 0 0 38%;
+    }
+
+    .split-right {
+      flex: 1;
+    }
+
+    .split-connector {
+      display: flex;
+      align-items: center;
+      color: var(--accent);
+      font-size: 1.5rem;
+      padding: 0 4px;
+      flex-shrink: 0;
+    }
+
+    /* === SNIPPET GRID (Panel 8) === */
+    .snippet-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 20px;
     }
 
-    .ba-panel {
-      flex: 1;
-      background: #fff;
-      border: 1px solid var(--border);
+    .snippet-card {
+      background: var(--chat-bg);
       border-radius: 12px;
-      padding: 24px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+      overflow: hidden;
     }
 
-    .ba-panel.after {
-      border-color: var(--accent);
-      box-shadow: 0 2px 16px rgba(91, 127, 91, 0.1);
+    .snippet-card .chat-messages {
+      padding: 14px;
+      gap: 10px;
     }
 
-    .ba-label {
+    .snippet-card .chat-bubble {
+      font-size: 0.82rem;
+      padding: 10px 14px;
+      max-width: 85%;
+    }
+
+    /* === THREE CARDS (Panel 9) === */
+    .three-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .how-card {
+      background: white;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .how-card-visual {
+      padding: 20px;
+      min-height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .how-card-text {
+      padding: 16px 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .how-card-text h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .how-card-text p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .cards-footer {
+      text-align: center;
+      margin-top: 28px;
+      font-size: 1.05rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* === MINI MOCKUPS === */
+    .mini-finder {
+      background: #f0ede6;
+      border-radius: 8px;
+      padding: 10px;
+      width: 100%;
+      font-size: 0.72rem;
+      color: var(--text);
+    }
+
+    .mini-finder-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 3px 6px;
+      border-radius: 3px;
+    }
+
+    .mini-finder-row:nth-child(even) {
+      background: rgba(0,0,0,0.03);
+    }
+
+    .mini-obs-preview {
+      background: var(--obs-bg);
+      border-radius: 8px;
+      padding: 12px;
+      width: 100%;
+      font-size: 0.72rem;
+      color: var(--obs-text);
+    }
+
+    .mini-obs-preview .wiki-link {
+      color: var(--obs-accent);
+    }
+
+    .mini-obs-preview .graph-dots {
+      display: flex;
+      gap: 3px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .mini-obs-preview .graph-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--graph-node);
+    }
+
+    .mini-chat-preview {
+      background: var(--chat-bg);
+      border-radius: 8px;
+      padding: 12px;
+      width: 100%;
+      font-size: 0.72rem;
+    }
+
+    .mini-chat-line {
+      padding: 4px 8px;
+      border-radius: 6px;
+      margin-bottom: 4px;
+      max-width: 80%;
+    }
+
+    .mini-chat-line.from-ai {
+      background: white;
+      color: var(--text);
+    }
+
+    .mini-chat-line.from-user {
+      background: var(--user-bubble);
+      color: white;
+      margin-left: auto;
+    }
+
+    /* === BASECAMP NOTE (Panel 10) === */
+    .basecamp-layout {
+      display: flex;
+      gap: 0;
+      background: var(--obs-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.25);
+      font-family: var(--font);
+    }
+
+    .basecamp-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .basecamp-content {
+      padding: 24px 28px;
+      color: var(--obs-text);
+      line-height: 1.7;
+      font-size: 0.82rem;
+    }
+
+    .basecamp-content h1 {
+      color: var(--obs-text);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .basecamp-content .bc-section-heading {
+      color: var(--obs-text);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 20px;
+      margin-bottom: 8px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--obs-border);
+    }
+
+    .basecamp-content .bc-link {
+      color: var(--obs-accent);
+      text-decoration: underline;
+      text-decoration-color: rgba(137, 180, 250, 0.4);
+      text-underline-offset: 2px;
+      cursor: pointer;
+    }
+
+    .basecamp-content .bc-checkbox {
+      margin: 4px 0;
+      font-size: 0.82rem;
+    }
+
+    .basecamp-content .bc-checkbox.done {
+      color: var(--obs-text-dim);
+      text-decoration: line-through;
+    }
+
+    .basecamp-content .bc-list-item {
+      margin: 4px 0;
+      font-size: 0.82rem;
+      color: var(--obs-text);
+    }
+
+    .basecamp-content .bc-meta {
+      color: var(--obs-text-dim);
+      font-size: 0.8rem;
+      margin-top: 4px;
+    }
+
+    .backlinks-sidebar {
+      width: 240px;
+      background: var(--obs-sidebar);
+      border-left: 1px solid var(--obs-border);
+      padding: 16px;
+      flex-shrink: 0;
+    }
+
+    .backlinks-header {
       font-size: 0.7rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--text-secondary);
-      margin-bottom: 16px;
+      color: var(--obs-text-dim);
+      margin-bottom: 4px;
     }
 
-    .ba-panel.after .ba-label {
-      color: var(--accent);
+    .backlinks-count {
+      font-size: 0.72rem;
+      color: var(--obs-text-dim);
+      margin-bottom: 12px;
     }
 
-    .ba-item {
+    .backlink-item {
       padding: 6px 0;
+      border-bottom: 1px solid var(--obs-border);
+    }
+
+    .backlink-item:last-child {
+      border-bottom: none;
+    }
+
+    .backlink-name {
+      color: var(--obs-accent);
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+
+    .backlink-context {
+      color: var(--obs-text-dim);
+      font-size: 0.72rem;
+      margin-top: 2px;
+    }
+
+    .basecamp-annotation {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-top: 16px;
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    .layout-side-by-side.basecamp-panel .panel-text {
+      flex: 0 0 32%;
+    }
+
+    .layout-side-by-side.basecamp-panel .panel-visual {
+      flex: 0 0 64%;
+    }
+
+    /* === FOLDER STRUCTURE (Panel 11) === */
+    .folder-map {
+      background: var(--obs-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.25);
+      padding: 8px 0;
+    }
+
+    .folder-row {
+      padding: 20px 28px;
+      border-bottom: 1px solid var(--obs-border);
+    }
+
+    .folder-row:last-child {
+      border-bottom: none;
+    }
+
+    .folder-row-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .folder-row-icon {
+      font-size: 1.1rem;
+    }
+
+    .folder-row-name {
+      color: #cdd6f4;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .folder-row-desc {
+      color: #a6adc8;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 6px;
+    }
+
+    .folder-row-examples {
+      color: #6c7086;
+      font-size: 0.8rem;
+      font-style: italic;
+    }
+
+    .folder-map-footer {
+      text-align: center;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      margin-top: 20px;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      .backlinks-sidebar {
+        display: none;
+      }
+
+      .layout-side-by-side.basecamp-panel .panel-text,
+      .layout-side-by-side.basecamp-panel .panel-visual {
+        flex: none;
+        width: 100%;
+      }
+    }
+
+    /* === GRAPH (Panel 12) === */
+    .graph-container {
+      background: var(--obs-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.25);
+    }
+
+    .graph-container .obs-chrome {
+      background: var(--obs-sidebar);
+    }
+
+    .graph-svg-wrap {
+      width: 100%;
+      padding: 20px;
+    }
+
+    .graph-svg-wrap svg {
+      width: 100%;
+      height: auto;
+    }
+
+    .graph-svg-wrap .graph-line {
+      stroke: rgba(163, 201, 163, 0.25);
+      stroke-width: 1;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .graph-svg-wrap .graph-line.thick {
+      stroke-width: 2;
+      stroke: rgba(163, 201, 163, 0.35);
+    }
+
+    .graph-svg-wrap .graph-line.dashed {
+      stroke-dasharray: 4 3;
+    }
+
+    .graph-svg-wrap .graph-node {
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .graph-svg-wrap .graph-label {
+      fill: var(--obs-text);
+      font-family: var(--font);
+      font-size: 9px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .graph-svg-wrap .graph-label.hub-label {
+      font-weight: 600;
+      font-size: 11px;
+    }
+
+    .graph-animated .graph-line,
+    .graph-animated .graph-node,
+    .graph-animated .graph-label {
+      opacity: 1;
+    }
+
+    /* === TOOL GRID (Panel 13) === */
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .tool-card {
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 120px;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .tool-card .tool-name {
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-top: 8px;
+    }
+
+    .tool-card.claude-card { background: #F5F0E8; }
+    .tool-card.chatgpt-card { background: #FAFAFA; }
+    .tool-card.cursor-card { background: #1e1e2e; color: white; }
+    .tool-card.gemini-card { background: #EEF4FF; }
+    .tool-card.copilot-card { background: #24292e; color: white; }
+    .tool-card.windsurf-card { background: #1B2B3A; color: white; }
+
+    .tool-mini-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .tool-grid-footer {
+      text-align: center;
+      margin-top: 20px;
       font-size: 0.9rem;
       color: var(--text-secondary);
     }
 
-    .ba-item.new {
-      background: var(--accent-light);
-      color: var(--accent);
-      font-weight: 600;
-      padding: 8px 12px;
-      border-radius: 8px;
-      margin-top: 4px;
+    /* === TOOL COMPARISON CARDS (Panel 15) === */
+    .tool-comparison {
+      display: flex;
+      gap: 24px;
+      align-items: stretch;
     }
 
-    .ba-linked {
+    .tool-comparison-card {
+      background: white;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tool-comparison-card.primary {
+      flex: 3;
+    }
+
+    .tool-comparison-card.secondary {
+      flex: 2;
+    }
+
+    .recommended-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      width: fit-content;
+    }
+
+    .tool-comparison-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .tool-comparison-card .card-subtitle {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .tool-comparison-card .card-description {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-top: 14px;
+      line-height: 1.6;
+    }
+
+    .tool-comparison-card .card-small {
       font-size: 0.8rem;
       color: var(--text-secondary);
-      border-top: 2px dotted var(--border-dark);
       margin-top: 8px;
-      padding-top: 8px;
+      opacity: 0.7;
+    }
+
+    /* Cowork mini mockup */
+    .cowork-mockup {
+      background: var(--chat-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.06);
+      font-size: 0.78rem;
+    }
+
+    .cowork-sidebar {
+      display: flex;
+      gap: 0;
+    }
+
+    .cowork-sidebar-panel {
+      background: #EDE8DF;
+      width: 140px;
+      padding: 10px;
+      border-right: 1px solid rgba(0,0,0,0.06);
+      flex-shrink: 0;
+    }
+
+    .cowork-sidebar-panel .sidebar-label {
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .cowork-sidebar-item {
+      padding: 4px 6px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--text);
+    }
+
+    .cowork-sidebar-item.active {
+      background: rgba(91, 127, 91, 0.1);
+      font-weight: 600;
+    }
+
+    .cowork-sidebar-item .folder-icon {
+      font-size: 0.68rem;
+    }
+
+    .cowork-main {
+      flex: 1;
+      padding: 10px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .cowork-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      color: var(--accent);
+      font-weight: 500;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .cowork-status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .cowork-chat-line {
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      max-width: 85%;
+    }
+
+    .cowork-chat-line.from-user {
+      background: var(--user-bubble);
+      color: white;
+      margin-left: auto;
+      border-radius: 8px 8px 4px 8px;
+    }
+
+    .cowork-chat-line.from-ai {
+      background: white;
+      color: var(--text);
+      border-radius: 8px 8px 8px 4px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+
+    /* Terminal mockup */
+    .terminal-mockup {
+      background: #1e1e2e;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--obs-border);
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 0.75rem;
+    }
+
+    .terminal-chrome {
+      background: var(--obs-sidebar);
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .terminal-body {
+      padding: 12px 14px;
+      line-height: 1.7;
+    }
+
+    .terminal-line {
+      color: var(--obs-text-dim);
+    }
+
+    .terminal-line .cmd {
+      color: #a6e3a1;
+    }
+
+    .terminal-line .path {
+      color: #89b4fa;
+    }
+
+    .terminal-line .response {
+      color: var(--obs-text);
+    }
+
+    .tool-comparison-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 24px 0 16px;
+    }
+
+    .tool-comparison-footer {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .tool-comparison-footer strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* === Onboarding chat (Panel 16) === */
+    .onboarding-chat .chat-container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .chat-bubble .check-item {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* === After-onboarding Obsidian (Panel 17) === */
+    .obs-file .new-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .post-onboard-annotation {
+      text-align: center;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      margin-top: 20px;
       font-style: italic;
     }
 
-    /* ---- Panel 7: CTA ---- */
-    .panel-cta .panel-inner {
-      flex-direction: column;
-      text-align: center;
-      gap: 32px;
+    @media (max-width: 768px) {
+      .tool-comparison {
+        flex-direction: column;
+      }
+
+      .cowork-sidebar-panel {
+        display: none;
+      }
     }
 
-    .panel-cta .panel-text,
-    .panel-cta .panel-visual {
-      flex: none;
-      max-width: 600px;
-    }
-
-    .cta-buttons {
+    /* === CTA PANEL (Panel 18) === */
+    .steps-row {
       display: flex;
-      gap: 16px;
+      gap: 32px;
       justify-content: center;
-      flex-wrap: wrap;
+      margin: 40px 0;
     }
 
-    .cta-btn {
-      display: inline-block;
-      padding: 16px 32px;
-      border-radius: 12px;
+    .step {
+      text-align: center;
+      flex: 0 0 240px;
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin: 0 auto 12px;
+    }
+
+    .step h3 {
       font-size: 1rem;
       font-weight: 600;
-      text-decoration: none;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-      font-family: var(--font);
+      margin-bottom: 6px;
     }
 
-    .cta-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    .step p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
     }
 
-    .cta-btn.primary {
+    .cta-primary {
+      display: inline-block;
       background: var(--accent);
-      color: #fff;
+      color: white;
+      padding: 16px 40px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.15s ease;
+      margin-bottom: 16px;
     }
 
-    .cta-btn.secondary {
-      background: #fff;
+    .cta-primary:hover {
+      background: #4a6d4a;
+      transform: translateY(-1px);
+    }
+
+    .cta-secondary {
+      display: inline-block;
       color: var(--accent);
-      border: 2px solid var(--accent);
+      font-weight: 500;
+      text-decoration: none;
+      font-size: 0.95rem;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .cta-secondary:hover {
+      border-bottom-color: var(--accent);
     }
 
     .tool-pills {
@@ -405,20 +1257,26 @@
       gap: 10px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-top: 12px;
+      margin-top: 28px;
     }
 
     .tool-pill {
-      background: #fff;
+      padding: 6px 16px;
+      border-radius: 20px;
       border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 8px 18px;
-      font-size: 0.85rem;
-      color: var(--text-secondary);
+      font-size: 0.82rem;
       font-weight: 500;
+      color: var(--text-secondary);
+      background: white;
     }
 
-    /* ---- Progress Dots ---- */
+    .fine-print {
+      margin-top: 24px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    /* === PROGRESS DOTS === */
     .progress-dots {
       position: fixed;
       right: 24px;
@@ -426,416 +1284,1407 @@
       transform: translateY(-50%);
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
       z-index: 100;
     }
 
     .progress-dot {
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
-      border: 2px solid var(--accent);
-      background: transparent;
+      background: var(--border);
       cursor: pointer;
-      transition: background 0.25s ease;
+      transition: background 0.3s ease, transform 0.2s ease;
+      border: none;
       padding: 0;
     }
 
     .progress-dot.active {
       background: var(--accent);
+      transform: scale(1.3);
     }
 
-    /* ---- Mobile ---- */
+    /* === HERO DECORATION === */
+    .hero-decoration {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      opacity: 0.04;
+    }
+
+    .hero-decoration svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* === MOBILE === */
     @media (max-width: 768px) {
       .panel {
-        padding: 32px 24px;
+        padding: 40px 20px;
       }
 
-      .panel-inner {
+      .panel h2 {
+        font-size: 1.6rem;
+      }
+
+      .layout-side-by-side .panel-inner {
         flex-direction: column;
-        gap: 32px;
+        gap: 28px;
       }
 
-      .panel-text,
-      .panel-visual {
-        flex: none !important;
-        max-width: 100% !important;
+      .layout-side-by-side .panel-text {
+        flex: none;
         width: 100%;
       }
 
-      .panel-text h2 {
-        font-size: 1.8rem;
+      .layout-side-by-side .panel-visual {
+        width: 100%;
       }
 
-      .panel-text p {
-        font-size: 1rem;
+      .split-visual {
+        flex-direction: column;
       }
 
-      .obsidian-sidebar {
+      .split-left { flex: none; }
+      .split-connector { display: none; }
+
+      .snippet-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .three-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .tool-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .obs-sidebar {
         display: none;
       }
 
-      .before-after {
+      .steps-row {
         flex-direction: column;
-      }
-
-      .progress-dots {
-        right: 12px;
-        gap: 10px;
-      }
-
-      .progress-dot {
-        width: 10px;
-        height: 10px;
-      }
-
-      .panel-cta .panel-inner {
+        align-items: center;
         gap: 24px;
       }
 
-      .cta-buttons {
-        flex-direction: column;
-        align-items: center;
+      .step {
+        flex: none;
+        max-width: 300px;
+      }
+
+      .breathing p {
+        font-size: 1.1rem;
+      }
+
+      .breathing .highlight-line {
+        font-size: 1.25rem;
+      }
+
+      .progress-dots {
+        right: 10px;
+        gap: 8px;
+      }
+
+      .progress-dot {
+        width: 8px;
+        height: 8px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Progress Dots -->
-  <nav class="progress-dots" aria-label="Page navigation">
-    <button class="progress-dot active" data-panel="0" aria-label="Panel 1"></button>
-    <button class="progress-dot" data-panel="1" aria-label="Panel 2"></button>
-    <button class="progress-dot" data-panel="2" aria-label="Panel 3"></button>
-    <button class="progress-dot" data-panel="3" aria-label="Panel 4"></button>
-    <button class="progress-dot" data-panel="4" aria-label="Panel 5"></button>
-    <button class="progress-dot" data-panel="5" aria-label="Panel 6"></button>
-    <button class="progress-dot" data-panel="6" aria-label="Panel 7"></button>
-  </nav>
+<!-- Progress Dots -->
+<nav class="progress-dots" aria-label="Page navigation">
+  <button class="progress-dot active" data-panel="0" aria-label="Panel 1"></button>
+  <button class="progress-dot" data-panel="1" aria-label="Panel 2"></button>
+  <button class="progress-dot" data-panel="2" aria-label="Panel 3"></button>
+  <button class="progress-dot" data-panel="3" aria-label="Panel 4"></button>
+  <button class="progress-dot" data-panel="4" aria-label="Panel 5"></button>
+  <button class="progress-dot" data-panel="5" aria-label="Panel 6"></button>
+  <button class="progress-dot" data-panel="6" aria-label="Panel 7"></button>
+  <button class="progress-dot" data-panel="7" aria-label="Panel 8"></button>
+  <button class="progress-dot" data-panel="8" aria-label="Panel 9"></button>
+  <button class="progress-dot" data-panel="9" aria-label="Panel 10"></button>
+  <button class="progress-dot" data-panel="10" aria-label="Panel 11"></button>
+  <button class="progress-dot" data-panel="11" aria-label="Panel 12"></button>
+  <button class="progress-dot" data-panel="12" aria-label="Panel 13"></button>
+  <button class="progress-dot" data-panel="13" aria-label="Panel 14"></button>
+  <button class="progress-dot" data-panel="14" aria-label="Panel 15"></button>
+  <button class="progress-dot" data-panel="15" aria-label="Panel 16"></button>
+  <button class="progress-dot" data-panel="16" aria-label="Panel 17"></button>
+  <button class="progress-dot" data-panel="17" aria-label="Panel 18"></button>
+</nav>
 
-  <!-- Panel 1: The Problem -->
-  <section class="panel" id="panel-0">
-    <div class="panel-inner">
-      <div class="panel-text">
-        <h2>Sound familiar?</h2>
-        <p>You tell your AI about a project. Ten minutes of context. Great conversation. Next day, it's forgotten everything.</p>
-      </div>
-      <div class="panel-visual">
-        <div class="chat-window">
-          <div class="chat-bubble user">Can you pick up where we left off on the kitchen remodel?</div>
-          <div class="chat-bubble ai">I don't have any context from previous conversations. Could you tell me more about your project?</div>
-        </div>
-      </div>
+
+<!-- ============================================== -->
+<!-- PANEL 1: You've probably hit the ceiling       -->
+<!-- ============================================== -->
+<section class="panel layout-centered" data-index="0">
+  <div class="hero-decoration">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="300" cy="200" r="4" fill="#5B7F5B"/>
+      <circle cx="500" cy="350" r="4" fill="#5B7F5B"/>
+      <circle cx="700" cy="180" r="4" fill="#5B7F5B"/>
+      <circle cx="400" cy="500" r="4" fill="#5B7F5B"/>
+      <circle cx="850" cy="400" r="4" fill="#5B7F5B"/>
+      <circle cx="200" cy="450" r="4" fill="#5B7F5B"/>
+      <circle cx="600" cy="600" r="4" fill="#5B7F5B"/>
+      <circle cx="900" cy="250" r="4" fill="#5B7F5B"/>
+      <circle cx="150" cy="300" r="4" fill="#5B7F5B"/>
+      <circle cx="750" cy="550" r="4" fill="#5B7F5B"/>
+      <circle cx="1000" cy="350" r="4" fill="#5B7F5B"/>
+      <circle cx="450" cy="150" r="4" fill="#5B7F5B"/>
+      <line x1="300" y1="200" x2="500" y2="350" stroke="#5B7F5B" stroke-width="1"/>
+      <line x1="500" y1="350" x2="700" y2="180" stroke="#5B7F5B" stroke-width="1"/>
+      <line x1="700" y1="180" x2="900" y2="250" stroke="#5B7F5B" stroke-width="1"/>
+      <line x1="400" y1="500" x2="600" y2="600" stroke="#5B7F5B" stroke-width="1"/>
+      <line x1="200" y1="450" x2="400" y2="500" stroke="#5B7F5B" stroke-width="1"/>
+      <line x1="500" y1="350" x2="400" y2="500" stroke="#5B7F5B" stroke-width="1"/>
+      <line x1="850" y1="400" x2="750" y2="550" stroke="#5B7F5B" stroke-width="1"/>
+      <line x1="850" y1="400" x2="1000" y2="350" stroke="#5B7F5B" stroke-width="1"/>
+      <line x1="700" y1="180" x2="850" y2="400" stroke="#5B7F5B" stroke-width="1"/>
+      <line x1="300" y1="200" x2="150" y2="300" stroke="#5B7F5B" stroke-width="1"/>
+      <line x1="150" y1="300" x2="200" y2="450" stroke="#5B7F5B" stroke-width="1"/>
+      <line x1="450" y1="150" x2="300" y2="200" stroke="#5B7F5B" stroke-width="1"/>
+      <line x1="450" y1="150" x2="700" y2="180" stroke="#5B7F5B" stroke-width="1"/>
+    </svg>
+  </div>
+  <div class="panel-inner">
+    <h2 style="font-size: 2.8rem; margin-bottom: 28px;">You've probably hit the ceiling with AI.</h2>
+    <p style="font-size: 1.15rem; max-width: 600px; margin: 0 auto 20px;">You've used ChatGPT or Claude. Maybe a lot. It's fast, it's smart, it's useful. But every conversation starts from scratch. You re-explain your projects. You re-describe your life. You paste in the same context you pasted last time.</p>
+    <p style="font-size: 1.15rem; max-width: 600px; margin: 0 auto 20px;">It's like working with a brilliant partner who shows up every morning having forgotten everything from yesterday.</p>
+    <p style="font-size: 1.25rem; max-width: 600px; margin: 0 auto; font-weight: 500; color: var(--text);">What if they didn't?</p>
+  </div>
+</section>
+
+
+<!-- ============================================== -->
+<!-- PANEL 2: Tuesday afternoon                     -->
+<!-- ============================================== -->
+<section class="panel layout-side-by-side" data-index="1">
+  <div class="panel-inner">
+    <div class="panel-text">
+      <div class="time-label">Tuesday Afternoon</div>
+      <h2>You ask a simple question.</h2>
+      <p>You're juggling a work project and a kitchen remodel. You need to know where things stand. So you ask.</p>
     </div>
-  </section>
-
-  <!-- Panel 2: The Contrast -->
-  <section class="panel" id="panel-1">
-    <div class="panel-inner">
-      <div class="panel-text">
-        <h2>Now imagine it already knows.</h2>
-        <p>Your projects, your people, what happened yesterday. Every conversation picks up where the last one left off.</p>
-      </div>
-      <div class="panel-visual">
-        <div class="chat-window">
-          <div class="chat-bubble user">Can you pick up where we left off on the kitchen remodel?</div>
-          <div class="chat-bubble ai-positive">Based on your notes, the contractor sent the revised quote yesterday. You wanted to compare it against the original before your call Thursday.</div>
+    <div class="panel-visual">
+      <div class="chat-container">
+        <div class="chat-header">
+          <div class="chat-header-dot"></div>
+          Claude
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Panel 3: The Reveal -->
-  <section class="panel" id="panel-2">
-    <div class="panel-inner">
-      <div class="panel-text">
-        <h2>The secret is simple.</h2>
-        <p>A folder on your computer with notes your AI reads every time you talk to it. That's the whole trick.</p>
-      </div>
-      <div class="panel-visual">
-        <div class="file-tree">
-          <div class="file-tree-label">Your Folder</div>
-          <ul>
-            <li class="folder">&#128193; Map/
-              <ul>
-                <li>Work Basecamp</li>
-                <li>Home Basecamp</li>
-              </ul>
-            </li>
-            <li class="folder">&#128193; Calendar/
-              <ul>
-                <li>2026-04-14</li>
-                <li>2026-04-13</li>
-              </ul>
-            </li>
-            <li>Kitchen Remodel</li>
-            <li>Contractor Quotes</li>
-            <li>Trip Planning</li>
-            <li class="accent-file">CLAUDE.md</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Panel 4: Obsidian Makes It Visual -->
-  <section class="panel" id="panel-3">
-    <div class="panel-inner">
-      <div class="panel-text">
-        <h2>Obsidian makes it visual.</h2>
-        <p>A free app that turns that folder into something you can actually browse. Click a note, follow a link, see how everything connects.</p>
-      </div>
-      <div class="panel-visual">
-        <div class="obsidian-window">
-          <div class="obsidian-titlebar">
-            <div class="titlebar-dot red"></div>
-            <div class="titlebar-dot yellow"></div>
-            <div class="titlebar-dot green"></div>
-            <span class="titlebar-label">Obsidian</span>
+        <div class="chat-messages">
+          <div class="chat-row user">
+            <div class="chat-avatar user-avatar">Y</div>
+            <div class="chat-bubble user-bubble">What were the action items from this morning's standup? And did Dave ever send that updated kitchen quote?</div>
           </div>
-          <div class="obsidian-body">
-            <div class="obsidian-main">
-              <h3>Home Basecamp</h3>
-              <p style="font-size:0.9rem;color:var(--text-secondary);margin-bottom:16px;line-height:1.6">Hub for everything home and family. The <span class="note-link" style="display:inline">Kitchen Remodel</span> is in progress. Latest <span class="note-link" style="display:inline">Contractor Quotes</span> came in Tuesday.</p>
-              <span class="note-link">Kitchen Remodel</span>
-              <span class="note-link">Contractor Quotes</span>
-              <span class="note-link">Thursday Call</span>
-              <span class="note-link">Garden Project</span>
-              <span class="note-link">Insurance Renewal</span>
-            </div>
-            <div class="obsidian-sidebar">
-              <h4>3 notes link here</h4>
-              <div class="backlink">Kitchen Remodel</div>
-              <div class="backlink">2026-04-14</div>
-              <div class="backlink">Contractor Quotes</div>
-            </div>
+          <div class="chat-row">
+            <div class="chat-avatar claude-avatar">C</div>
+            <div class="chat-bubble claude-bubble">I don't have access to any previous conversations. Could you tell me more about the standup and who Dave is? I'd be happy to help if you can share the details.</div>
+          </div>
+          <div class="chat-row user">
+            <div class="chat-avatar user-avatar">Y</div>
+            <div class="chat-bubble user-bubble">We literally spent an hour on this yesterday.</div>
+          </div>
+          <div class="chat-row">
+            <div class="chat-avatar claude-avatar">C</div>
+            <div class="chat-bubble claude-bubble">I understand that's frustrating. Unfortunately I can't access previous conversations. If you can share the context again, I can help from here.</div>
           </div>
         </div>
+        <div class="chat-input-bar">
+          <div class="chat-input">Message...</div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Panel 5: The Graph -->
-  <section class="panel" id="panel-4">
-    <div class="panel-inner">
-      <div class="panel-text">
-        <h2>Everything connects.</h2>
-        <p>Every link builds a web of your knowledge. After a week, your notes start connecting themselves. After a month, it looks like this.</p>
+
+<!-- ============================================== -->
+<!-- PANEL 3: Same Tuesday. With noteOS.            -->
+<!-- ============================================== -->
+<section class="panel layout-text-above" data-index="2">
+  <div class="panel-inner">
+    <div class="panel-text">
+      <div class="time-label">Same Tuesday. With noteOS.</div>
+      <h2>Same question. Watch what happens.</h2>
+    </div>
+    <div class="panel-visual">
+      <div class="chat-container">
+        <div class="chat-header">
+          <div class="chat-header-dot"></div>
+          Claude
+        </div>
+        <div class="chat-messages">
+          <div class="chat-row user">
+            <div class="chat-avatar user-avatar">Y</div>
+            <div class="chat-bubble user-bubble">What were the action items from this morning's standup? And did Dave ever send that updated kitchen quote?</div>
+          </div>
+          <div class="chat-row">
+            <div class="chat-avatar claude-avatar">C</div>
+            <div class="chat-bubble claude-bubble">
+              From this morning's standup:
+              <ul>
+                <li><strong>Sarah</strong> owes the revised project timeline by Thursday. Not sent yet.</li>
+                <li><strong>You</strong> committed to reviewing the Q3 roadmap draft. Still open.</li>
+                <li><strong>Bohdan</strong> pushed 3 PRs for the checkout flow. All merged this afternoon. &#10003;</li>
+              </ul>
+              And yes. Dave sent the updated kitchen quote about an hour ago. $34,200, down from the original $38,500. He needs a commitment by Friday.
+              <br><br>
+              Want me to create a side-by-side comparison?
+            </div>
+          </div>
+          <div class="chat-row user">
+            <div class="chat-avatar user-avatar">Y</div>
+            <div class="chat-bubble user-bubble">Yeah, do that.</div>
+          </div>
+          <div class="chat-row">
+            <div class="chat-avatar claude-avatar">C</div>
+            <div class="chat-bubble claude-bubble">
+              Done. Here's the comparison:
+              <table>
+                <tr><th></th><th>Original</th><th>Revised</th></tr>
+                <tr><td>Total</td><td>$38,500</td><td>$34,200</td></tr>
+                <tr><td>Timeline</td><td>12 weeks</td><td>10 weeks</td></tr>
+                <tr><td>Cabinets</td><td>Standard</td><td>Backordered 6 wks</td></tr>
+              </table>
+              One thing. The revised quote doesn't mention the pantry shelving from the original scope. Worth asking Dave about that.
+              <div class="proactive"><strong>I noticed your Thursday Call prep doesn't have this comparison linked yet. Want me to add it and include a reminder to ask about the shelving?</strong></div>
+            </div>
+          </div>
+          <div class="chat-row user">
+            <div class="chat-avatar user-avatar">Y</div>
+            <div class="chat-bubble user-bubble">Yes please.</div>
+          </div>
+          <div class="chat-row">
+            <div class="chat-avatar claude-avatar">C</div>
+            <div class="chat-bubble claude-bubble">Done. Updated Thursday Call with the comparison and added "Ask about pantry shelving" to your action items. &#10003;</div>
+          </div>
+        </div>
+        <div class="chat-input-bar">
+          <div class="chat-input">Message...</div>
+        </div>
       </div>
-      <div class="panel-visual">
-        <div class="graph-container" id="graph">
-          <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
-            <!-- Lines (connections) -->
-            <!-- Hub connections (thicker) -->
-            <line class="graph-line" x1="250" y1="80" x2="120" y2="160" stroke="var(--accent)" stroke-width="2.5" style="--target-opacity:0.4" />
-            <line class="graph-line" x1="250" y1="80" x2="380" y2="150" stroke="var(--accent)" stroke-width="2.5" style="--target-opacity:0.4" />
-            <line class="graph-line" x1="250" y1="80" x2="250" y2="210" stroke="var(--accent)" stroke-width="3" style="--target-opacity:0.5" />
-            <!-- Work connections -->
-            <line class="graph-line" x1="120" y1="160" x2="60" y2="250" stroke="var(--accent)" stroke-width="1.5" style="--target-opacity:0.3" />
-            <line class="graph-line" x1="120" y1="160" x2="170" y2="270" stroke="var(--accent)" stroke-width="1.5" style="--target-opacity:0.3" />
-            <line class="graph-line" x1="120" y1="160" x2="80" y2="340" stroke="var(--accent)" stroke-width="1.5" style="--target-opacity:0.25" />
-            <!-- Health connections -->
-            <line class="graph-line" x1="380" y1="150" x2="440" y2="250" stroke="var(--accent)" stroke-width="1.5" style="--target-opacity:0.3" />
-            <line class="graph-line" x1="380" y1="150" x2="340" y2="260" stroke="var(--accent)" stroke-width="1.5" style="--target-opacity:0.3" />
-            <line class="graph-line" x1="380" y1="150" x2="420" y2="340" stroke="var(--accent)" stroke-width="1.5" style="--target-opacity:0.25" />
-            <!-- Today connections -->
-            <line class="graph-line" x1="250" y1="210" x2="170" y2="270" stroke="var(--accent)" stroke-width="2" style="--target-opacity:0.35" />
-            <line class="graph-line" x1="250" y1="210" x2="340" y2="260" stroke="var(--accent)" stroke-width="2" style="--target-opacity:0.35" />
-            <line class="graph-line" x1="250" y1="210" x2="260" y2="330" stroke="var(--accent)" stroke-width="1.5" style="--target-opacity:0.3" />
-            <!-- Cross-connections (dashed) -->
-            <line class="graph-line" x1="60" y1="250" x2="170" y2="270" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4,4" style="--target-opacity:0.2" />
-            <line class="graph-line" x1="440" y1="250" x2="420" y2="340" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4,4" style="--target-opacity:0.2" />
-            <line class="graph-line" x1="260" y1="330" x2="170" y2="270" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4,4" style="--target-opacity:0.2" />
+      <p class="annotation">It found the meeting notes, pulled the quote, spotted a missing detail, and updated three connected notes. You just had a conversation.</p>
+    </div>
+  </div>
+</section>
 
-            <!-- Nodes -->
-            <!-- My Life (hub) -->
-            <g class="graph-node">
-              <circle cx="250" cy="80" r="22" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="2" />
-              <text x="250" y="84" text-anchor="middle" font-size="10" font-weight="700" fill="var(--accent)" font-family="Inter, sans-serif">My Life</text>
-            </g>
-            <!-- Work -->
-            <g class="graph-node">
-              <circle cx="120" cy="160" r="18" fill="var(--accent)" opacity="0.12" stroke="var(--accent)" stroke-width="1.5" />
-              <text x="120" y="164" text-anchor="middle" font-size="9" font-weight="600" fill="var(--accent)" font-family="Inter, sans-serif">Work</text>
-            </g>
-            <!-- Health & Fitness -->
-            <g class="graph-node">
-              <circle cx="380" cy="150" r="18" fill="var(--accent)" opacity="0.12" stroke="var(--accent)" stroke-width="1.5" />
-              <text x="380" y="146" text-anchor="middle" font-size="8" font-weight="600" fill="var(--accent)" font-family="Inter, sans-serif">Health &amp;</text>
-              <text x="380" y="157" text-anchor="middle" font-size="8" font-weight="600" fill="var(--accent)" font-family="Inter, sans-serif">Fitness</text>
-            </g>
-            <!-- Today's Note -->
-            <g class="graph-node">
-              <circle cx="250" cy="210" r="16" fill="var(--accent)" opacity="0.1" stroke="var(--accent)" stroke-width="1.5" />
-              <text x="250" y="206" text-anchor="middle" font-size="8" font-weight="600" fill="var(--accent)" font-family="Inter, sans-serif">Today's</text>
-              <text x="250" y="217" text-anchor="middle" font-size="8" font-weight="600" fill="var(--accent)" font-family="Inter, sans-serif">Note</text>
-            </g>
-            <!-- Budget -->
-            <g class="graph-node">
-              <circle cx="60" cy="250" r="12" fill="var(--accent)" opacity="0.08" stroke="var(--accent)" stroke-width="1" />
-              <text x="60" y="253" text-anchor="middle" font-size="7.5" font-weight="500" fill="var(--accent)" font-family="Inter, sans-serif">Budget</text>
-            </g>
-            <!-- Q3 Roadmap -->
-            <g class="graph-node">
-              <circle cx="170" cy="270" r="13" fill="var(--accent)" opacity="0.08" stroke="var(--accent)" stroke-width="1" />
-              <text x="170" y="266" text-anchor="middle" font-size="7" font-weight="500" fill="var(--accent)" font-family="Inter, sans-serif">Q3</text>
-              <text x="170" y="276" text-anchor="middle" font-size="7" font-weight="500" fill="var(--accent)" font-family="Inter, sans-serif">Roadmap</text>
-            </g>
-            <!-- Trail Run -->
-            <g class="graph-node">
-              <circle cx="440" cy="250" r="12" fill="var(--accent)" opacity="0.08" stroke="var(--accent)" stroke-width="1" />
-              <text x="440" y="253" text-anchor="middle" font-size="7.5" font-weight="500" fill="var(--accent)" font-family="Inter, sans-serif">Trail Run</text>
-            </g>
-            <!-- Dr. Patel Visit -->
-            <g class="graph-node">
-              <circle cx="340" cy="260" r="13" fill="var(--accent)" opacity="0.08" stroke="var(--accent)" stroke-width="1" />
-              <text x="340" y="256" text-anchor="middle" font-size="7" font-weight="500" fill="var(--accent)" font-family="Inter, sans-serif">Dr. Patel</text>
-              <text x="340" y="266" text-anchor="middle" font-size="7" font-weight="500" fill="var(--accent)" font-family="Inter, sans-serif">Visit</text>
-            </g>
-            <!-- Kitchen Remodel -->
-            <g class="graph-node">
-              <circle cx="260" cy="330" r="14" fill="var(--accent)" opacity="0.08" stroke="var(--accent)" stroke-width="1" />
-              <text x="260" y="326" text-anchor="middle" font-size="7" font-weight="500" fill="var(--accent)" font-family="Inter, sans-serif">Kitchen</text>
-              <text x="260" y="336" text-anchor="middle" font-size="7" font-weight="500" fill="var(--accent)" font-family="Inter, sans-serif">Remodel</text>
-            </g>
-            <!-- Meeting Notes -->
-            <g class="graph-node">
-              <circle cx="80" cy="340" r="12" fill="var(--accent)" opacity="0.08" stroke="var(--accent)" stroke-width="1" />
-              <text x="80" y="336" text-anchor="middle" font-size="7" font-weight="500" fill="var(--accent)" font-family="Inter, sans-serif">Meeting</text>
-              <text x="80" y="346" text-anchor="middle" font-size="7" font-weight="500" fill="var(--accent)" font-family="Inter, sans-serif">Notes</text>
-            </g>
-            <!-- Meal Plan -->
-            <g class="graph-node">
-              <circle cx="420" cy="340" r="12" fill="var(--accent)" opacity="0.08" stroke="var(--accent)" stroke-width="1" />
-              <text x="420" y="336" text-anchor="middle" font-size="7" font-weight="500" fill="var(--accent)" font-family="Inter, sans-serif">Meal</text>
-              <text x="420" y="346" text-anchor="middle" font-size="7" font-weight="500" fill="var(--accent)" font-family="Inter, sans-serif">Plan</text>
-            </g>
-            <!-- Contractor Quotes -->
-            <g class="graph-node">
-              <circle cx="160" cy="350" r="13" fill="var(--accent)" opacity="0.08" stroke="var(--accent)" stroke-width="1" />
-              <text x="160" y="346" text-anchor="middle" font-size="6.5" font-weight="500" fill="var(--accent)" font-family="Inter, sans-serif">Contractor</text>
-              <text x="160" y="356" text-anchor="middle" font-size="6.5" font-weight="500" fill="var(--accent)" font-family="Inter, sans-serif">Quotes</text>
-            </g>
-            <!-- Extra connection for Contractor Quotes -->
-            <line class="graph-line" x1="260" y1="330" x2="160" y2="350" stroke="var(--accent)" stroke-width="1.5" style="--target-opacity:0.25" />
+
+<!-- ============================================== -->
+<!-- PANEL 4: Behind the scenes                     -->
+<!-- ============================================== -->
+<section class="panel layout-text-above" data-index="3">
+  <div class="panel-inner">
+    <div class="panel-text">
+      <h2>You didn't organize any of that. Your AI did.</h2>
+      <p>While you were talking, noteOS created notes, linked them together, and updated what changed. Here's what your folder looks like now.</p>
+    </div>
+    <div class="panel-visual">
+      <div class="split-visual">
+        <div class="split-left">
+          <div class="chat-container" style="font-size: 0.85rem;">
+            <div class="chat-header">
+              <div class="chat-header-dot"></div>
+              Claude
+            </div>
+            <div class="chat-messages">
+              <div class="chat-row">
+                <div class="chat-avatar claude-avatar">C</div>
+                <div class="chat-bubble claude-bubble">
+                  Done. Updated Thursday Call with the comparison and added "Ask about pantry shelving" to your action items. &#10003;
+                  <br><br>
+                  <span style="font-size: 0.82rem; color: var(--text-secondary);">
+                    Notes updated:<br>
+                    &#10003; Contractor Quotes<br>
+                    &#10003; Thursday Call<br>
+                    &#10003; 2026-04-14
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="split-connector">&rarr;</div>
+        <div class="split-right">
+          <div class="obs-window">
+            <div class="obs-chrome">
+              <div class="obs-dot red"></div>
+              <div class="obs-dot yellow"></div>
+              <div class="obs-dot green"></div>
+              <span class="obs-chrome-label">Obsidian</span>
+            </div>
+            <div class="obs-layout">
+              <div class="obs-sidebar">
+                <div class="obs-folder">&#128193; Map</div>
+                <div class="obs-file" style="padding-left: 24px;">&#128196; Home Basecamp</div>
+                <div class="obs-file" style="padding-left: 24px;">&#128196; Work Basecamp</div>
+                <div class="obs-folder">&#128193; Calendar</div>
+                <div class="obs-file" style="padding-left: 24px;">&#128196; 2026-04-14 <span class="updated-dot"></span></div>
+                <div style="height: 8px;"></div>
+                <div class="obs-file">&#128196; Kitchen Remodel</div>
+                <div class="obs-file">&#128196; Contractor Quotes <span class="updated-dot"></span></div>
+                <div class="obs-file">&#128196; Thursday Call <span class="updated-dot"></span></div>
+                <div class="obs-file">&#128196; Q3 Roadmap</div>
+                <div class="obs-file" style="color: var(--obs-text-dim);">&#9881; CLAUDE.md</div>
+              </div>
+              <div class="obs-content">
+                <h2 style="color: var(--obs-text); font-size: 1rem;">## Quote Comparison</h2>
+                <table>
+                  <tr><th></th><th>Original</th><th>Revised</th></tr>
+                  <tr><td>Total</td><td>$38,500</td><td>$34,200</td></tr>
+                  <tr><td>Timeline</td><td>12 weeks</td><td>10 weeks</td></tr>
+                </table>
+                <p class="warning" style="font-size: 0.82rem;">&#9888; Pantry shelving not in revised scope. Ask Dave Thursday.</p>
+                <p style="font-size: 0.8rem; color: var(--obs-text-dim); margin-top: 16px;">
+                  Linked: <span class="wiki-link">[[Kitchen Remodel]]</span> &middot; <span class="wiki-link">[[Thursday Call]]</span> &middot; <span class="wiki-link">[[2026-04-14]]</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================== -->
+<!-- PANEL 5: Wednesday morning                     -->
+<!-- ============================================== -->
+<section class="panel layout-side-by-side" data-index="4">
+  <div class="panel-inner">
+    <div class="panel-text">
+      <div class="time-label">Wednesday Morning</div>
+      <h2>You start the day with one command.</h2>
+      <p>You open Claude and type /morning-brief. Everything you need to know about today, pulled from your notes, your calendar, your email. Work and life, all in one view.</p>
+    </div>
+    <div class="panel-visual">
+      <div class="chat-container">
+        <div class="chat-header">
+          <div class="chat-header-dot"></div>
+          Claude
+        </div>
+        <div class="chat-messages">
+          <div class="chat-row user">
+            <div class="chat-avatar user-avatar">Y</div>
+            <div class="chat-bubble user-bubble">/morning-brief</div>
+          </div>
+          <div class="chat-row">
+            <div class="chat-avatar claude-avatar">C</div>
+            <div class="chat-bubble claude-bubble">
+              <h3>Morning Brief. Wednesday, April 15</h3>
+
+              <strong>Focus Today</strong>
+              <ul>
+                <li>Follow up with Sarah on project timeline (due tomorrow)</li>
+                <li>Q3 roadmap review. You've been putting this off since Tuesday.</li>
+                <li>Prep for tomorrow's call with Dave about kitchen quote</li>
+              </ul>
+
+              <strong>Calendar</strong>
+              <ul>
+                <li>9:00 AM. Team standup</li>
+                <li>12:30 PM. Lunch with Mom</li>
+                <li>3:00 PM. Dentist (Dr. Patel, cleaning + check that crown)</li>
+              </ul>
+
+              <strong>Open Items</strong><br>
+              <em>From Tuesday Standup:</em>
+              <ul>
+                <li>&#9744; Review Q3 roadmap draft</li>
+                <li>&#9744; Follow up: Sarah's timeline (due Thu)</li>
+                <li>&#9745; Bohdan's checkout PRs. Merged &#10003;</li>
+              </ul>
+              <em>Kitchen Remodel:</em>
+              <ul>
+                <li>&#9744; Compare quotes. Comparison ready, review before Thursday</li>
+                <li>&#9744; Ask Dave about pantry shelving</li>
+                <li>&#9744; Call insurance about renovation coverage</li>
+              </ul>
+
+              <strong>Email (4 new)</strong>
+              <ul>
+                <li>Sarah: "timeline draft attached, wanted your eyes before Thursday"</li>
+                <li>Dave: "thanks for the quick turnaround, call Thursday works"</li>
+                <li>Dr. Patel's office: appointment confirmation</li>
+                <li>REI: your hiking boots shipped. Arrives Friday.</li>
+              </ul>
+
+              <strong>Weather</strong><br>
+              62&deg;F, partly cloudy. Great evening for that run you skipped Monday.
+            </div>
+          </div>
+        </div>
+        <div class="chat-input-bar">
+          <div class="chat-input">Message...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================== -->
+<!-- PANEL 6: Thursday evening                      -->
+<!-- ============================================== -->
+<section class="panel layout-side-by-side" data-index="5">
+  <div class="panel-inner">
+    <div class="panel-text">
+      <div class="time-label">Thursday Evening</div>
+      <h2>You just finished a long meeting. Let noteOS handle the notes.</h2>
+      <p>You drop a meeting transcript and let your AI do the rest. Speakers identified, action items extracted, everything linked to the right projects.</p>
+    </div>
+    <div class="panel-visual">
+      <div class="chat-container">
+        <div class="chat-header">
+          <div class="chat-header-dot"></div>
+          Claude
+        </div>
+        <div class="chat-messages">
+          <div class="chat-row user">
+            <div class="chat-avatar user-avatar">Y</div>
+            <div class="chat-bubble user-bubble">Here's the transcript from today's call with Dave. Process it.</div>
+          </div>
+          <div class="chat-row">
+            <div class="chat-avatar claude-avatar">C</div>
+            <div class="chat-bubble claude-bubble">
+              Processed: <strong>Kitchen Remodel Call with Dave</strong> (42 min)
+              <br><br>
+              <strong>Speakers:</strong> You, Dave Morrison, Lisa
+              <br><br>
+              <strong>Key Decisions</strong>
+              <ul>
+                <li>Going with the revised quote ($34,200) &#10003;</li>
+                <li>Dave starts demolition April 28</li>
+                <li>Choosing alternative cabinet supplier to avoid 6-week backorder</li>
+              </ul>
+
+              <strong>Action Items</strong>
+              <ul>
+                <li>&#9744; You: Sign contract and send deposit by Monday</li>
+                <li>&#9744; You: Pick cabinet style from Dave's catalog (he's emailing options tonight)</li>
+                <li>&#9744; Dave: Send updated timeline with new cabinet supplier</li>
+                <li>&#9744; Lisa: Confirm the countertop color by next week</li>
+              </ul>
+
+              <strong>Notes Updated</strong>
+              <ul>
+                <li>&#10003; Kitchen Remodel. Added timeline, decisions</li>
+                <li>&#10003; Contractor Quotes. Marked revised quote as accepted</li>
+                <li>&#10003; Daily note. Meeting summary added</li>
+                <li>&#10003; Created: Cabinet Selection (new note, linked to Kitchen Remodel)</li>
+              </ul>
+
+              <div class="proactive"><strong>Want me to carry the action items forward to tomorrow's daily note?</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="chat-input-bar">
+          <div class="chat-input">Message...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================== -->
+<!-- PANEL 7: The following Monday                  -->
+<!-- ============================================== -->
+<section class="panel layout-side-by-side" data-index="6">
+  <div class="panel-inner">
+    <div class="panel-text">
+      <div class="time-label">Monday Morning</div>
+      <h2>You were gone all weekend. Pick up like you never left.</h2>
+      <p>You closed your laptop Thursday evening. Now it's Monday. One command and you're right back in it.</p>
+    </div>
+    <div class="panel-visual">
+      <div class="chat-container">
+        <div class="chat-header">
+          <div class="chat-header-dot"></div>
+          Claude
+        </div>
+        <div class="chat-messages">
+          <div class="chat-row user">
+            <div class="chat-avatar user-avatar">Y</div>
+            <div class="chat-bubble user-bubble">/pickup</div>
+          </div>
+          <div class="chat-row">
+            <div class="chat-avatar claude-avatar">C</div>
+            <div class="chat-bubble claude-bubble">
+              <strong>Last session:</strong> Thursday, April 17 at 6:12 PM
+              <br><br>
+              <strong>Where you left off:</strong><br>
+              Kitchen remodel. Accepted Dave's revised quote ($34,200), demolition starts April 28. You need to sign the contract and send deposit by today.
+              <br><br>
+              <strong>Still open:</strong>
+              <ul>
+                <li>Sign kitchen contract + deposit (due today!)</li>
+                <li>Pick cabinet style from Dave's catalog (he emailed options Friday)</li>
+                <li>Q3 roadmap review (still hasn't happened. Tuesday is day 7)</li>
+                <li>Lisa hasn't confirmed countertop color yet</li>
+              </ul>
+
+              <strong>What changed since Thursday:</strong>
+              <ul>
+                <li>3 emails: Dave sent cabinet catalog, Sarah sent finalized timeline, REI boots delivered</li>
+                <li>Your Monday standup is in 90 minutes</li>
+              </ul>
+
+              <div class="proactive"><strong>Want me to pull up Dave's cabinet options so you can knock that out before standup?</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="chat-input-bar">
+          <div class="chat-input">Message...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================== -->
+<!-- PANEL 8: Three months later                    -->
+<!-- ============================================== -->
+<section class="panel layout-text-above" data-index="7">
+  <div class="panel-inner">
+    <div class="panel-text">
+      <div class="time-label">Three Months Later</div>
+      <h2>This is when it gets really good.</h2>
+      <p>The longer you use noteOS, the more it knows. Here are real questions you can ask after a few months. Not because you organized everything perfectly. Because the system did.</p>
+    </div>
+    <div class="panel-visual">
+      <div class="snippet-grid">
+
+        <!-- Card 1 -->
+        <div class="snippet-card">
+          <div class="chat-messages">
+            <div class="chat-row user">
+              <div class="chat-avatar user-avatar" style="width:24px;height:24px;font-size:10px;">Y</div>
+              <div class="chat-bubble user-bubble">When was the dog's last vet appointment and what did they say about her knee?</div>
+            </div>
+            <div class="chat-row">
+              <div class="chat-avatar claude-avatar" style="width:24px;height:24px;font-size:10px;">C</div>
+              <div class="chat-bubble claude-bubble">June 3rd at Cascade Vet. Dr. Rivera said the limp is soft tissue, not structural. Recommended 2 weeks of limited activity and a follow-up if it doesn't improve. You scheduled the follow-up for June 20th but cancelled it when she got better.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="snippet-card">
+          <div class="chat-messages">
+            <div class="chat-row user">
+              <div class="chat-avatar user-avatar" style="width:24px;height:24px;font-size:10px;">Y</div>
+              <div class="chat-bubble user-bubble">What did we decide about the pantry shelving and why?</div>
+            </div>
+            <div class="chat-row">
+              <div class="chat-avatar claude-avatar" style="width:24px;height:24px;font-size:10px;">C</div>
+              <div class="chat-bubble claude-bubble">In the April 17 call with Dave, you decided to skip it to stay under $35K. Lisa wanted to revisit after the main project wraps. You noted in your Kitchen Remodel note that you'd price it separately in August.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="snippet-card">
+          <div class="chat-messages">
+            <div class="chat-row user">
+              <div class="chat-avatar user-avatar" style="width:24px;height:24px;font-size:10px;">Y</div>
+              <div class="chat-bubble user-bubble">That hotel Sarah mentioned for the coast trip. What was it?</div>
+            </div>
+            <div class="chat-row">
+              <div class="chat-avatar claude-avatar" style="width:24px;height:24px;font-size:10px;">C</div>
+              <div class="chat-bubble claude-bubble">The Headlands Lodge in Pacific City. Sarah brought it up during your March 8 coffee catch-up. She said the ocean-view rooms are worth the upgrade and to book through their site, not Expedia. I added it to your Trip Planning note at the time.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="snippet-card">
+          <div class="chat-messages">
+            <div class="chat-row user">
+              <div class="chat-avatar user-avatar" style="width:24px;height:24px;font-size:10px;">Y</div>
+              <div class="chat-bubble user-bubble">/remember Save this chat. I'm making progress on the training plan and want to pick this up tomorrow.</div>
+            </div>
+            <div class="chat-row">
+              <div class="chat-avatar claude-avatar" style="width:24px;height:24px;font-size:10px;">C</div>
+              <div class="chat-bubble claude-bubble">Session saved. I've captured your current context: training plan discussion, the 3-day split you're leaning toward, and the question about rest days. Next time you use /pickup, this is where we'll start. &#10003;</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================== -->
+<!-- PANEL 9: How it actually works                 -->
+<!-- ============================================== -->
+<section class="panel layout-text-above" data-index="8">
+  <div class="panel-inner">
+    <div class="panel-text">
+      <h2>Under the hood, it's surprisingly simple.</h2>
+      <p>Three things work together. A folder of plain text files on your computer. A free app called Obsidian that lets you browse them. And AI that reads and writes inside them. That's the whole system. No code. No database. No subscription.</p>
+    </div>
+    <div class="panel-visual">
+      <div class="three-cards">
+
+        <div class="how-card">
+          <div class="how-card-visual">
+            <div class="mini-finder">
+              <div style="font-weight: 600; margin-bottom: 6px; font-size: 0.75rem;">&#128193; My Notes</div>
+              <div class="mini-finder-row"><span>Kitchen Remodel.md</span><span style="color: #999;">4 KB</span></div>
+              <div class="mini-finder-row"><span>Q3 Roadmap.md</span><span style="color: #999;">2 KB</span></div>
+              <div class="mini-finder-row"><span>Contractor Quotes.md</span><span style="color: #999;">3 KB</span></div>
+              <div class="mini-finder-row"><span>2026-04-14.md</span><span style="color: #999;">6 KB</span></div>
+              <div class="mini-finder-row"><span>CLAUDE.md</span><span style="color: #999;">8 KB</span></div>
+              <div class="mini-finder-row"><span>Trip Planning.md</span><span style="color: #999;">1 KB</span></div>
+            </div>
+          </div>
+          <div class="how-card-text">
+            <h3>Your files</h3>
+            <p>Plain text on your computer. Open them in any text editor. They're yours forever.</p>
+          </div>
+        </div>
+
+        <div class="how-card">
+          <div class="how-card-visual">
+            <div class="mini-obs-preview">
+              <div style="font-weight: 600; margin-bottom: 4px;">Kitchen Remodel</div>
+              <div style="font-size: 0.7rem; color: var(--obs-text-dim);">Status: In progress</div>
+              <div style="margin-top: 6px;">See also: <span class="wiki-link">[[Contractor Quotes]]</span> &middot; <span class="wiki-link">[[Cabinet Selection]]</span></div>
+              <div class="graph-dots">
+                <div class="graph-dot"></div><div class="graph-dot"></div><div class="graph-dot"></div>
+                <div class="graph-dot"></div><div class="graph-dot"></div><div class="graph-dot"></div>
+                <div class="graph-dot"></div><div class="graph-dot"></div><div class="graph-dot"></div>
+                <div class="graph-dot"></div><div class="graph-dot"></div>
+              </div>
+            </div>
+          </div>
+          <div class="how-card-text">
+            <h3>Obsidian</h3>
+            <p>Free app. Clickable links, instant search, and a graph that shows how everything connects.</p>
+          </div>
+        </div>
+
+        <div class="how-card">
+          <div class="how-card-visual">
+            <div class="mini-chat-preview">
+              <div class="mini-chat-line from-ai">Reading your notes...</div>
+              <div class="mini-chat-line from-user">What's the status on the kitchen?</div>
+              <div class="mini-chat-line from-ai">Dave starts demolition April 28. Contract signed. Cabinet selection still open.</div>
+            </div>
+          </div>
+          <div class="how-card-text">
+            <h3>Your AI</h3>
+            <p>Reads your notes before every conversation. Writes new ones as you talk. Gets smarter the longer you use it.</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="cards-footer">The intelligence isn't in the AI. It's in the system you build around it. The AI is the engine. Your notes are the fuel.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================== -->
+<!-- PANEL 10: Everything starts with a Basecamp    -->
+<!-- ============================================== -->
+<section class="panel layout-side-by-side basecamp-panel" data-index="9">
+  <div class="panel-inner">
+    <div class="panel-text">
+      <h2>Everything starts with a Basecamp.</h2>
+      <p>A Basecamp is a hub note for a topic. Your home renovation, a client project, your health, a trip you're planning. It doesn't hold all the information. It links to everything related. Think of it like a table of contents for one area of your life.</p>
+    </div>
+    <div class="panel-visual">
+      <div class="basecamp-layout">
+        <div class="basecamp-main">
+          <div class="obs-chrome">
+            <div class="obs-dot red"></div>
+            <div class="obs-dot yellow"></div>
+            <div class="obs-dot green"></div>
+            <span class="obs-chrome-label">Home Basecamp</span>
+          </div>
+          <div class="basecamp-content">
+            <h1>Home Basecamp</h1>
+
+            <div class="bc-section-heading">Compass</div>
+            <p style="margin-bottom: 8px;">Hub for everything home and family. Three active projects: kitchen remodel (in progress, decision point this week), garden (waiting on spring), and insurance renewal (June deadline).</p>
+            <p class="bc-meta">Related: <span class="bc-link">Work Basecamp</span> &middot; <span class="bc-link">2026-04-14</span></p>
+
+            <div class="bc-section-heading">Active</div>
+            <p style="margin-bottom: 8px;">The <span class="bc-link">Kitchen Remodel</span> is the big one right now. Dave's crew starts demolition April 28. Contract signed, deposit sent. Still deciding on cabinets. <span class="bc-link">Cabinet Selection</span> has the options.</p>
+            <p style="margin-bottom: 12px;"><span class="bc-link">Insurance Renewal</span> is due in June. Need to compare quotes in May.</p>
+            <div class="bc-checkbox">&#9744; Pick cabinet style from Dave's catalog</div>
+            <div class="bc-checkbox">&#9744; Call insurance for renovation coverage quote</div>
+            <div class="bc-checkbox done">&#9745; Sign contract and send deposit &#10003;</div>
+
+            <div class="bc-section-heading">Ongoing</div>
+            <div class="bc-list-item">&bull; <span class="bc-link">Garden Project</span> . waiting on spring planting season</div>
+            <div class="bc-list-item">&bull; <span class="bc-link">Meal Planning</span> . weekly rotation, current favorites linked</div>
+
+            <div class="bc-section-heading">Knowledge</div>
+            <div class="bc-list-item">&bull; <span class="bc-link">Contractor Quotes</span> . quote comparison and history</div>
+            <div class="bc-list-item">&bull; <span class="bc-link">Home Maintenance Log</span> . appliance warranties, service dates</div>
+
+            <div class="bc-section-heading">Trails</div>
+            <p class="bc-meta">The paths worth taking from here:</p>
+            <p><span class="bc-link">Kitchen Remodel</span> &middot; <span class="bc-link">Contractor Quotes</span> &middot; <span class="bc-link">Cabinet Selection</span> &middot; <span class="bc-link">Insurance Renewal</span> &middot; <span class="bc-link">Garden Project</span> &middot; <span class="bc-link">2026-04-14</span></p>
+          </div>
+        </div>
+        <div class="backlinks-sidebar">
+          <div class="backlinks-header">Linked Mentions</div>
+          <div class="backlinks-count">7 notes link here</div>
+          <div class="backlink-item">
+            <div class="backlink-name">&#128196; Kitchen Remodel</div>
+            <div class="backlink-context">...tracked in Home Basecamp...</div>
+          </div>
+          <div class="backlink-item">
+            <div class="backlink-name">&#128196; 2026-04-14</div>
+            <div class="backlink-context">...updated Home Basecamp with...</div>
+          </div>
+          <div class="backlink-item">
+            <div class="backlink-name">&#128196; Contractor Quotes</div>
+            <div class="backlink-context">...see Home Basecamp...</div>
+          </div>
+          <div class="backlink-item">
+            <div class="backlink-name">&#128196; Cabinet Selection</div>
+          </div>
+          <div class="backlink-item">
+            <div class="backlink-name">&#128196; Insurance Renewal</div>
+          </div>
+          <div class="backlink-item">
+            <div class="backlink-name">&#128196; Garden Project</div>
+          </div>
+          <div class="backlink-item">
+            <div class="backlink-name">&#128196; Meal Planning</div>
+          </div>
+        </div>
+      </div>
+      <p class="basecamp-annotation">Compass orients you. Active is what's happening now. Trails are the links worth following. Your AI creates and updates these as you talk.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================== -->
+<!-- PANEL 11: A place for everything               -->
+<!-- ============================================== -->
+<section class="panel layout-text-above" data-index="10">
+  <div class="panel-inner">
+    <div class="panel-text">
+      <h2>Simple structure. No deep folders. Links do the organizing.</h2>
+      <p>noteOS uses a flat folder structure on purpose. You don't organize by nesting folders ten levels deep. You organize by linking notes to each other. Here's what the vault looks like.</p>
+    </div>
+    <div class="panel-visual">
+      <div class="folder-map">
+        <div class="folder-row">
+          <div class="folder-row-header">
+            <span class="folder-row-icon">&#128193;</span>
+            <span class="folder-row-name">Map/</span>
+          </div>
+          <div class="folder-row-desc">Basecamps only. Your navigation hubs. One for each major area of your life. Work, home, health, a project, a hobby. This is where you start browsing.</div>
+          <div class="folder-row-examples">Home Basecamp, Work Basecamp, Health Basecamp, Trip Planning Basecamp</div>
+        </div>
+        <div class="folder-row">
+          <div class="folder-row-header">
+            <span class="folder-row-icon">&#128193;</span>
+            <span class="folder-row-name">Calendar/</span>
+          </div>
+          <div class="folder-row-desc">Daily notes, organized by month and week. One note per day. Your AI creates these automatically. They're a running log of what happened, what you need to do, and what's on your mind.</div>
+          <div class="folder-row-examples">Calendar/April/Week 2/2026-04-14.md</div>
+        </div>
+        <div class="folder-row">
+          <div class="folder-row-header">
+            <span class="folder-row-icon">&#128193;</span>
+            <span class="folder-row-name">Downloads/</span>
+          </div>
+          <div class="folder-row-desc">Raw inputs. Meeting transcripts, PDFs, images, documents you haven't processed yet. Drop files here and tell your AI what to do with them.</div>
+          <div class="folder-row-examples">standup-transcript.txt, dave-quote.pdf, recipe-photo.jpg</div>
+        </div>
+        <div class="folder-row">
+          <div class="folder-row-header">
+            <span class="folder-row-icon">&#128193;</span>
+            <span class="folder-row-name">Templates/</span>
+          </div>
+          <div class="folder-row-desc">Reusable structures. Daily note template, Basecamp template, meeting summary template. Your AI uses these when creating new notes.</div>
+          <div class="folder-row-examples">Daily Note.md, Basecamp.md, Meeting Summary.md</div>
+        </div>
+        <div class="folder-row">
+          <div class="folder-row-header">
+            <span class="folder-row-icon">&#128196;</span>
+            <span class="folder-row-name">Everything else &rarr; Root</span>
+          </div>
+          <div class="folder-row-desc">Knowledge notes, project docs, personal notes. If it's not a hub, a daily note, a raw file, or a template, it lives here. No subfolders needed. Links connect everything.</div>
+          <div class="folder-row-examples">Kitchen Remodel.md, Contractor Quotes.md, Q3 Roadmap.md, CLAUDE.md</div>
+        </div>
+      </div>
+      <p class="folder-map-footer">That's the whole structure. Five locations. Your AI knows where everything goes. You never have to think about filing.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================== -->
+<!-- PANEL 12: See the web                          -->
+<!-- ============================================== -->
+<section class="panel layout-text-above" data-index="11">
+  <div class="panel-inner">
+    <div class="panel-text">
+      <h2>After a few months, your knowledge looks like this.</h2>
+      <p>Every note links to related notes. Projects connect to meetings connect to people connect to decisions. You didn't build this. Your conversations did.</p>
+    </div>
+    <div class="panel-visual">
+      <div class="graph-container" id="graph-panel">
+        <div class="obs-chrome">
+          <div class="obs-dot red"></div>
+          <div class="obs-dot yellow"></div>
+          <div class="obs-dot green"></div>
+          <span class="obs-chrome-label">Obsidian</span>
+        </div>
+        <div class="graph-svg-wrap">
+          <svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="blur"/>
+                <feMerge>
+                  <feMergeNode in="blur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+
+            <!-- CONNECTIONS -->
+            <!-- Hub-to-hub (thick) -->
+            <line class="graph-line thick" x1="450" y1="250" x2="250" y2="150"/>
+            <line class="graph-line thick" x1="450" y1="250" x2="680" y2="130"/>
+            <line class="graph-line thick" x1="450" y1="250" x2="200" y2="380"/>
+            <line class="graph-line thick" x1="450" y1="250" x2="720" y2="370"/>
+
+            <!-- Work cluster -->
+            <line class="graph-line" x1="250" y1="150" x2="150" y2="80"/>
+            <line class="graph-line" x1="250" y1="150" x2="320" y2="60"/>
+            <line class="graph-line" x1="250" y1="150" x2="130" y2="180"/>
+            <line class="graph-line" x1="250" y1="150" x2="350" y2="170"/>
+            <line class="graph-line" x1="250" y1="150" x2="180" y2="240"/>
+            <line class="graph-line" x1="320" y1="60" x2="150" y2="80"/>
+            <line class="graph-line" x1="350" y1="170" x2="180" y2="240"/>
+
+            <!-- Home cluster -->
+            <line class="graph-line" x1="680" y1="130" x2="600" y2="60"/>
+            <line class="graph-line" x1="680" y1="130" x2="780" y2="70"/>
+            <line class="graph-line" x1="680" y1="130" x2="760" y2="180"/>
+            <line class="graph-line" x1="680" y1="130" x2="580" y2="170"/>
+            <line class="graph-line" x1="680" y1="130" x2="850" y2="140"/>
+            <line class="graph-line" x1="600" y1="60" x2="780" y2="70"/>
+            <line class="graph-line" x1="760" y1="180" x2="850" y2="140"/>
+            <line class="graph-line" x1="580" y1="170" x2="600" y2="60"/>
+
+            <!-- Health cluster -->
+            <line class="graph-line" x1="200" y1="380" x2="100" y2="340"/>
+            <line class="graph-line" x1="200" y1="380" x2="120" y2="440"/>
+            <line class="graph-line" x1="200" y1="380" x2="280" y2="430"/>
+            <line class="graph-line" x1="200" y1="380" x2="250" y2="320"/>
+            <line class="graph-line" x1="100" y1="340" x2="120" y2="440"/>
+            <line class="graph-line" x1="280" y1="430" x2="120" y2="440"/>
+
+            <!-- Life cluster -->
+            <line class="graph-line" x1="720" y1="370" x2="650" y2="310"/>
+            <line class="graph-line" x1="720" y1="370" x2="800" y2="310"/>
+            <line class="graph-line" x1="720" y1="370" x2="630" y2="430"/>
+            <line class="graph-line" x1="720" y1="370" x2="810" y2="430"/>
+            <line class="graph-line" x1="720" y1="370" x2="750" y2="460"/>
+            <line class="graph-line" x1="650" y1="310" x2="630" y2="430"/>
+            <line class="graph-line" x1="800" y1="310" x2="810" y2="430"/>
+
+            <!-- Cross-cluster (dashed) -->
+            <line class="graph-line dashed" x1="350" y1="170" x2="580" y2="170"/>
+            <line class="graph-line dashed" x1="280" y1="430" x2="630" y2="430"/>
+            <line class="graph-line dashed" x1="180" y1="240" x2="250" y2="320"/>
+            <line class="graph-line dashed" x1="760" y1="180" x2="800" y2="310"/>
+
+            <!-- Today's Note center connections -->
+            <line class="graph-line thick" x1="450" y1="250" x2="420" y2="180"/>
+            <line class="graph-line" x1="450" y1="250" x2="500" y2="330"/>
+            <line class="graph-line" x1="450" y1="250" x2="380" y2="310"/>
+
+            <!-- NODES -->
+            <!-- Hub nodes (large, with glow) -->
+            <circle class="graph-node" cx="450" cy="250" r="10" fill="var(--graph-hub)" filter="url(#glow)"/>
+            <circle class="graph-node" cx="250" cy="150" r="8" fill="var(--graph-hub)" filter="url(#glow)"/>
+            <circle class="graph-node" cx="680" cy="130" r="8" fill="var(--graph-hub)" filter="url(#glow)"/>
+            <circle class="graph-node" cx="200" cy="380" r="8" fill="var(--graph-hub)" filter="url(#glow)"/>
+            <circle class="graph-node" cx="720" cy="370" r="8" fill="var(--graph-hub)" filter="url(#glow)"/>
+
+            <!-- Work cluster nodes -->
+            <circle class="graph-node" cx="150" cy="80" r="4" fill="var(--graph-node)"/>
+            <circle class="graph-node" cx="320" cy="60" r="4" fill="var(--graph-node)"/>
+            <circle class="graph-node" cx="130" cy="180" r="4" fill="var(--graph-node)"/>
+            <circle class="graph-node" cx="350" cy="170" r="5" fill="var(--graph-node)"/>
+            <circle class="graph-node" cx="180" cy="240" r="4" fill="var(--graph-node)"/>
+
+            <!-- Home cluster nodes -->
+            <circle class="graph-node" cx="600" cy="60" r="5" fill="var(--graph-node)"/>
+            <circle class="graph-node" cx="780" cy="70" r="4" fill="var(--graph-node)"/>
+            <circle class="graph-node" cx="760" cy="180" r="4" fill="var(--graph-node)"/>
+            <circle class="graph-node" cx="580" cy="170" r="4" fill="var(--graph-node)"/>
+            <circle class="graph-node" cx="850" cy="140" r="4" fill="var(--graph-node)"/>
+
+            <!-- Health cluster nodes -->
+            <circle class="graph-node" cx="100" cy="340" r="4" fill="var(--graph-node)"/>
+            <circle class="graph-node" cx="120" cy="440" r="4" fill="var(--graph-node)"/>
+            <circle class="graph-node" cx="280" cy="430" r="4" fill="var(--graph-node)"/>
+            <circle class="graph-node" cx="250" cy="320" r="4" fill="var(--graph-node)"/>
+
+            <!-- Life cluster nodes -->
+            <circle class="graph-node" cx="650" cy="310" r="4" fill="var(--graph-node)"/>
+            <circle class="graph-node" cx="800" cy="310" r="4" fill="var(--graph-node)"/>
+            <circle class="graph-node" cx="630" cy="430" r="4" fill="var(--graph-node)"/>
+            <circle class="graph-node" cx="810" cy="430" r="4" fill="var(--graph-node)"/>
+            <circle class="graph-node" cx="750" cy="460" r="4" fill="var(--graph-node)"/>
+
+            <!-- Center extra nodes -->
+            <circle class="graph-node" cx="420" cy="180" r="4" fill="var(--graph-node)"/>
+            <circle class="graph-node" cx="500" cy="330" r="4" fill="var(--graph-node)"/>
+            <circle class="graph-node" cx="380" cy="310" r="4" fill="var(--graph-node)"/>
+
+            <!-- LABELS -->
+            <!-- Hub labels -->
+            <text class="graph-label hub-label" x="450" y="272" text-anchor="middle">Today's Note</text>
+            <text class="graph-label hub-label" x="250" y="140" text-anchor="middle">Work</text>
+            <text class="graph-label hub-label" x="680" y="120" text-anchor="middle">Home &amp; Family</text>
+            <text class="graph-label hub-label" x="200" y="400" text-anchor="middle">Health &amp; Fitness</text>
+            <text class="graph-label hub-label" x="720" y="392" text-anchor="middle">My Life</text>
+
+            <!-- Work labels -->
+            <text class="graph-label" x="150" y="72" text-anchor="middle">Q3 Roadmap</text>
+            <text class="graph-label" x="320" y="52" text-anchor="middle">Team Standup</text>
+            <text class="graph-label" x="115" y="195" text-anchor="middle">Budget</text>
+            <text class="graph-label" x="365" y="185" text-anchor="middle">Sarah</text>
+            <text class="graph-label" x="180" y="258" text-anchor="middle">Project Alpha</text>
+
+            <!-- Home labels -->
+            <text class="graph-label" x="600" y="52" text-anchor="middle">Kitchen Remodel</text>
+            <text class="graph-label" x="780" y="62" text-anchor="middle">Contractor Quotes</text>
+            <text class="graph-label" x="775" y="195" text-anchor="middle">Dave</text>
+            <text class="graph-label" x="565" y="185" text-anchor="middle">Cabinet Selection</text>
+            <text class="graph-label" x="850" y="158" text-anchor="middle">Insurance</text>
+
+            <!-- Health labels -->
+            <text class="graph-label" x="85" y="332" text-anchor="middle">Dr. Patel</text>
+            <text class="graph-label" x="120" y="458" text-anchor="middle">Trail Runs</text>
+            <text class="graph-label" x="295" y="445" text-anchor="middle">Meal Plan</text>
+            <text class="graph-label" x="265" y="312" text-anchor="middle">Dr. Rivera</text>
+
+            <!-- Life labels -->
+            <text class="graph-label" x="635" y="302" text-anchor="middle">Trip Planning</text>
+            <text class="graph-label" x="815" y="302" text-anchor="middle">Book Notes</text>
+            <text class="graph-label" x="615" y="445" text-anchor="middle">Coast Trip</text>
+            <text class="graph-label" x="825" y="445" text-anchor="middle">Gear List</text>
+            <text class="graph-label" x="750" y="478" text-anchor="middle">REI Order</text>
+
+            <!-- Center labels -->
+            <text class="graph-label" x="405" y="174" text-anchor="middle">Weekly Report</text>
+            <text class="graph-label" x="515" y="345" text-anchor="middle">Garden</text>
+            <text class="graph-label" x="365" y="325" text-anchor="middle">Gym</text>
           </svg>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Panel 6: It Grows With You -->
-  <section class="panel" id="panel-5">
-    <div class="panel-inner">
-      <div class="panel-text">
-        <h2>It grows with you.</h2>
-        <p>Have a conversation. Your AI updates your notes. New connections appear. Your knowledge base gets smarter every time you use it.</p>
+
+<!-- ============================================== -->
+<!-- PANEL 13: Works with everything                -->
+<!-- ============================================== -->
+<section class="panel layout-side-by-side" data-index="12">
+  <div class="panel-inner">
+    <div class="panel-text" style="flex: 0 0 35%;">
+      <h2>Not locked to any one tool.</h2>
+      <p>noteOS is just files on your computer. Claude, ChatGPT, Gemini, Cursor, GitHub Copilot, Windsurf. They all read the same vault. Switch tools anytime. Your knowledge stays with you.</p>
+    </div>
+    <div class="panel-visual" style="flex: 0 0 60%;">
+      <div class="tool-grid">
+        <div class="tool-card claude-card">
+          <div class="tool-mini-icon" style="background: linear-gradient(135deg, #D4A574, #C4956A); color: white;">C</div>
+          <div class="tool-name">Claude</div>
+        </div>
+        <div class="tool-card chatgpt-card">
+          <div class="tool-mini-icon" style="background: #10a37f; color: white;">G</div>
+          <div class="tool-name">ChatGPT</div>
+        </div>
+        <div class="tool-card cursor-card">
+          <div class="tool-mini-icon" style="background: #7c3aed; color: white;">C</div>
+          <div class="tool-name" style="color: white;">Cursor</div>
+        </div>
+        <div class="tool-card gemini-card">
+          <div class="tool-mini-icon" style="background: #4285f4; color: white;">G</div>
+          <div class="tool-name">Gemini</div>
+        </div>
+        <div class="tool-card copilot-card">
+          <div class="tool-mini-icon" style="background: #2ea44f; color: white;">&#10048;</div>
+          <div class="tool-name" style="color: white;">GitHub Copilot</div>
+        </div>
+        <div class="tool-card windsurf-card">
+          <div class="tool-mini-icon" style="background: #38bdf8; color: white;">W</div>
+          <div class="tool-name" style="color: white;">Windsurf</div>
+        </div>
       </div>
-      <div class="panel-visual">
-        <div class="before-after">
-          <div class="ba-panel">
-            <div class="ba-label">Before your conversation</div>
-            <div class="ba-item">Home Basecamp</div>
-            <div class="ba-item">Kitchen Remodel</div>
-            <div class="ba-item">Contractor Quotes</div>
-            <div class="ba-item">2026-04-14</div>
+      <div class="tool-grid-footer">One instruction file. Every tool finds it automatically.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================== -->
+<!-- PANEL 14: The more you use it                  -->
+<!-- ============================================== -->
+<section class="panel breathing" data-index="13">
+  <div class="panel-inner">
+    <p class="highlight-line">noteOS doesn't have a learning curve. It has a flywheel.</p>
+    <p>Every conversation adds to your notes. Every note links to other notes. Every link makes the next conversation smarter. You don't maintain the system. You just use it.</p>
+    <p>After a week, it knows your projects. After a month, it knows your world. After three months, you can't imagine going back.</p>
+    <p>The intelligence isn't in the AI. It's in the system you build around it. The AI gets better not because it improved, but because your knowledge base got richer.</p>
+  </div>
+</section>
+
+
+<!-- ============================================== -->
+<!-- PANEL 15: Here's how you'd actually use it     -->
+<!-- ============================================== -->
+<section class="panel layout-text-above" data-index="14">
+  <div class="panel-inner">
+    <div class="panel-text">
+      <h2>Here's how you'd actually use it.</h2>
+      <p>noteOS works best with AI tools that can read files directly from your computer. That's why we recommend Claude. You point it at your folder and it reads everything automatically. No copy-pasting. No uploading. It just works.</p>
+    </div>
+    <div class="panel-visual">
+      <div class="tool-comparison">
+
+        <!-- Claude Cowork card (primary) -->
+        <div class="tool-comparison-card primary">
+          <div class="recommended-badge">Recommended</div>
+          <h3>Claude Cowork</h3>
+          <div class="card-subtitle">The desktop app. Best for most people.</div>
+
+          <div class="cowork-mockup">
+            <div class="cowork-sidebar">
+              <div class="cowork-sidebar-panel">
+                <div class="sidebar-label">Projects</div>
+                <div class="cowork-sidebar-item active">
+                  <span class="folder-icon">&#128193;</span> noteOS
+                </div>
+                <div class="cowork-sidebar-item">
+                  <span class="folder-icon">&#128193;</span> Work
+                </div>
+              </div>
+              <div class="cowork-main">
+                <div class="cowork-status">
+                  <span class="cowork-status-dot"></span>
+                  noteOS vault connected
+                </div>
+                <div class="cowork-chat-line from-user">What's on my plate today?</div>
+                <div class="cowork-chat-line from-ai">Reading your notes... You have 3 open items from yesterday's standup and a dentist appointment at 3.</div>
+              </div>
+            </div>
           </div>
-          <div class="ba-panel after">
-            <div class="ba-label">After</div>
-            <div class="ba-item">Home Basecamp</div>
-            <div class="ba-item">Kitchen Remodel</div>
-            <div class="ba-item">Contractor Quotes</div>
-            <div class="ba-item">2026-04-14</div>
-            <div class="ba-item new">&#10022; Quote Comparison</div>
-            <div class="ba-linked">linked to Contractor Quotes</div>
+
+          <div class="card-description">Download free at <a href="https://claude.ai" style="color: var(--accent); text-decoration: none; font-weight: 500;">claude.ai</a>. Open the app, connect your vault folder, start talking. That's it.</div>
+          <div class="card-small">Claude reads your instruction file and notes automatically every conversation.</div>
+        </div>
+
+        <!-- Claude Code card (secondary) -->
+        <div class="tool-comparison-card secondary">
+          <h3>Claude Code</h3>
+          <div class="card-subtitle">Terminal-based. More control.</div>
+
+          <div class="terminal-mockup">
+            <div class="terminal-chrome">
+              <div class="obs-dot red"></div>
+              <div class="obs-dot yellow"></div>
+              <div class="obs-dot green"></div>
+              <span style="color: var(--obs-text-dim); font-size: 0.7rem; margin-left: 6px;">Terminal</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line"><span class="path">~/noteOS</span> <span class="cmd">$ claude</span></div>
+              <div class="terminal-line"><span class="response">Reading CLAUDE.md...</span></div>
+              <div class="terminal-line"><span class="response">Found 12 notes, 3 basecamps.</span></div>
+              <div class="terminal-line"><span class="response">Ready. What's up?</span></div>
+            </div>
           </div>
+
+          <div class="card-description">For power users who prefer the command line. Same vault, same notes, full automation.</div>
+        </div>
+
+      </div>
+
+      <hr class="tool-comparison-divider">
+      <div class="tool-comparison-footer"><strong>Works with other AI tools too.</strong> Any AI that can read files from your computer works with noteOS. Cursor, Windsurf, GitHub Copilot, and more. You can also use ChatGPT or Gemini by sharing your notes manually. The vault is just plain text files. Nothing is locked in.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================== -->
+<!-- PANEL 16: Your first conversation              -->
+<!-- ============================================== -->
+<section class="panel layout-text-above onboarding-chat" data-index="15">
+  <div class="panel-inner">
+    <div class="panel-text">
+      <h2>Your first conversation sets everything up.</h2>
+      <p>Open Claude, point it at your vault, and say hello. It detects a fresh vault and walks you through a quick personalization. No forms. No settings. Just a conversation.</p>
+    </div>
+    <div class="panel-visual">
+      <div class="chat-container">
+        <div class="chat-header">
+          <div class="chat-header-dot"></div>
+          Claude
+        </div>
+        <div class="chat-messages">
+          <div class="chat-row">
+            <div class="chat-avatar claude-avatar">C</div>
+            <div class="chat-bubble claude-bubble">Hey! It looks like this is a fresh noteOS vault. The About Me section is empty. Before we dive into anything, I'd love to learn a bit about you so the system can start working for you right away. This usually takes about 10 minutes.<br><br>Let's start simple. What do you do for work?</div>
+          </div>
+          <div class="chat-row user">
+            <div class="chat-avatar user-avatar">Y</div>
+            <div class="chat-bubble user-bubble">I'm a project manager at a design consultancy. We work with nonprofits and tech companies mostly.</div>
+          </div>
+          <div class="chat-row">
+            <div class="chat-avatar claude-avatar">C</div>
+            <div class="chat-bubble claude-bubble">Great. So you're juggling multiple client projects, probably tracking deliverables across teams. What are the main projects or clients you're working on right now?</div>
+          </div>
+          <div class="chat-row user">
+            <div class="chat-avatar user-avatar">Y</div>
+            <div class="chat-bubble user-bubble">We have three active clients. A crisis navigation platform, a healthcare nonprofit, and an internal tools project. I also manage our team's task tracking.</div>
+          </div>
+          <div class="chat-row">
+            <div class="chat-avatar claude-avatar">C</div>
+            <div class="chat-bubble claude-bubble">Got it. I'm building out your profile now. A few more questions:<br><br>How do you prefer AI to communicate with you? Some people like detailed explanations, some prefer bullet points and brevity.</div>
+          </div>
+          <div class="chat-row user">
+            <div class="chat-avatar user-avatar">Y</div>
+            <div class="chat-bubble user-bubble">Bullet points. Keep it concise. I don't need a lot of preamble.</div>
+          </div>
+          <div class="chat-row">
+            <div class="chat-avatar claude-avatar">C</div>
+            <div class="chat-bubble claude-bubble">
+              Noted. Concise and direct. <span class="check-item">&#10003;</span>
+              <br><br>
+              I've set up your instruction file with your role, your three active projects, and your communication preference. I also created a personal Basecamp note with what I know so far.
+              <br><br>
+              <strong>Here's what's ready:</strong>
+              <ul>
+                <li><span class="check-item">&#10003;</span> CLAUDE.md. Your instruction file, personalized</li>
+                <li><span class="check-item">&#10003;</span> About Me Basecamp. Your profile note</li>
+                <li><span class="check-item">&#10003;</span> Active projects noted: Crisis platform, Healthcare nonprofit, Internal tools</li>
+                <li><span class="check-item">&#10003;</span> Communication style: concise, bullet points</li>
+              </ul>
+              Next time we talk, I'll already know all of this. Want to dive into something specific, or should I set up project Basecamps for your three clients?
+            </div>
+          </div>
+        </div>
+        <div class="chat-input-bar">
+          <div class="chat-input">Message...</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Panel 7: Get Started -->
-  <section class="panel panel-cta" id="panel-6">
-    <div class="panel-inner">
-      <div class="panel-text">
-        <h2>Plain text files on your computer.</h2>
-        <p>Works with any AI tool. Free. No account. Takes ten minutes to set up.</p>
+
+<!-- ============================================== -->
+<!-- PANEL 17: After ten minutes                    -->
+<!-- ============================================== -->
+<section class="panel layout-text-above" data-index="16">
+  <div class="panel-inner">
+    <div class="panel-text">
+      <h2>After ten minutes, your system looks like this.</h2>
+      <p>A personalized instruction file, your first notes, and a vault that's ready to grow. Every conversation from here adds to it. You don't have to do anything else.</p>
+    </div>
+    <div class="panel-visual">
+      <div class="obs-window">
+        <div class="obs-chrome">
+          <div class="obs-dot red"></div>
+          <div class="obs-dot yellow"></div>
+          <div class="obs-dot green"></div>
+          <span class="obs-chrome-label">Obsidian</span>
+        </div>
+        <div class="obs-layout">
+          <div class="obs-sidebar">
+            <div class="obs-folder">&#128193; Map</div>
+            <div class="obs-file" style="padding-left: 24px;">&#128196; About Me <span class="new-dot"></span></div>
+            <div class="obs-file" style="padding-left: 24px;">&#128196; Crisis Platform Basecamp <span class="new-dot"></span></div>
+            <div class="obs-file" style="padding-left: 24px;">&#128196; Healthcare Basecamp <span class="new-dot"></span></div>
+            <div class="obs-file" style="padding-left: 24px;">&#128196; Internal Tools Basecamp <span class="new-dot"></span></div>
+            <div class="obs-folder">&#128193; Calendar</div>
+            <div class="obs-file" style="padding-left: 24px;">&#128196; 2026-04-14 <span class="new-dot"></span></div>
+            <div class="obs-folder">&#128193; Templates</div>
+            <div class="obs-folder">&#128193; skills</div>
+            <div class="obs-file">&#9881; CLAUDE.md <span class="new-dot"></span></div>
+            <div class="obs-file">&#128196; MEMORY.md</div>
+          </div>
+          <div class="obs-content">
+            <h2 style="color: var(--obs-accent); font-size: 0.9rem; margin-bottom: 16px;">CLAUDE.md</h2>
+            <div style="margin-bottom: 14px;">
+              <div style="color: var(--obs-text-dim); font-size: 0.78rem; font-weight: 600; margin-bottom: 6px;">## About Me</div>
+              <div style="font-size: 0.8rem; line-height: 1.6;">Project manager at a design consultancy. Works with nonprofits and tech companies. Manages three active client projects and internal team task tracking.</div>
+              <div style="font-size: 0.8rem; line-height: 1.6; margin-top: 6px;">Communication preference: concise, bullet points, minimal preamble.</div>
+            </div>
+            <div style="margin-bottom: 14px;">
+              <div style="color: var(--obs-text-dim); font-size: 0.78rem; font-weight: 600; margin-bottom: 6px;">## Active Projects</div>
+              <div style="font-size: 0.8rem; line-height: 1.6;">
+                &bull; <strong style="color: var(--obs-text);">Crisis Platform</strong> <span style="color: var(--obs-text-dim);">. crisis navigation app (pro bono)</span><br>
+                &bull; <strong style="color: var(--obs-text);">Healthcare Nonprofit</strong> <span style="color: var(--obs-text-dim);">. [details to be filled as we work together]</span><br>
+                &bull; <strong style="color: var(--obs-text);">Internal Tools</strong> <span style="color: var(--obs-text-dim);">. team task tracking and process improvement</span>
+              </div>
+            </div>
+            <div>
+              <div style="color: var(--obs-text-dim); font-size: 0.78rem; font-weight: 600; margin-bottom: 6px;">## People</div>
+              <div style="font-size: 0.8rem; line-height: 1.6; color: var(--obs-text-dim);">[Will grow as you mention colleagues in conversation]</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="panel-visual">
-        <div class="cta-buttons">
-          <a href="https://github.com/BOOMCHOPALAKA/noteOS/archive/refs/heads/main.zip" class="cta-btn primary">Download the Starter Vault</a>
-          <a href="../index.html" class="cta-btn secondary">Read the full guide</a>
-        </div>
-        <div class="tool-pills">
-          <span class="tool-pill">Claude</span>
-          <span class="tool-pill">ChatGPT</span>
-          <span class="tool-pill">Gemini</span>
-          <span class="tool-pill">Cursor</span>
-          <span class="tool-pill">GitHub Copilot</span>
-        </div>
+      <p class="post-onboard-annotation">This is what your vault looks like after one conversation. Every session from here makes it richer.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================== -->
+<!-- PANEL 18: Ready to try it?                     -->
+<!-- ============================================== -->
+<section class="panel layout-centered" data-index="17">
+  <div class="panel-inner">
+    <h2>Ready to try it?</h2>
+    <p style="max-width: 600px; margin: 0 auto 8px;">Download Obsidian (free), download the starter vault, open Claude, and point it at the folder. Your AI handles the rest.</p>
+
+    <div class="steps-row">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Download Obsidian</h3>
+        <p>Free. Mac, Windows, Linux, iOS, Android.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Download the starter vault</h3>
+        <p>Unzip it. Open it in Obsidian.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Open Claude and connect your vault</h3>
+        <p>Claude Cowork: add it as a project. Claude Code: cd into the folder and type 'claude'.</p>
       </div>
     </div>
-  </section>
 
-  <script>
-    (function() {
-      const panels = document.querySelectorAll('.panel');
-      const dots = document.querySelectorAll('.progress-dot');
-      const graphContainer = document.getElementById('graph');
-      let graphAnimated = false;
+    <div style="margin-top: 32px;">
+      <a href="https://github.com/BOOMCHOPALAKA/noteOS/archive/refs/heads/main.zip" class="cta-primary">Download the Starter Vault</a>
+    </div>
+    <div style="margin-top: 12px;">
+      <a href="../index.html" class="cta-secondary">Read the full guide</a>
+    </div>
 
-      // Panel visibility and active dot
-      const panelObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          const inner = entry.target.querySelector('.panel-inner');
-          if (entry.isIntersecting) {
-            inner.classList.add('visible');
-            // Update active dot
-            const index = Array.from(panels).indexOf(entry.target);
-            dots.forEach(function(d, i) {
-              d.classList.toggle('active', i === index);
-            });
-          }
+    <div class="tool-pills">
+      <span class="tool-pill">Claude</span>
+      <span class="tool-pill">ChatGPT</span>
+      <span class="tool-pill">Gemini</span>
+      <span class="tool-pill">Cursor</span>
+      <span class="tool-pill">GitHub Copilot</span>
+      <span class="tool-pill">Windsurf</span>
+    </div>
+
+    <p class="fine-print">Free and open source. Plain text files you own forever. No account. No lock-in. No subscription.</p>
+  </div>
+</section>
+
+
+<script>
+(function() {
+  // === Panel visibility via IntersectionObserver ===
+  const panels = document.querySelectorAll('.panel');
+  const dots = document.querySelectorAll('.progress-dot');
+
+  const panelObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        const idx = parseInt(entry.target.dataset.index);
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === idx);
         });
-      }, { threshold: 0.5 });
+      }
+    });
+  }, { threshold: 0.3 });
 
-      panels.forEach(function(panel) {
-        panelObserver.observe(panel);
+  panels.forEach(panel => {
+    panelObserver.observe(panel);
+  });
+
+  // First panel visible immediately
+  panels[0].classList.add('visible');
+
+  // === Dot click navigation ===
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const idx = parseInt(dot.dataset.panel);
+      panels[idx].scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // === Graph animation (fire once) ===
+  const graphPanel = document.getElementById('graph-panel');
+  let graphAnimated = false;
+
+  if (graphPanel) {
+    const graphObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !graphAnimated) {
+          graphAnimated = true;
+          const wrap = graphPanel.querySelector('.graph-svg-wrap');
+          const lines = wrap.querySelectorAll('.graph-line');
+          const nodes = wrap.querySelectorAll('.graph-node');
+          const labels = wrap.querySelectorAll('.graph-label');
+
+          // Stagger lines
+          lines.forEach((line, i) => {
+            setTimeout(() => {
+              line.style.opacity = '1';
+            }, i * 20);
+          });
+
+          // Stagger nodes after lines start
+          const nodeDelay = 400;
+          nodes.forEach((node, i) => {
+            setTimeout(() => {
+              node.style.opacity = '1';
+            }, nodeDelay + i * 35);
+          });
+
+          // Labels appear with nodes
+          labels.forEach((label, i) => {
+            setTimeout(() => {
+              label.style.opacity = '1';
+            }, nodeDelay + i * 35);
+          });
+        }
       });
+    }, { threshold: 0.3 });
 
-      // Dot click navigation
-      dots.forEach(function(dot) {
-        dot.addEventListener('click', function() {
-          var idx = parseInt(dot.getAttribute('data-panel'));
-          panels[idx].scrollIntoView({ behavior: 'smooth' });
-        });
-      });
-
-      // Graph animation on first view
-      var graphPanel = document.getElementById('panel-4');
-      var graphObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting && !graphAnimated) {
-            graphAnimated = true;
-            var lines = graphContainer.querySelectorAll('.graph-line');
-            var nodes = graphContainer.querySelectorAll('.graph-node');
-
-            lines.forEach(function(line, i) {
-              line.style.animationDelay = (i * 50) + 'ms';
-            });
-
-            nodes.forEach(function(node, i) {
-              node.style.animationDelay = (200 + i * 80) + 'ms';
-            });
-
-            graphContainer.classList.add('animated');
-          }
-        });
-      }, { threshold: 0.5 });
-
-      graphObserver.observe(graphPanel);
-    })();
-  </script>
+    graphObserver.observe(graphPanel);
+  }
+})();
+</script>
 
 </body>
 </html>
