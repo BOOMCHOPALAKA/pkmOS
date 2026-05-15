@@ -1418,6 +1418,7 @@
   <button class="progress-dot" data-panel="15" aria-label="Panel 16"></button>
   <button class="progress-dot" data-panel="16" aria-label="Panel 17"></button>
   <button class="progress-dot" data-panel="17" aria-label="Panel 18"></button>
+  <button class="progress-dot" data-panel="18" aria-label="Panel 19"></button>
 </nav>
 
 
@@ -1578,13 +1579,13 @@
 
 
 <!-- ============================================== -->
-<!-- PANEL 4: Behind the scenes                     -->
+<!-- PANEL 4: Behind the scenes (auto-capture)      -->
 <!-- ============================================== -->
 <section class="panel layout-text-above" data-index="3">
   <div class="panel-inner">
     <div class="panel-text">
-      <h2>You didn't organize any of that. Your AI did.</h2>
-      <p>While you were talking, noteOS created notes, linked them together, and updated what changed. Here's what your folder looks like now.</p>
+      <h2>You had a conversation. Notes got connected.</h2>
+      <p>While you were talking, the AI linked what came up to the right notes. You didn't ask it to. It just kept track. You can see what changed in the sidebar.</p>
     </div>
     <div class="panel-visual">
       <div class="split-visual">
@@ -1598,13 +1599,12 @@
               <div class="chat-row">
                 <div class="chat-avatar claude-avatar">C</div>
                 <div class="chat-bubble claude-bubble">
-                  Done. Updated Thursday Call with the comparison and added "Ask about pantry shelving" to your action items. &#10003;
+                  Done. The kitchen quote comparison is saved. Three notes picked up the new info:
                   <br><br>
                   <span style="font-size: 0.82rem; color: var(--text-secondary);">
-                    Notes updated:<br>
-                    &#10003; Contractor Quotes<br>
-                    &#10003; Thursday Call<br>
-                    &#10003; 2026-04-14
+                    &middot; Contractor Quotes<br>
+                    &middot; Thursday Call<br>
+                    &middot; Today's daily note
                   </span>
                 </div>
               </div>
@@ -1650,6 +1650,7 @@
           </div>
         </div>
       </div>
+      <p class="annotation">You didn't tell it to file anything. The system noticed what you were talking about and updated the related notes. If you ever want to see what changed, the daily note is the running log.</p>
     </div>
   </div>
 </section>
@@ -1662,8 +1663,8 @@
   <div class="panel-inner">
     <div class="panel-text">
       <div class="time-label">Wednesday Morning</div>
-      <h2>You start the day with one command.</h2>
-      <p>You open Claude and type /morning-brief. Everything you need to know about today, pulled from your notes, your calendar, your email. Work and life, all in one view.</p>
+      <h2>A clear view of the day, before you've had coffee.</h2>
+      <p>You open Claude and ask what's on your plate. It reads across your notes, your calendar, your inbox, and pulls together one view. Work and life, no switching tabs.</p>
     </div>
     <div class="panel-visual">
       <div class="chat-container">
@@ -1674,37 +1675,30 @@
         <div class="chat-messages">
           <div class="chat-row user">
             <div class="chat-avatar user-avatar">Y</div>
-            <div class="chat-bubble user-bubble">/morning-brief</div>
+            <div class="chat-bubble user-bubble">what's on my plate today?</div>
           </div>
           <div class="chat-row">
             <div class="chat-avatar claude-avatar">C</div>
             <div class="chat-bubble claude-bubble">
-              <h3>Morning Brief. Wednesday, April 15</h3>
+              <h3>Wednesday, April 15</h3>
 
               <strong>Focus Today</strong>
               <ul>
                 <li>Follow up with Sarah on project timeline (due tomorrow)</li>
                 <li>Q3 roadmap review. You've been putting this off since Tuesday.</li>
-                <li>Prep for tomorrow's call with Dave about kitchen quote</li>
+                <li>Prep for tomorrow's call with Dave</li>
               </ul>
 
               <strong>Calendar</strong>
               <ul>
                 <li>9:00 AM. Team standup</li>
                 <li>12:30 PM. Lunch with Mom</li>
-                <li>3:00 PM. Dentist (Dr. Patel, cleaning + check that crown)</li>
+                <li>3:00 PM. Dentist</li>
               </ul>
 
-              <strong>Open Items</strong><br>
-              <em>From Tuesday Standup:</em>
+              <strong>Open Items</strong>
               <ul>
-                <li>&#9744; Review Q3 roadmap draft</li>
-                <li>&#9744; Follow up: Sarah's timeline (due Thu)</li>
-                <li>&#9745; Bohdan's checkout PRs. Merged &#10003;</li>
-              </ul>
-              <em>Kitchen Remodel:</em>
-              <ul>
-                <li>&#9744; Compare quotes. Comparison ready, review before Thursday</li>
+                <li>&#9744; Compare kitchen quotes (comparison ready, review before Thursday)</li>
                 <li>&#9744; Ask Dave about pantry shelving</li>
                 <li>&#9744; Call insurance about renovation coverage</li>
               </ul>
@@ -1712,13 +1706,9 @@
               <strong>Email (4 new)</strong>
               <ul>
                 <li>Sarah: "timeline draft attached, wanted your eyes before Thursday"</li>
-                <li>Dave: "thanks for the quick turnaround, call Thursday works"</li>
-                <li>Dr. Patel's office: appointment confirmation</li>
+                <li>Dave: "thanks for the quick turnaround, Thursday works"</li>
                 <li>REI: your hiking boots shipped. Arrives Friday.</li>
               </ul>
-
-              <strong>Weather</strong><br>
-              62&deg;F, partly cloudy. Great evening for that run you skipped Monday.
             </div>
           </div>
         </div>
@@ -1726,6 +1716,7 @@
           <div class="chat-input">Message...</div>
         </div>
       </div>
+      <p class="annotation">You can type it out, or use the <code>/morning-brief</code> shortcut. noteOS has a handful of these for things you'll do a lot. We'll show a couple more as we go.</p>
     </div>
   </div>
 </section>
@@ -1738,8 +1729,8 @@
   <div class="panel-inner">
     <div class="panel-text">
       <div class="time-label">Thursday Evening</div>
-      <h2>You just finished a long meeting. Let noteOS handle the notes.</h2>
-      <p>You drop a meeting transcript and let your AI do the rest. Speakers identified, action items extracted, everything linked to the right projects.</p>
+      <h2>The AI handles the busywork, but checks before filing.</h2>
+      <p>You drop in the transcript from your meeting with Dave. The AI processes it. Then, instead of silently spreading the information across your notes, it asks where things should go.</p>
     </div>
     <div class="panel-visual">
       <div class="chat-container">
@@ -1750,7 +1741,7 @@
         <div class="chat-messages">
           <div class="chat-row user">
             <div class="chat-avatar user-avatar">Y</div>
-            <div class="chat-bubble user-bubble">Here's the transcript from today's call with Dave. Process it.</div>
+            <div class="chat-bubble user-bubble">Here's the transcript from today's call with Dave. Can you process it?</div>
           </div>
           <div class="chat-row">
             <div class="chat-avatar claude-avatar">C</div>
@@ -1761,49 +1752,56 @@
               <br><br>
               <strong>Key Decisions</strong>
               <ul>
-                <li>Going with the revised quote ($34,200) &#10003;</li>
-                <li>Dave starts demolition April 28</li>
-                <li>Choosing alternative cabinet supplier to avoid 6-week backorder</li>
+                <li>Going with the revised quote ($34,200)</li>
+                <li>Demolition starts April 28</li>
+                <li>Switching cabinet suppliers to avoid the backorder</li>
               </ul>
 
               <strong>Action Items</strong>
               <ul>
-                <li>&#9744; You: Sign contract and send deposit by Monday</li>
-                <li>&#9744; You: Pick cabinet style from Dave's catalog (he's emailing options tonight)</li>
-                <li>&#9744; Dave: Send updated timeline with new cabinet supplier</li>
-                <li>&#9744; Lisa: Confirm the countertop color by next week</li>
+                <li>You: Sign contract and send deposit by Monday</li>
+                <li>You: Pick cabinets from Dave's catalog</li>
+                <li>Dave: Send updated timeline</li>
+                <li>Lisa: Confirm countertop color</li>
               </ul>
 
-              <strong>Notes Updated</strong>
-              <ul>
-                <li>&#10003; Kitchen Remodel. Added timeline, decisions</li>
-                <li>&#10003; Contractor Quotes. Marked revised quote as accepted</li>
-                <li>&#10003; Daily note. Meeting summary added</li>
-                <li>&#10003; Created: Cabinet Selection (new note, linked to Kitchen Remodel)</li>
-              </ul>
-
-              <div class="proactive"><strong>Want me to carry the action items forward to tomorrow's daily note?</strong></div>
+              <div class="proactive"><strong>Before I file this, a few things to confirm:</strong>
+                <ul style="margin-top: 8px;">
+                  <li>Add the action items to your Kitchen Basecamp?</li>
+                  <li>Create a new note for Cabinet Selection? (you don't have one yet)</li>
+                  <li>Carry the open items into tomorrow's daily note?</li>
+                </ul>
+              </div>
             </div>
+          </div>
+          <div class="chat-row user">
+            <div class="chat-avatar user-avatar">Y</div>
+            <div class="chat-bubble user-bubble">Yes to all three.</div>
+          </div>
+          <div class="chat-row">
+            <div class="chat-avatar claude-avatar">C</div>
+            <div class="chat-bubble claude-bubble">Done. Three notes updated, one created.</div>
           </div>
         </div>
         <div class="chat-input-bar">
           <div class="chat-input">Message...</div>
         </div>
       </div>
+      <p class="annotation">You stay in charge of where things land. The AI suggests, you approve. If you want it to just do it without asking, you can tell it that too. It's your system.</p>
     </div>
   </div>
 </section>
 
 
 <!-- ============================================== -->
-<!-- PANEL 7: The following Monday                  -->
+<!-- PANEL 7: Friday evening (explicit capture)     -->
 <!-- ============================================== -->
 <section class="panel layout-side-by-side" data-index="6">
   <div class="panel-inner">
     <div class="panel-text">
-      <div class="time-label">Monday Morning</div>
-      <h2>You were gone all weekend. Pick up like you never left.</h2>
-      <p>You closed your laptop Thursday evening. Now it's Monday. One command and you're right back in it.</p>
+      <div class="time-label">Friday Evening</div>
+      <h2>Closing the laptop. Telling it where to start Monday.</h2>
+      <p>You've been working through the kitchen decisions all week. You don't want to lose the thread over the weekend. So before you sign off, you tell it to remember where you are.</p>
     </div>
     <div class="panel-visual">
       <div class="chat-container">
@@ -1814,31 +1812,26 @@
         <div class="chat-messages">
           <div class="chat-row user">
             <div class="chat-avatar user-avatar">Y</div>
-            <div class="chat-bubble user-bubble">/pickup</div>
+            <div class="chat-bubble user-bubble">Save this. I'm mid-decision on cabinets and I want to pick this up Monday morning. Note what I'm leaning toward and what's still open.</div>
           </div>
           <div class="chat-row">
             <div class="chat-avatar claude-avatar">C</div>
             <div class="chat-bubble claude-bubble">
-              <strong>Last session:</strong> Thursday, April 17 at 6:12 PM
+              Saved. Here's what I've captured for Monday:
               <br><br>
-              <strong>Where you left off:</strong><br>
-              Kitchen remodel. Accepted Dave's revised quote ($34,200), demolition starts April 28. You need to sign the contract and send deposit by today.
-              <br><br>
-              <strong>Still open:</strong>
+              <strong>Where you are</strong>
               <ul>
-                <li>Sign kitchen contract + deposit (due today!)</li>
-                <li>Pick cabinet style from Dave's catalog (he emailed options Friday)</li>
-                <li>Q3 roadmap review (still hasn't happened. Tuesday is day 7)</li>
-                <li>Lisa hasn't confirmed countertop color yet</li>
+                <li>Leaning toward the Shaker style in walnut. You liked the look but want to see it in person before committing.</li>
+                <li>Still open: whether the soft-close hinges are worth the upcharge.</li>
               </ul>
 
-              <strong>What changed since Thursday:</strong>
+              <strong>Still on your plate</strong>
               <ul>
-                <li>3 emails: Dave sent cabinet catalog, Sarah sent finalized timeline, REI boots delivered</li>
-                <li>Your Monday standup is in 90 minutes</li>
+                <li>Sign contract + send deposit (Dave needs it by Monday EOD)</li>
+                <li>Confirm countertop color with Lisa</li>
               </ul>
 
-              <div class="proactive"><strong>Want me to pull up Dave's cabinet options so you can knock that out before standup?</strong></div>
+              Next time you say "where were we" or use <code>/pickup</code>, I'll start here.
             </div>
           </div>
         </div>
@@ -1846,15 +1839,72 @@
           <div class="chat-input">Message...</div>
         </div>
       </div>
+      <p class="annotation">Two patterns showing up here. You can talk to it normally ("save this, I want to pick it up Monday"), or use the <code>/remember</code> shortcut. Both work. It writes the context into a note so anything you start with on Monday picks it up.</p>
     </div>
   </div>
 </section>
 
 
 <!-- ============================================== -->
-<!-- PANEL 8: Three months later                    -->
+<!-- PANEL 8: Monday morning (callback / restore)   -->
 <!-- ============================================== -->
-<section class="panel layout-text-above" data-index="7">
+<section class="panel layout-side-by-side" data-index="7">
+  <div class="panel-inner">
+    <div class="panel-text">
+      <div class="time-label">Monday Morning</div>
+      <h2>Picking up exactly where you left off.</h2>
+      <p>You closed the laptop Friday at 6 PM. Now it's Monday at 8 AM. The weekend's gone, your inbox has changed, and you have a standup in two hours. One question, and you're back in it.</p>
+    </div>
+    <div class="panel-visual">
+      <div class="chat-container">
+        <div class="chat-header">
+          <div class="chat-header-dot"></div>
+          Claude
+        </div>
+        <div class="chat-messages">
+          <div class="chat-row user">
+            <div class="chat-avatar user-avatar">Y</div>
+            <div class="chat-bubble user-bubble">where were we?</div>
+          </div>
+          <div class="chat-row">
+            <div class="chat-avatar claude-avatar">C</div>
+            <div class="chat-bubble claude-bubble">
+              Picking up from Friday evening.
+              <br><br>
+              You were mid-decision on cabinets. Leaning Shaker in walnut, wanted to see it in person, weren't sure about the soft-close hinges.
+              <br><br>
+              <strong>Still open from Friday</strong>
+              <ul>
+                <li>Sign contract + deposit (Dave needs it by today, EOD)</li>
+                <li>Confirm countertop color with Lisa</li>
+                <li>Cabinet decision</li>
+              </ul>
+
+              <strong>What's changed since Friday</strong>
+              <ul>
+                <li>Dave emailed cabinet samples Saturday. They're in your inbox.</li>
+                <li>Lisa texted Sunday. She's good with the green-gray. Still need to confirm with Dave.</li>
+                <li>Your Monday standup is in 90 minutes.</li>
+              </ul>
+
+              <div class="proactive"><strong>Want to start with the cabinet samples so you can knock that out before standup?</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="chat-input-bar">
+          <div class="chat-input">Message...</div>
+        </div>
+      </div>
+      <p class="annotation">Nothing magic here. You told it to save your context Friday. It wrote that into a note. Monday morning, it reads that note plus everything else that came in over the weekend, and tells you where you are. Save and pick up are two ends of the same loop.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================== -->
+<!-- PANEL 9: Three months later                    -->
+<!-- ============================================== -->
+<section class="panel layout-text-above" data-index="8">
   <div class="panel-inner">
     <div class="panel-text">
       <div class="time-label">Three Months Later</div>
@@ -1927,9 +1977,9 @@
 
 
 <!-- ============================================== -->
-<!-- PANEL 9: How it actually works                 -->
+<!-- PANEL 10: How it actually works                -->
 <!-- ============================================== -->
-<section class="panel layout-text-above" data-index="8">
+<section class="panel layout-text-above" data-index="9">
   <div class="panel-inner">
     <div class="panel-text">
       <h2>Under the hood, it's surprisingly simple.</h2>
@@ -1998,9 +2048,9 @@
 
 
 <!-- ============================================== -->
-<!-- PANEL 10: Everything starts with a Basecamp    -->
+<!-- PANEL 11: Everything starts with a Basecamp    -->
 <!-- ============================================== -->
-<section class="panel layout-side-by-side basecamp-panel" data-index="9">
+<section class="panel layout-side-by-side basecamp-panel" data-index="10">
   <div class="panel-inner">
     <div class="panel-text">
       <h2>Everything starts with a Basecamp.</h2>
@@ -2078,9 +2128,9 @@
 
 
 <!-- ============================================== -->
-<!-- PANEL 11: A place for everything               -->
+<!-- PANEL 12: A place for everything               -->
 <!-- ============================================== -->
-<section class="panel layout-text-above" data-index="10">
+<section class="panel layout-text-above" data-index="11">
   <div class="panel-inner">
     <div class="panel-text">
       <h2>Simple structure. No deep folders. Links do the organizing.</h2>
@@ -2136,9 +2186,9 @@
 
 
 <!-- ============================================== -->
-<!-- PANEL 12: See the web                          -->
+<!-- PANEL 13: See the web                          -->
 <!-- ============================================== -->
-<section class="panel layout-text-above" data-index="11">
+<section class="panel layout-text-above" data-index="12">
   <div class="panel-inner">
     <div class="panel-text">
       <h2>After a few months, your knowledge looks like this.</h2>
@@ -2306,9 +2356,9 @@
 
 
 <!-- ============================================== -->
-<!-- PANEL 13: Works with everything                -->
+<!-- PANEL 14: Works with everything                -->
 <!-- ============================================== -->
-<section class="panel layout-side-by-side" data-index="12">
+<section class="panel layout-side-by-side" data-index="13">
   <div class="panel-inner">
     <div class="panel-text" style="flex: 0 0 35%;">
       <h2>Not locked to any one tool.</h2>
@@ -2348,9 +2398,9 @@
 
 
 <!-- ============================================== -->
-<!-- PANEL 14: The more you use it                  -->
+<!-- PANEL 15: The more you use it                  -->
 <!-- ============================================== -->
-<section class="panel breathing" data-index="13">
+<section class="panel breathing" data-index="14">
   <div class="panel-inner">
     <p class="highlight-line">noteOS doesn't have a learning curve. It has a flywheel.</p>
     <p>Every conversation adds to your notes. Every note links to other notes. Every link makes the next conversation smarter. You don't maintain the system. You just use it.</p>
@@ -2361,9 +2411,9 @@
 
 
 <!-- ============================================== -->
-<!-- PANEL 15: Here's how you'd actually use it     -->
+<!-- PANEL 16: Here's how you'd actually use it     -->
 <!-- ============================================== -->
-<section class="panel layout-text-above" data-index="14">
+<section class="panel layout-text-above" data-index="15">
   <div class="panel-inner">
     <div class="panel-text">
       <h2>Here's how you'd actually use it.</h2>
@@ -2437,9 +2487,9 @@
 
 
 <!-- ============================================== -->
-<!-- PANEL 16: Your first conversation              -->
+<!-- PANEL 17: Your first conversation              -->
 <!-- ============================================== -->
-<section class="panel layout-text-above onboarding-chat" data-index="15">
+<section class="panel layout-text-above onboarding-chat" data-index="16">
   <div class="panel-inner">
     <div class="panel-text">
       <h2>Your first conversation sets everything up.</h2>
@@ -2504,9 +2554,9 @@
 
 
 <!-- ============================================== -->
-<!-- PANEL 17: After ten minutes                    -->
+<!-- PANEL 18: After ten minutes                    -->
 <!-- ============================================== -->
-<section class="panel layout-text-above" data-index="16">
+<section class="panel layout-text-above" data-index="17">
   <div class="panel-inner">
     <div class="panel-text">
       <h2>After ten minutes, your system looks like this.</h2>
@@ -2563,9 +2613,9 @@
 
 
 <!-- ============================================== -->
-<!-- PANEL 18: Ready to try it?                     -->
+<!-- PANEL 19: Ready to try it?                     -->
 <!-- ============================================== -->
-<section class="panel layout-centered" data-index="17">
+<section class="panel layout-centered" data-index="18">
   <div class="panel-inner">
     <h2>Ready to try it?</h2>
     <p style="max-width: 600px; margin: 0 auto 8px;">Download Obsidian (free), download the starter vault, open Claude, and point it at the folder. Your AI handles the rest.</p>
